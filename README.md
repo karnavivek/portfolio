@@ -1,17 +1,17 @@
 ## Operations Research Engineer (Data Scientist)
-I love to look into combinatorial problems where we must look to solve them using operations research & data science techniques! 
+I love to look into combinatorial problems where we must find a way to solve them using operations research & data science techniques! 
 
 ### Education
-- MS (Operations Research) - __IIT Madras, Chennai__                | _June 2023 - Present_
-- BTech (Production & Industrial Engineering) - __VIT, Vellore__    | _June 2017 - June 2021_
+- MS (Operations Research) | __IIT Madras, Chennai__                | _06/2023 - Present_
+- BTech (Production & Industrial Engineering) | __VIT, Vellore__    | _06/2017 - 06/2021_
 
 ### Work Experience
-##### __Teaching Assistant (IIT Madras)__ 
+#### __Teaching Assistant (IIT Madras)__ 
 - Collaborated with professors in various data science/operations research courses by incorporating real-world datasets and case studies.
 - Delivered __10+ Hrs__ of Python/Machine Learning Lab sessions of Multivariate Statistics in class of B-Tech DD (Quant Finance), MS, PhD students.
 - Developed comprehensive data science scripts & exercises on topics like clustering, regression, PCA, decision tree, etc that improved students performance gradually by 20%.
 
-##### __Graduate Engineer Trainee (Varroc Engineering Pvt. Ltd.)__ 
+#### __Graduate Engineer Trainee (Varroc Engineering Pvt. Ltd.)__ 
 - Implemented data-driven process optimization using Six Sigma (DMAIC) methodology that reduced changeover time by __77%__, saving __33.09 hrs/m__ and generating __Rs 4.86 lakhs__ in annual savings.
 - Designed and executed __120+__ time and work studies, creating interactive data visualizations that identified critical bottlenecks in manufacturing processes.
 - Built predictive models to forecast equipment failures, reducing unplanned downtime by __23%__ and improving overall equipment effectiveness.
@@ -34,7 +34,7 @@ I love to look into combinatorial problems where we must look to solve them usin
 - Utilized metrics like MSE, MAE and RMSLE for model validation and achieved 1.08896 RMSLE Score.
   
 ### Research Work & Conferences
-#### MS Thesis _Vivek Karna, Dr. Rahul R Marathe_ [_Abstract Link_](https://drive.google.com/file/d/1NU4BVLVmrk_y5SQGmITkBb19148F5dCX/view)
+#### MS Thesis _Vivek Karna, Dr. Rahul R Marathe_ [_Abstract_](https://drive.google.com/file/d/1NU4BVLVmrk_y5SQGmITkBb19148F5dCX/view)
 - Ongoing research to develop a tool for the integrating predictive and prescriptive models to tackle uncertainty in data, optimization & ML models.
 
 #### LSO Workshop, _IIT Bombay_
