@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide-react@0.292.0/dist/lucide-react.js"></script>
+    <!-- <script src="https://unpkg.com/lucide-react@0.292.0/dist/lucide-react.js"></script> -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
@@ -30,9 +30,34 @@
             background: #555;
         }
         /* Style for active nav link */
-        .nav-link.active {
+        .nav-link.active { 
             color: #3b82f6; /* blue-500 */
             font-weight: 600;
+        }
+        /* Hero background image wrapper */
+        .hero-bg-wrap {
+            position: relative;
+            z-index: 1;
+        }
+        /* Pseudo-element for the background image with opacity and gradient mask */
+        .hero-bg-wrap::before {
+            content: '';
+            position: absolute;
+            filter: blur(3px);
+            -webkit-filter: blur(3px);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* You can replace this with any image URL you like */
+            background-image: url('goku-unique-appeal-r4.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3; /* 30% transparency */
+            z-index: -1;
+            /* Fades the image out at the bottom */
+            mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
         }
     </style>
 </head>
@@ -44,10 +69,11 @@
             <a href="#home" class="text-2xl font-bold text-gray-900">Vivek Karna</a>
             <nav class="hidden md:flex space-x-8">
                 <a href="#home" class="nav-link text-gray-600 hover:text-blue-500 transition-colors">Home</a>
-                <a href="#blog" class="nav-link text-gray-600 hover:text-blue-500 transition-colors">Blog</a>
+                <a href="#work" class="nav-link text-gray-600 hover:text-blue-500 transition-colors">Work Exp</a>
                 <a href="#projects" class="nav-link text-gray-600 hover:text-blue-500 transition-colors">Projects</a>
                 <a href="#resume" class="nav-link text-gray-600 hover:text-blue-500 transition-colors">Resume</a>
                 <a href="#research" class="nav-link text-gray-600 hover:text-blue-500 transition-colors">Research</a>
+                <a href="#blog" class="nav-link text-gray-600 hover:text-blue-500 transition-colors">Blog</a>
                 <a href="#contact" class="nav-link text-gray-600 hover:text-blue-500 transition-colors">Contact</a>
             </nav>
             <button id="mobile-menu-button" class="md:hidden">
@@ -57,70 +83,252 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
             <a href="#home" class="block py-2 text-gray-600 hover:text-blue-500">Home</a>
-            <a href="#blog" class="block py-2 text-gray-600 hover:text-blue-500">Blog</a>
+            <a href="#work" class="block py-2 text-gray-600 hover:text-blue-500">Work Exp</a>
             <a href="#projects" class="block py-2 text-gray-600 hover:text-blue-500">Projects</a>
             <a href="#resume" class="block py-2 text-gray-600 hover:text-blue-500">Resume</a>
             <a href="#research" class="block py-2 text-gray-600 hover:text-blue-500">Research</a>
+            <a href="#blog" class="block py-2 text-gray-600 hover:text-blue-500">Blog</a>
             <a href="#contact" class="block py-2 text-gray-600 hover:text-blue-500">Contact</a>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 pt-24">
+    <main>
+        <!-- This div wraps the home section to apply the background -->
+        <div class="hero-bg-wrap">
 
         <!-- Home/Intro Section -->
-        <section id="home" class="min-h-screen flex items-center py-16">
-            <div class="grid md:grid-cols-3 gap-12 items-center">
-                <div class="md:col-span-1 flex justify-center">
-                    <!-- REPLACE with your profile picture URL -->
-                    <img src="assets/img/yt_pfp.png" alt="Profile Picture" class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-lg border-4 border-white">
-                </div>
-                <div class="md:col-span-2">
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Hey, I'm Vivek Karna</h1>
-                    <p class="text-lg text-gray-600 mb-6">
-                        I am a passionate Software Engineer with a knack for building scalable web applications and a deep interest in machine learning research. I thrive on solving complex problems and continuously learning new technologies.
-                    </p>
-                    
-                    <!-- Education -->
-                    <div class="mb-6">
-                        <h3 class="text-2xl font-semibold mb-3 flex items-center"><i data-lucide="graduation-cap" class="h-6 w-6 mr-2 text-blue-500"></i>Education</h3>
-                        <p><strong>MS in Operations Research</strong> - IIT Madras (2023 - Present)</p>
-                        <p><strong>BTech in Production & Industrial Engineering</strong> - VIT Vellore (2017 - 2021)</p>
+            <section id="home" class="min-h-screen flex items-center py-16">
+                <div class="grid md:grid-cols-3 gap-12 items-center">
+                    <div class="md:col-span-1 flex justify-center">
+                        <!-- REPLACE with your profile picture URL -->
+                        <img src="assets/img/yt_pfp.png" alt="Profile Picture" class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-lg border-4 border-white">
                     </div>
+                    <div class="md:col-span-2">
+                        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Hey, I'm Vivek Karna</h1>
+                        <p class="text-lg text-gray-600 mb-6">
+                            I'd like to call myself a <strong>Data Scientist</strong> and <strong>Operations Researcher </strong> with a passion for solving complex problems using data-driven approaches.
+                            Combining my expertise in <strong>Machine Learning</strong>, <strong>Data Analysis</strong>, and <strong>Optimization</strong>, I aim to create impactful solutions that drive efficiency and innovation.
 
-                    <!-- Work Experience -->
-                    <div class="mb-6">
-                        <h3 class="text-2xl font-semibold mb-3 flex items-center"><i data-lucide="briefcase" class="h-6 w-6 mr-2 text-blue-500"></i>Work Experience</h3>
-                        <p><strong>Senior Software Engineer</strong> - Google (2022 - Present)</p>
-                        <p><strong>Software Engineer Intern</strong> - Microsoft (Summer 2019)</p>
-                    </div>
+                        </p>
+                        
+                        <!-- Education -->
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-semibold mb-3 flex items-center"><i data-lucide="graduation-cap" class="h-6 w-6 mr-2 text-blue-500"></i>Education</h3>
+                            <p><strong>M.S (by Research) in Operations Research</strong>              - IIT Madras (2023 - Present)</p>
+                            <p><strong>B.Tech in Production & Industrial Engineering</strong> - VIT Vellore (2017 - 2021)</p>
+                        </div>
 
-                    <!-- Skills -->
-                    <div>
-                        <h3 class="text-2xl font-semibold mb-4 flex items-center"><i data-lucide="lightbulb" class="h-6 w-6 mr-2 text-blue-500"></i>Skills</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Python</span>
-                            <span class="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">JavaScript</span>
-                            <span class="bg-sky-100 text-sky-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">React</span>
-                            <span class="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Node.js</span>
-                            <span class="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">TensorFlow</span>
-                            <span class="bg-indigo-100 text-indigo-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">AWS</span>
-                            <span class="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Docker</span>
+                        <!-- Work Experience -->
+                        <!-- <div class="mb-6">
+                            <h3 class="text-2xl font-semibold mb-3 flex items-center"><i data-lucide="briefcase" class="h-6 w-6 mr-2 text-blue-500"></i>Work Experience</h3>
+                            <p><strong>Teaching Assistant</strong> - IIT Madras (2022 - Present)</p>
+                            <p><strong>Graduate Engineer Trainee (GET)</strong> - Varroc Engineering Pvt Ltd. (August 2021 - July 2022)</p>
+                            <p class="text-sm text-gray-500"><em>(More details in the "Work Exp" Section)</em></p>
+                        </div> -->
+
+                        <!-- Skills -->
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-4 flex items-center"><i data-lucide="lightbulb" class="h-6 w-6 mr-2 text-blue-500"></i>Skills</h3>
+                            <p><strong>Languages:</strong></p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Python</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">SQL</span>
+                                <span class="bg-sky-100 text-sky-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Pandas</span>
+                                <span class="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Numpy</span>
+                                <span class="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Scikit-learn</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">PyTorch</span>
+                                <span class="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Statsmodels</span>
+                            </div>
+                            <p><strong>ML/DS:</strong></p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Regression</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Classification</span>
+                                <span class="bg-sky-100 text-sky-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Clustering</span>
+                                <span class="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Forecasting</span>
+                                <span class="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Neural Networks</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">LSTM</span>
+                                <span class="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Transformers</span>
+                            </div>
+                            <p><strong>Data Visualizations:</strong></p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Matplotlib</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Seaborn</span>
+                                <span class="bg-sky-100 text-sky-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Streamlit</span>
+                                <span class="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Tableau</span>
+                                <!-- <span class="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">TensorFlow</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">AWS</span>
+                                <span class="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Docker</span> -->
+                            </div>
+                            <p><strong>Tools & Technologies:</strong></p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">GIT</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">GitHub</span>
+                                <span class="bg-sky-100 text-sky-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">LaTeX</span>
+                                <span class="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Excel</span>
+                                <!-- <span class="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">TensorFlow</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">AWS</span>
+                                <span class="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Docker</span> -->
+                            </div>
+                            <p><strong>Optimization:</strong></p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Linear Programming</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Mixed Integer Programming</span>
+                                <span class="bg-sky-100 text-sky-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Heuristics</span>
+                                <span class="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Gurobi</span>
+                                <!-- <span class="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">TensorFlow</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">AWS</span>
+                                <span class="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Docker</span> -->
+                            </div>
+                            <p><strong>Business Skills:</strong></p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Six Sigma</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">DMAIC</span>
+                                <span class="bg-sky-100 text-sky-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Kanban</span>
+                                <span class="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Scrum</span>
+                                <span class="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Project Management</span>
+                                <!-- <span class="bg-indigo-100 text-indigo-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">AWS</span>
+                                <span class="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Docker</span> -->
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>    
+        </section>
+
+        <!-- Work Experience Section -->
+        <section id="work" class="py-20 bg-gray-100 -mx-6 px-6">
+            <h2 class="text-4xl font-bold text-center mb-12">Work Experience</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold">Teaching Assistant at IIT Madras</h3>
+                    <p class="text-sm text-gray-500">June 2024 - May 2025</p>
+                    <!-- <p class="text-gray-700 mt-2">Leading a team to develop scalable web applications using React and Node.js. Focused on improving user experience and performance through innovative solutions.</p> -->
+                    <ul class="list-disc list-inside mt-2">
+                        <li>Collaborated with professors in various data science/operations research courses by incorporating real-world datasets and case studies.</li>
+                        <li>Delivered 10+ Hrs of Python/Machine Learning Lab sessions of Multivariate Statistics in class of B-Tech DD (Quant Finance), MS, PhD students</li>
+                        <li>Developed comprehensive data science scripts & exercises on topics like clustering, regression, PCA, decision tree, etc that improved students performance gradually by 20%</li>
+                    </ul>
+                </div>
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold">Graduate Engineer Trainee (GET) at Varroc Engineering</h3>
+                    <p class="text-sm text-gray-500">August 2021 - July 2022</p>
+                    <!-- <p class="text-gray-700 mt-2">Worked on the Azure team to develop cloud-based solutions. Gained hands-on experience with Azure services and contributed to several key projects.</p> -->
+                    <ul class="list-disc list-inside mt-2">
+                        <li>Implemented data-driven process optimization using Six Sigma (DMAIC) methodology that reduced changeover time by <b>77%</b>, saving <b>33.09 hrs/mo</b> and generating <b>Rs 4.86 lakhs</b> in annual savings.</li>
+                        <li>Designed and executed 120+ time and work studies, creating interactive data visualizations that identified critical bottlenecks in manufacturing processes.</li>
+                        <li>Built predictive models to forecast equipment failures, reducing unplanned downtime by 23% and improving overall equipment effectiveness.</li>
+                        <li>Recognized with SPACE Level Kaizen Competition award for innovative data-driven process improvement solutions.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>  
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-gray-100 -mx-6 px-6">
+            <h2 class="text-4xl font-bold text-center mb-12">My Projects</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold mb-2">BLINKTO - Predicting Demand of a Food Delivery App [Forecasting]</h3>
+                    <!-- <p class="text-gray-600 mb-4">A full-stack e-commerce website built with the MERN stack (MongoDB, Express, React, Node.js), featuring product listings, a shopping cart, and user authentication.</p> -->
+                    <br>
+                    <ul class="list-disc list-inside mt-2">
+                        <li>Conducted EDA, Data Viz., PACF, ACF, ADF test to infer about stationarity, and converting non-stationary time series using first order differencing.</li>
+                        
+                        <li>Predicted Demand forecast using state-of-the-art ARMA, ARIMA and LSTM model with extensive Hyperparameter tuning that improved model accuracy by 18%, optimizing for epochs, batch size, & lags.</li>
+                        
+                        <li>Demonstrated Proof-of-concept using Streamlit allowing users/stakeholders to get insights in a glance.</li>
+                    </ul>
+                    <br>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Python</span>
+                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">LSTM</span>
+                        <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">ARIMA</span>
+                        <span class="bg-orange-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Streamlit</span>
+                    </div>
+                    <!-- REPLACE with your GitHub project link -->
+                    <a href="https://github.com/karnavivek/Food-Demand-Forecasting" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors">
+                        <i data-lucide="github" class="h-5 w-5 mr-2"></i> View on GitHub
+                    </a>
+                </div>
+                <!-- Project 2 -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold mb-2">IDLEE - Project based Case Study on Optimizing VRP with Time Windows [HDM Course Project]</h3>
+                    <br>
+                    <ul class="list-disc list-inside mt-2">
+                        <li>Developed MILP model for VRPTW using Gurobi for Random Generation and Fixed Positions of
+Franchises & Customers.</li>
+                        
+                        <li>Designed Heuristics to find sub-optimal feasible solution to reduce computational load when using MILP
+approach.</li>
+                        
+                        <li><em>Milestone</em> - Secured Highest Grade among all the projects submitted</li>
+                    </ul>
+                    <br>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Python</span>
+                        <span class="bg-red-200 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Gurobi</span>
+                        <!-- <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">JavaScript</span> -->
+                    </div>
+                    <!-- REPLACE with your GitHub project link -->
+                    <a href="https://github.com/karnavivek/Heuristics_VRPTW" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors">
+                        <i data-lucide="github" class="h-5 w-5 mr-2"></i> View on GitHub
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Blog Section -->
+        <!-- Resume Section -->
+        <section id="resume" class="py-20 text-center">
+            <h2 class="text-4xl font-bold mb-4">My Resume</h2>
+            <p class="text-gray-600 mb-8 max-w-2xl mx-auto">Feel free to download my resume for a more detailed look at my skills and experience. I am always open to discussing new opportunities.</p>
+            <!-- IMPORTANT: Replace 'resume.pdf' with the actual path to your resume file -->
+            <a href="Vivek_Karna_Resume.pdf" download="Vivek_Karna_Resume.pdf" class="inline-flex items-center px-8 py-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition-transform transform hover:scale-105">
+                <i data-lucide="download" class="h-6 w-6 mr-3"></i> Download Resume
+            </a>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research" class="py-20 bg-gray-100 -mx-6 px-6">
+            <h2 class="text-4xl font-bold text-center mb-12">Research & Publications</h2>
+            <div class="max-w-4xl mx-auto">
+                <!-- Publication 1 -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold">"SCLTool: Stochastic Constraint Learning Framework for Prescriptive Models"</h3>
+                    <p class="text-sm text-gray-500">MS Thesis - Vivek Karna, Rahul R Marathe</p>
+                    <p class="text-gray-700 mt-2">Ongoing research to develop a tool for the integrating predictive and pre-
+scriptive models to tackle uncertainty in data, optimization & ML models.</p>
+                    <!-- REPLACE with link to your paper -->
+                    <a href="https://drive.google.com/file/d/1NU4BVLVmrk_y5SQGmITkBb19148F5dCX/view" class="text-blue-500 hover:underline">Read Abstract</a>
+                </div>
+                <!-- Publication 2 -->
+                <div class="mb-12">
+                    <h3 class="text-xl font-semibold">"2nd Prize - AIRSS 2025 in Machine Learning & Optimization Domain"</h3>
+                    <p class="text-sm text-gray-500">Vivek Karna. Presented at AIRSS 2025.</p>
+                    <p class="text-gray-700 mt-2">Presented Research at the conference, showcasing state-of-the-art tool for uncertainty-aware optimization using machine learning.</p>
+                    <!-- REPLACE with link to your paper/slides -->
+                    <a href="#" class="text-blue-500 hover:underline">View Presentation</a>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-center mb-6">Conferences & Workshops</h3>
+                <ul class="list-disc list-inside text-center text-gray-700">
+                    <li>Presenter, AIRSS 2025, IIT Madras, Chennai, India</li>
+                    <li>Abstract Accepted, INFORMS International Meeting 2025, Singapore</li>
+                    <li>Attendee, Large Scale Optimization 2025, IEOR, IIT Bombay, Mumbai, India</li>
+                </ul>
+            </div>
+        </section>
+
+         <!-- Blog Section -->
         <section id="blog" class="py-20">
-            <h2 class="text-4xl font-bold text-center mb-12">My Blog</h2>
+            <h2 class="text-4xl font-bold text-center mb-12">My Blogs <em>(Under-Construction :D)</em></h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Blog Post 1 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
                     <img src="https://placehold.co/600x400/a5b4fc/1e293b?text=Blog+Image" alt="Blog Post" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Understanding Asynchronous JavaScript</h3>
-                        <p class="text-gray-600 mb-4 text-sm">A deep dive into Promises, async/await, and the event loop. Essential concepts for any modern web developer.</p>
+                        <h3 class="text-xl font-semibold mb-2">My 2-Yr Journey to IIT Madras</h3>
+                        <p class="text-gray-600 mb-4 text-sm">I share my experiences and lessons learned during my two-year journey at IIT Madras, from academic challenges to personal growth.</p>
                         <button onclick="openModal('blog-1')" class="text-blue-500 font-semibold hover:underline">Read More</button>
                     </div>
                 </div>
@@ -145,81 +353,6 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="py-20 bg-gray-100 -mx-6 px-6">
-            <h2 class="text-4xl font-bold text-center mb-12">My Projects</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Project 1 -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-2xl font-semibold mb-2">E-commerce Platform</h3>
-                    <p class="text-gray-600 mb-4">A full-stack e-commerce website built with the MERN stack (MongoDB, Express, React, Node.js), featuring product listings, a shopping cart, and user authentication.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">React</span>
-                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Node.js</span>
-                        <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">MongoDB</span>
-                    </div>
-                    <!-- REPLACE with your GitHub project link -->
-                    <a href="#" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors">
-                        <i data-lucide="github" class="h-5 w-5 mr-2"></i> View on GitHub
-                    </a>
-                </div>
-                <!-- Project 2 -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-2xl font-semibold mb-2">Real-time Chat Application</h3>
-                    <p class="text-gray-600 mb-4">A chat application using WebSockets for real-time communication. Built with Node.js, Express, and Socket.IO on the backend, with a simple vanilla JS frontend.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Node.js</span>
-                        <span class="bg-gray-200 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Socket.IO</span>
-                        <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">JavaScript</span>
-                    </div>
-                    <!-- REPLACE with your GitHub project link -->
-                    <a href="#" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors">
-                        <i data-lucide="github" class="h-5 w-5 mr-2"></i> View on GitHub
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Resume Section -->
-        <section id="resume" class="py-20 text-center">
-            <h2 class="text-4xl font-bold mb-4">My Resume</h2>
-            <p class="text-gray-600 mb-8 max-w-2xl mx-auto">Feel free to download my resume for a more detailed look at my skills and experience. I am always open to discussing new opportunities.</p>
-            <!-- IMPORTANT: Replace 'resume.pdf' with the actual path to your resume file -->
-            <a href="Vivek_Karna_Resume.pdf" download="Vivek_Karna_Resume.pdf" class="inline-flex items-center px-8 py-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition-transform transform hover:scale-105">
-                <i data-lucide="download" class="h-6 w-6 mr-3"></i> Download Resume
-            </a>
-        </section>
-
-        <!-- Research Section -->
-        <section id="research" class="py-20 bg-gray-100 -mx-6 px-6">
-            <h2 class="text-4xl font-bold text-center mb-12">Research & Publications</h2>
-            <div class="max-w-4xl mx-auto">
-                <!-- Publication 1 -->
-                <div class="mb-8">
-                    <h3 class="text-xl font-semibold">"Efficient Architectures for Natural Language Understanding"</h3>
-                    <p class="text-sm text-gray-500">John Doe, Jane Smith. Published in ACL 2022.</p>
-                    <p class="text-gray-700 mt-2">This paper explores novel transformer-based architectures that reduce computational overhead while maintaining state-of-the-art performance on NLU benchmarks.</p>
-                    <!-- REPLACE with link to your paper -->
-                    <a href="#" class="text-blue-500 hover:underline">Read Paper</a>
-                </div>
-                <!-- Publication 2 -->
-                <div class="mb-12">
-                    <h3 class="text-xl font-semibold">"Self-Supervised Learning for Image Recognition"</h3>
-                    <p class="text-sm text-gray-500">John Doe. Presented at NeurIPS 2021 Workshop.</p>
-                    <p class="text-gray-700 mt-2">An investigation into contrastive learning methods for pre-training computer vision models, demonstrating improved performance on downstream tasks with less labeled data.</p>
-                    <!-- REPLACE with link to your paper/slides -->
-                    <a href="#" class="text-blue-500 hover:underline">View Presentation</a>
-                </div>
-                
-                <h3 class="text-2xl font-bold text-center mb-6">Conferences & Workshops</h3>
-                <ul class="list-disc list-inside text-center text-gray-700">
-                    <li>Presenter, NeurIPS 2021, Virtual</li>
-                    <li>Attendee, ICML 2022, Baltimore, MD</li>
-                    <li>Volunteer, ACL 2022, Dublin, Ireland</li>
-                </ul>
-            </div>
-        </section>
-
         <!-- Contact Section -->
         <section id="contact" class="py-20 text-center">
             <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
@@ -239,7 +372,7 @@
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-6 text-center">
-        <p>&copy; 2025 John Doe. All rights reserved.</p>
+        <p>&copy; 2025 Vivek Karna. All rights reserved.</p>
     </footer>
 
     <!-- Blog Post Modals -->
@@ -248,31 +381,32 @@
         <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div class="p-6">
                 <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-2xl font-bold">Understanding Asynchronous JavaScript</h2>
+                    <h2 class="text-2xl font-bold">My 2-Yr Journey to IIT Madras</h2>
                     <button onclick="closeModal('blog-1')" class="text-gray-500 hover:text-gray-800">&times;</button>
                 </div>
                 <img src="https://placehold.co/600x300/a5b4fc/1e293b?text=Blog+Header" alt="Blog Post" class="w-full h-64 object-cover rounded-md mb-4">
                 <div class="prose max-w-none">
-                    <p>Asynchronous programming is a cornerstone of modern web development, especially in JavaScript. It allows your application to perform long-running tasks like fetching data from an API without blocking the main thread, ensuring a smooth and responsive user interface.</p>
-                    <p>This post will cover:</p>
-                    <ul>
-                        <li>The Event Loop: The magic behind JavaScript's concurrency model.</li>
-                        <li>Callbacks: The traditional way of handling async operations.</li>
-                        <li>Promises: A more robust and flexible way to manage async code, representing the eventual completion (or failure) of an asynchronous operation and its resulting value.</li>
-                        <li>Async/Await: Syntactic sugar on top of Promises that makes your asynchronous code look and behave a little more like synchronous code, making it easier to read and write.</li>
-                    </ul>
-                    <pre><code class="language-js">
-async function fetchData() {
-  try {
-    const response = await fetch('https://api.example.com/data');
-    const data = await response.json();
-    console.log(data);
-  } catch (error) {
-    console.error('Failed to fetch data:', error);
-  }
-}
-                    </code></pre>
-                    <p>By the end of this article, you'll have a solid grasp of these concepts and be able to write more efficient and readable asynchronous JavaScript code.</p>
+                    <p>I am <strong>Extremely Happy</strong> to share that I have been offered to study at IIT Madras, MS by Research at the Department of Management Studies (DoMS) specifically in Operations.</p>
+    
+    <p>I would be lying when I say the journey hasn’t been a sine graph!</p>
+    
+    <p>After graduating from VIT Vellore, the thought of higher studies was there with me always but soon I got deviated when I was placed at Varroc. I was excited to start my new life in a different city with a job of my domain, but just before joining i.e. around July 2021, I went to my parents to tell them my decision of preparing for GATE whilst doing my Job! This felt right because, for the first time in my life, it was something I <strong>WANTED</strong> to do! & No, IIT JEE prep was me going with what other people were doing, it was not out of my own free will (or) it was like doing something I didn’t understand fully at that time. I knew staying in my comfort zone was stopping me from moving forward.</p>
+    
+    <p>Well, I obviously thought this was going to be tough. Heck! prepping for GATE itself is tough but doing a job simultaneously was something extremely difficult, but soon after a couple of months of doing it together, I found myself enjoying my life, I touched every subject with the pure intention of learning & not just something we would just tick off on our syllabus sheet.</p>
+    
+    <p>Months went by, sometimes I just wanted to give up & sometimes I was motivated to the next level but I still kept going (<em>Consistency matters</em>). After only completing 70% of the vast GATE syllabus because of time constraints, I went to write GATE 2022 Exam, I scored 50.67 marks on my first Attempt. It was a mixed feeling, I was happy that I could score that much with 70% & still doing my job but was sad that I could have done better to at least get a good college to pursue Industrial engineering. During counseling, I did get calls from other IITs but I failed to get into any one of them. Sometime around May 2022, I decided to leave the company & give my full time to GATE 2023 Preparation. This decision took months in making, my mind was always occupied with this thought. That notice period was there to haunt me for a long time & made me rethink if what I was going to do was correct? My Parents, Brother & Best friend motivated me and made me believe that I was right.</p>
+    
+    <p>I shifted back to my home but the situation at home wasn’t all good. My grandfather was bedridden & wanted constant attention and support, obviously, I loved helping my granddad but this affected my studies & it was something I couldn’t do anything about. I reconsidered my decision but my parents smacked some sense to me that “Dadajee ka SEVA ka kuch na kuch phal zaroor milega”. Time went by & in August 2022 my beloved Dadajee Passed away, it was really a dark time for our family. The whole month went by in shraad karm & recuperating. With great difficulty, I restarted my preparation again, but this time with a large gap, it seemed like I went back to square one. November to December 2022 was extremely difficult for me to get that motivation from 2021 back. Every effort fell short when I wasn’t seeing the results in the mock test, I still kept going. I knew I had to improve my marks but after GATE 2023 I could fulfill only a bit. Yet again I was happy but only a bit. I don’t know what could have happened if my Parents, Brother & Best friend weren’t there to support me.</p>
+    
+    <p>Sometime later during my counseling, I applied to many IITs as advised by my father. Among them, DoMS, IIT Madras is where I wanted to go! This was like a dream, everything it had was a perfect fit for me, it was a Research Technical course in Operations! I had my valid GATE Score; it took me 2 Full days to write SOP & RP. I hoped to get a call for the interview & simply waited until that day. After weeks one fine day, I received a mail regarding my shortlisting for Technical Interview! I was beyond excited & thanked GOD for giving me this opportunity to present myself in front of IIT Madras Professors. The interview did go well but me being a pessimistic thought it wouldn’t happen. On 15th MAY 2023, I READ my name on the list provided on the website of the selected candidates!!! I couldn’t believe my eyes!!!</p>
+    
+    <p>All those sleepless nights, All those depressed filled days, All those self-doubting moments, All that 10kg weight gain, All those backpains, All those headaches, All those Hours & Hours of consistent studies, All those sacrifices to not go out with friends & finally THAT DECISION seemed <strong>WORTH IT</strong>.</p>
+    
+    <p>At last, I would take this paragraph to thank the people who supported me through this: Thanks to Mrs. Kiran Karna (Mom) & Prof. B K Karna (Dad) for the constant support, Thanks to Dr. Vaibhav Karna (Brother) for all that motivation, Thanks Dr. Akriti Shahi (Best Friend) for listening to my rants & supporting me, Thanks Unacademy for an amazing platform, Thanks Mr. Gaurav Babu for teaching Production & Industrial Engineering Subjects, Thanks Mr. Akash Tyagi for teaching Core Engineering Subjects, Thanks Mr. Shrenik Jain for Teaching Engineering Mathematics, Thanks Prashant for guiding me through SOPs, SORs & for Interview & “at last I wanna thank me for believing in me” ……hahaha. Reference: snoop dogg’s famous speech.</p>
+    
+    <p>The Hard Work of 2 Years is complete, and now onto the next GOAL in life &lt;3</p>
+    
+    <p>Year of Inception: 2023</p>
                 </div>
             </div>
         </div>
