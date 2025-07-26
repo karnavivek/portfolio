@@ -43,14 +43,14 @@
         .hero-bg-wrap::before {
             content: '';
             position: absolute;
-            filter: blur(3px);
-            -webkit-filter: blur(3px);
+            filter: blur(4px), brightness(1);
+            -webkit-filter: blur(4.5px);
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
             /* You can replace this with any image URL you like */
-            background-image: url('goku-unique-appeal-r4.jpg');
+            background-image: url('assets/img/vivek_desk.jpeg');
             background-size: cover;
             background-position: center;
             opacity: 0.3; /* 30% transparency */
@@ -104,8 +104,8 @@
                         <img src="assets/img/yt_pfp.png" alt="Profile Picture" class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-lg border-4 border-white">
                     </div>
                     <div class="md:col-span-2">
-                        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Hey, I'm Vivek Karna</h1>
-                        <p class="text-lg text-gray-600 mb-6">
+                        <h1 class="text-4xl md:text-5xl font-bold text-black-900 mb-4">Hey, I'm Vivek Karna</h1>
+                        <p class="text-align: justify; text-black-600 mb-6 overflow-wrap break-word">
                             I'd like to call myself a <strong>Data Scientist</strong> and <strong>Operations Researcher </strong> with a passion for solving complex problems using data-driven approaches.
                             Combining my expertise in <strong>Machine Learning</strong>, <strong>Data Analysis</strong>, and <strong>Optimization</strong>, I aim to create impactful solutions that drive efficiency and innovation.
 
@@ -139,6 +139,7 @@
                                 <span class="bg-indigo-100 text-indigo-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">PyTorch</span>
                                 <span class="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Statsmodels</span>
                             </div>
+                            
                             <p><strong>ML/DS:</strong></p>
                             <div class="flex flex-wrap gap-2">
                                 <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Regression</span>
@@ -196,27 +197,30 @@
         </section>
 
         <!-- Work Experience Section -->
-        <section id="work" class="py-20 bg-gray-100 -mx-6 px-6">
+        <section id="work" class="py-20 bg-white-100 -mx-6 px-6">
             <h2 class="text-4xl font-bold text-center mb-12">Work Experience</h2>
             <div class="max-w-4xl mx-auto">
                 <div class="mb-8">
-                    <h3 class="text-2xl font-semibold">Teaching Assistant at IIT Madras</h3>
-                    <p class="text-sm text-gray-500">June 2024 - May 2025</p>
+                    <h3 class="text-center text-2xl font-semibold">Teaching Assistant at IIT Madras</h3>
+                    <p class="text-center text-align text-gray-500">June 2024 - May 2025</p>
+                    <br>
                     <!-- <p class="text-gray-700 mt-2">Leading a team to develop scalable web applications using React and Node.js. Focused on improving user experience and performance through innovative solutions.</p> -->
-                    <ul class="list-disc list-inside mt-2">
+                    <ul class="text-align: justify; list-disc list-inside mt-2">
                         <li>Collaborated with professors in various data science/operations research courses by incorporating real-world datasets and case studies.</li>
-                        <li>Delivered 10+ Hrs of Python/Machine Learning Lab sessions of Multivariate Statistics in class of B-Tech DD (Quant Finance), MS, PhD students</li>
-                        <li>Developed comprehensive data science scripts & exercises on topics like clustering, regression, PCA, decision tree, etc that improved students performance gradually by 20%</li>
+                        <li>Delivered <b>10+</b> Hrs of Python/Machine Learning Lab sessions of Multivariate Statistics in class of B-Tech DD (Quant Finance), MS, PhD students</li>
+                        <li>Developed comprehensive data science scripts & exercises on topics like clustering, regression, PCA, decision tree, etc that improved students performance gradually by <b>20%</b></li>
                     </ul>
                 </div>
+                <br>
                 <div class="mb-8">
-                    <h3 class="text-2xl font-semibold">Graduate Engineer Trainee (GET) at Varroc Engineering</h3>
-                    <p class="text-sm text-gray-500">August 2021 - July 2022</p>
+                    <h3 class="text-center text-2xl font-semibold">Graduate Engineer Trainee (GET) at Varroc Engineering</h3>
+                    <p class="text-center text-align text-gray-500">August 2021 - July 2022</p>
                     <!-- <p class="text-gray-700 mt-2">Worked on the Azure team to develop cloud-based solutions. Gained hands-on experience with Azure services and contributed to several key projects.</p> -->
-                    <ul class="list-disc list-inside mt-2">
+                    <br>
+                    <ul class="text-align: justify; list-disc list-inside mt-2">
                         <li>Implemented data-driven process optimization using Six Sigma (DMAIC) methodology that reduced changeover time by <b>77%</b>, saving <b>33.09 hrs/mo</b> and generating <b>Rs 4.86 lakhs</b> in annual savings.</li>
-                        <li>Designed and executed 120+ time and work studies, creating interactive data visualizations that identified critical bottlenecks in manufacturing processes.</li>
-                        <li>Built predictive models to forecast equipment failures, reducing unplanned downtime by 23% and improving overall equipment effectiveness.</li>
+                        <li>Designed and executed <b>120+</b> time and work studies, creating interactive data visualizations that identified critical bottlenecks in manufacturing processes.</li>
+                        <li>Built predictive models to forecast equipment failures, reducing unplanned downtime by <b>23%</b> and improving overall equipment effectiveness.</li>
                         <li>Recognized with SPACE Level Kaizen Competition award for innovative data-driven process improvement solutions.</li>
                     </ul>
                 </div>
@@ -325,7 +329,7 @@ scriptive models to tackle uncertainty in data, optimization & ML models.</p>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Blog Post 1 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                    <img src="https://placehold.co/600x400/a5b4fc/1e293b?text=Blog+Image" alt="Blog Post" class="w-full h-48 object-cover">
+                    <img src="assets/img/blog_1_pic.jpeg" alt="Blog Post" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">My 2-Yr Journey to IIT Madras</h3>
                         <p class="text-gray-600 mb-4 text-sm">I share my experiences and lessons learned during my two-year journey at IIT Madras, from academic challenges to personal growth.</p>
@@ -356,15 +360,15 @@ scriptive models to tackle uncertainty in data, optimization & ML models.</p>
         <!-- Contact Section -->
         <section id="contact" class="py-20 text-center">
             <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
-            <p class="text-gray-600 mb-8 max-w-xl mx-auto">I'm currently open to new opportunities and collaborations. My inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
-            <a href="mailto:your.email@example.com" class="inline-block bg-blue-500 text-white font-bold py-3 px-6 rounded-lg text-lg hover:bg-blue-600 transition-colors mb-12">
-                Say Hello
+            <p class="text-blue-600 mb-8 max-w-xl mx-auto">I'm currently open to new opportunities and collaborations. My inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+            <a href="mailto:karnavivek@gmail.com" class="inline-block bg-blue-500 text-white font-bold py-3 px-6 rounded-lg text-lg hover:bg-blue-600 transition-colors mb-12">
+                Say Hello via Mail
             </a>
             <div class="flex justify-center space-x-6">
                 <!-- REPLACE with your social media links -->
-                <a href="#" class="text-gray-500 hover:text-blue-500 transition-colors"><i data-lucide="github" class="h-8 w-8"></i></a>
-                <a href="#" class="text-gray-500 hover:text-blue-500 transition-colors"><i data-lucide="linkedin" class="h-8 w-8"></i></a>
-                <a href="#" class="text-gray-500 hover:text-blue-500 transition-colors"><i data-lucide="twitter" class="h-8 w-8"></i></a>
+                <a href="https://github.com/karnavivek" class="text-gray-500 hover:text-blue-500 transition-colors"><i data-lucide="github" class="h-8 w-8"></i></a>
+                <a href="https://www.linkedin.com/in/vivek-karna/" class="text-gray-500 hover:text-blue-500 transition-colors"><i data-lucide="linkedin" class="h-8 w-8"></i></a>
+                <a href="https://x.com/karnaishere" class="text-gray-500 hover:text-blue-500 transition-colors"><i data-lucide="twitter" class="h-8 w-8"></i></a>
             </div>
         </section>
 
@@ -384,28 +388,28 @@ scriptive models to tackle uncertainty in data, optimization & ML models.</p>
                     <h2 class="text-2xl font-bold">My 2-Yr Journey to IIT Madras</h2>
                     <button onclick="closeModal('blog-1')" class="text-gray-500 hover:text-gray-800">&times;</button>
                 </div>
-                <img src="https://placehold.co/600x300/a5b4fc/1e293b?text=Blog+Header" alt="Blog Post" class="w-full h-64 object-cover rounded-md mb-4">
-                <div class="prose max-w-none">
-                    <p>I am <strong>Extremely Happy</strong> to share that I have been offered to study at IIT Madras, MS by Research at the Department of Management Studies (DoMS) specifically in Operations.</p>
+                <img src="assets/img/blog_1_pic.jpeg" alt="Blog Post" class="w-full h-64 object-cover rounded-md mb-4">
+                <div class="max-w-none">
+                    <p style="text-align: justify;"> I am <strong>Extremely Happy</strong> to share that I have been offered to study at IIT Madras, MS by Research at the Department of Management Studies (DoMS) specifically in Operations.</p>
+    <br>
+    <p style="text-align: justify;"> I would be lying when I say the journey hasn’t been a sine graph!</p>
     
-    <p>I would be lying when I say the journey hasn’t been a sine graph!</p>
-    
-    <p>After graduating from VIT Vellore, the thought of higher studies was there with me always but soon I got deviated when I was placed at Varroc. I was excited to start my new life in a different city with a job of my domain, but just before joining i.e. around July 2021, I went to my parents to tell them my decision of preparing for GATE whilst doing my Job! This felt right because, for the first time in my life, it was something I <strong>WANTED</strong> to do! & No, IIT JEE prep was me going with what other people were doing, it was not out of my own free will (or) it was like doing something I didn’t understand fully at that time. I knew staying in my comfort zone was stopping me from moving forward.</p>
-    
-    <p>Well, I obviously thought this was going to be tough. Heck! prepping for GATE itself is tough but doing a job simultaneously was something extremely difficult, but soon after a couple of months of doing it together, I found myself enjoying my life, I touched every subject with the pure intention of learning & not just something we would just tick off on our syllabus sheet.</p>
-    
-    <p>Months went by, sometimes I just wanted to give up & sometimes I was motivated to the next level but I still kept going (<em>Consistency matters</em>). After only completing 70% of the vast GATE syllabus because of time constraints, I went to write GATE 2022 Exam, I scored 50.67 marks on my first Attempt. It was a mixed feeling, I was happy that I could score that much with 70% & still doing my job but was sad that I could have done better to at least get a good college to pursue Industrial engineering. During counseling, I did get calls from other IITs but I failed to get into any one of them. Sometime around May 2022, I decided to leave the company & give my full time to GATE 2023 Preparation. This decision took months in making, my mind was always occupied with this thought. That notice period was there to haunt me for a long time & made me rethink if what I was going to do was correct? My Parents, Brother & Best friend motivated me and made me believe that I was right.</p>
-    
-    <p>I shifted back to my home but the situation at home wasn’t all good. My grandfather was bedridden & wanted constant attention and support, obviously, I loved helping my granddad but this affected my studies & it was something I couldn’t do anything about. I reconsidered my decision but my parents smacked some sense to me that “Dadajee ka SEVA ka kuch na kuch phal zaroor milega”. Time went by & in August 2022 my beloved Dadajee Passed away, it was really a dark time for our family. The whole month went by in shraad karm & recuperating. With great difficulty, I restarted my preparation again, but this time with a large gap, it seemed like I went back to square one. November to December 2022 was extremely difficult for me to get that motivation from 2021 back. Every effort fell short when I wasn’t seeing the results in the mock test, I still kept going. I knew I had to improve my marks but after GATE 2023 I could fulfill only a bit. Yet again I was happy but only a bit. I don’t know what could have happened if my Parents, Brother & Best friend weren’t there to support me.</p>
-    
-    <p>Sometime later during my counseling, I applied to many IITs as advised by my father. Among them, DoMS, IIT Madras is where I wanted to go! This was like a dream, everything it had was a perfect fit for me, it was a Research Technical course in Operations! I had my valid GATE Score; it took me 2 Full days to write SOP & RP. I hoped to get a call for the interview & simply waited until that day. After weeks one fine day, I received a mail regarding my shortlisting for Technical Interview! I was beyond excited & thanked GOD for giving me this opportunity to present myself in front of IIT Madras Professors. The interview did go well but me being a pessimistic thought it wouldn’t happen. On 15th MAY 2023, I READ my name on the list provided on the website of the selected candidates!!! I couldn’t believe my eyes!!!</p>
-    
-    <p>All those sleepless nights, All those depressed filled days, All those self-doubting moments, All that 10kg weight gain, All those backpains, All those headaches, All those Hours & Hours of consistent studies, All those sacrifices to not go out with friends & finally THAT DECISION seemed <strong>WORTH IT</strong>.</p>
-    
-    <p>At last, I would take this paragraph to thank the people who supported me through this: Thanks to Mrs. Kiran Karna (Mom) & Prof. B K Karna (Dad) for the constant support, Thanks to Dr. Vaibhav Karna (Brother) for all that motivation, Thanks Dr. Akriti Shahi (Best Friend) for listening to my rants & supporting me, Thanks Unacademy for an amazing platform, Thanks Mr. Gaurav Babu for teaching Production & Industrial Engineering Subjects, Thanks Mr. Akash Tyagi for teaching Core Engineering Subjects, Thanks Mr. Shrenik Jain for Teaching Engineering Mathematics, Thanks Prashant for guiding me through SOPs, SORs & for Interview & “at last I wanna thank me for believing in me” ……hahaha. Reference: snoop dogg’s famous speech.</p>
-    
-    <p>The Hard Work of 2 Years is complete, and now onto the next GOAL in life &lt;3</p>
-    
+    <p style="text-align: justify;"> After graduating from VIT Vellore, the thought of higher studies was there with me always but soon I got deviated when I was placed at Varroc. I was excited to start my new life in a different city with a job of my domain, but just before joining i.e. around July 2021, I went to my parents to tell them my decision of preparing for GATE whilst doing my Job! This felt right because, for the first time in my life, it was something I <strong>WANTED</strong> to do! & No, IIT JEE prep was me going with what other people were doing, it was not out of my own free will (or) it was like doing something I didn’t understand fully at that time. I knew staying in my comfort zone was stopping me from moving forward.</p>
+    <br>
+    <p style="text-align: justify;"> Well, I obviously thought this was going to be tough. Heck! prepping for GATE itself is tough but doing a job simultaneously was something extremely difficult, but soon after a couple of months of doing it together, I found myself enjoying my life, I touched every subject with the pure intention of learning & not just something we would just tick off on our syllabus sheet.</p>
+    <br>
+    <p style="text-align: justify;"> Months went by, sometimes I just wanted to give up & sometimes I was motivated to the next level but I still kept going (<em>Consistency matters</em>). After only completing 70% of the vast GATE syllabus because of time constraints, I went to write GATE 2022 Exam, I scored 50.67 marks on my first Attempt. It was a mixed feeling, I was happy that I could score that much with 70% & still doing my job but was sad that I could have done better to at least get a good college to pursue Industrial engineering. During counseling, I did get calls from other IITs but I failed to get into any one of them. Sometime around May 2022, I decided to leave the company & give my full time to GATE 2023 Preparation. This decision took months in making, my mind was always occupied with this thought. That notice period was there to haunt me for a long time & made me rethink if what I was going to do was correct? My Parents, Brother & Best friend motivated me and made me believe that I was right.</p>
+    <br>
+    <p style="text-align: justify;"> I shifted back to my home but the situation at home wasn’t all good. My grandfather was bedridden & wanted constant attention and support, obviously, I loved helping my granddad but this affected my studies & it was something I couldn’t do anything about. I reconsidered my decision but my parents smacked some sense to me that “Dadajee ka SEVA ka kuch na kuch phal zaroor milega”. Time went by & in August 2022 my beloved Dadajee Passed away, it was really a dark time for our family. The whole month went by in shraad karm & recuperating. With great difficulty, I restarted my preparation again, but this time with a large gap, it seemed like I went back to square one. November to December 2022 was extremely difficult for me to get that motivation from 2021 back. Every effort fell short when I wasn’t seeing the results in the mock test, I still kept going. I knew I had to improve my marks but after GATE 2023 I could fulfill only a bit. Yet again I was happy but only a bit. I don’t know what could have happened if my Parents, Brother & Best friend weren’t there to support me.</p>
+    <br>
+    <p style="text-align: justify;"> Sometime later during my counseling, I applied to many IITs as advised by my father. Among them, DoMS, IIT Madras is where I wanted to go! This was like a dream, everything it had was a perfect fit for me, it was a Research Technical course in Operations! I had my valid GATE Score; it took me 2 Full days to write SOP & RP. I hoped to get a call for the interview & simply waited until that day. After weeks one fine day, I received a mail regarding my shortlisting for Technical Interview! I was beyond excited & thanked GOD for giving me this opportunity to present myself in front of IIT Madras Professors. The interview did go well but me being a pessimistic thought it wouldn’t happen. On 15th MAY 2023, I READ my name on the list provided on the website of the selected candidates!!! I couldn’t believe my eyes!!!</p>
+    <br>
+    <p style="text-align: justify;"> All those sleepless nights, All those depressed filled days, All those self-doubting moments, All that 10kg weight gain, All those backpains, All those headaches, All those Hours & Hours of consistent studies, All those sacrifices to not go out with friends & finally THAT DECISION seemed <strong>WORTH IT</strong>.</p>
+    <br>
+    <p style="text-align: justify;"> At last, I would take this paragraph to thank the people who supported me through this: Thanks to Mrs. Kiran Karna (Mom) & Prof. B K Karna (Dad) for the constant support, Thanks to Dr. Vaibhav Karna (Brother) for all that motivation, Thanks Dr. Akriti Shahi (Best Friend) for listening to my rants & supporting me, Thanks Unacademy for an amazing platform, Thanks Mr. Gaurav Babu for teaching Production & Industrial Engineering Subjects, Thanks Mr. Akash Tyagi for teaching Core Engineering Subjects, Thanks Mr. Shrenik Jain for Teaching Engineering Mathematics, Thanks Prashant for guiding me through SOPs, SORs & for Interview & “at last I wanna thank me for believing in me” ……hahaha. Reference: snoop dogg’s famous speech.</p>
+    <br>
+    <p style="text-align: justify;"> The Hard Work of 2 Years is complete, and now onto the next GOAL in life &lt;3</p>
+    <br>
     <p>Year of Inception: 2023</p>
                 </div>
             </div>
