@@ -63,7 +63,6 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- Header & Navigation -->
     <header id="header" class="bg-white/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-sm">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#home" class="text-2xl font-bold text-gray-900">Vivek Karna</a>
@@ -81,7 +80,6 @@
                 <i data-lucide="menu" class="h-6 w-6"></i>
             </button>
         </div>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
             <a href="#home" class="block py-2 text-gray-600 hover:text-blue-500">Home</a>
             <a href="#work" class="block py-2 text-gray-600 hover:text-blue-500">Work Exp</a>
@@ -89,20 +87,17 @@
             <a href="#resume" class="block py-2 text-gray-600 hover:text-blue-500">Resume</a>
             <a href="#research" class="block py-2 text-gray-600 hover:text-blue-500">Research</a>
             <a href="#blog" class="block py-2 text-gray-600 hover:text-blue-500">Blog</a>
-            <a href="#youtube" class="nav-link text-gray-600 hover:text-blue-500 transition-colors">YouTube</a>
+            <a href="#youtube" class="block py-2 text-gray-600 hover:text-blue-500">YouTube</a>
             <a href="#contact" class="block py-2 text-gray-600 hover:text-blue-500">Contact</a>
         </div>
     </header>
 
     <main>
-        <!-- This div wraps the home section to apply the background -->
         <div class="hero-bg-wrap">
 
-        <!-- Home/Intro Section -->
-            <section id="home" class="min-h-screen flex items-center py-16">
+        <section id="home" class="min-h-screen flex items-center py-16">
                 <div class="grid md:grid-cols-3 gap-12 items-center">
                     <div class="md:col-span-1 flex justify-center">
-                        <!-- REPLACE with your profile picture URL -->
                         <img src="assets/img/yt_pfp.png" alt="Profile Picture" class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-lg border-4 border-white">
                     </div>
                     <div class="md:col-span-2">
@@ -113,22 +108,12 @@
 
                         </p>
                         
-                        <!-- Education -->
                         <div class="mb-6">
                             <h3 class="text-2xl font-semibold mb-3 flex items-center"><i data-lucide="graduation-cap" class="h-6 w-6 mr-2 text-blue-500"></i>Education</h3>
                             <p><strong>M.S (by Research) in Operations Research</strong>              - IIT Madras (2023 - Present)</p>
                             <p><strong>B.Tech in Production & Industrial Engineering</strong> - VIT Vellore (2017 - 2021)</p>
                         </div>
 
-                        <!-- Work Experience -->
-                        <!-- <div class="mb-6">
-                            <h3 class="text-2xl font-semibold mb-3 flex items-center"><i data-lucide="briefcase" class="h-6 w-6 mr-2 text-blue-500"></i>Work Experience</h3>
-                            <p><strong>Teaching Assistant</strong> - IIT Madras (2022 - Present)</p>
-                            <p><strong>Graduate Engineer Trainee (GET)</strong> - Varroc Engineering Pvt Ltd. (August 2021 - July 2022)</p>
-                            <p class="text-sm text-gray-500"><em>(More details in the "Work Exp" Section)</em></p>
-                        </div> -->
-
-                        <!-- Skills -->
                         <div>
                             <h3 class="text-2xl font-semibold mb-4 flex items-center"><i data-lucide="lightbulb" class="h-6 w-6 mr-2 text-blue-500"></i>Skills</h3>
                             <p><strong>Languages:</strong></p>
@@ -158,9 +143,6 @@
                                 <span class="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Seaborn</span>
                                 <span class="bg-sky-100 text-sky-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Streamlit</span>
                                 <span class="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Tableau</span>
-                                <!-- <span class="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">TensorFlow</span>
-                                <span class="bg-indigo-100 text-indigo-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">AWS</span>
-                                <span class="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Docker</span> -->
                             </div>
                             <p><strong>Tools & Technologies:</strong></p>
                             <div class="flex flex-wrap gap-2">
@@ -168,9 +150,6 @@
                                 <span class="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">GitHub</span>
                                 <span class="bg-sky-100 text-sky-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">LaTeX</span>
                                 <span class="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Excel</span>
-                                <!-- <span class="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">TensorFlow</span>
-                                <span class="bg-indigo-100 text-indigo-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">AWS</span>
-                                <span class="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Docker</span> -->
                             </div>
                             <p><strong>Optimization:</strong></p>
                             <div class="flex flex-wrap gap-2">
@@ -178,9 +157,6 @@
                                 <span class="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Mixed Integer Programming</span>
                                 <span class="bg-sky-100 text-sky-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Heuristics</span>
                                 <span class="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Gurobi</span>
-                                <!-- <span class="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">TensorFlow</span>
-                                <span class="bg-indigo-100 text-indigo-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">AWS</span>
-                                <span class="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Docker</span> -->
                             </div>
                             <p><strong>Business Skills:</strong></p>
                             <div class="flex flex-wrap gap-2">
@@ -189,8 +165,6 @@
                                 <span class="bg-sky-100 text-sky-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Kanban</span>
                                 <span class="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Scrum</span>
                                 <span class="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Project Management</span>
-                                <!-- <span class="bg-indigo-100 text-indigo-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">AWS</span>
-                                <span class="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Docker</span> -->
                             </div>
                         </div>
                     </div>
@@ -198,7 +172,6 @@
             </div>    
         </section>
 
-        <!-- Work Experience Section -->
         <section id="work" class="py-20 bg-white-100 -mx-6 px-6">
             <h2 class="text-4xl font-bold text-center mb-12">Work Experience</h2>
             <div class="max-w-4xl mx-auto">
@@ -206,7 +179,6 @@
                     <h3 class="text-center text-2xl font-semibold">Teaching Assistant at IIT Madras</h3>
                     <p class="text-center text-align text-gray-500">June 2024 - May 2025</p>
                     <br>
-                    <!-- <p class="text-gray-700 mt-2">Leading a team to develop scalable web applications using React and Node.js. Focused on improving user experience and performance through innovative solutions.</p> -->
                     <ul class="text-align: justify; list-disc list-inside mt-2">
                         <li>Collaborated with professors in various data science/operations research courses by incorporating real-world datasets and case studies.</li>
                         <li>Delivered <b>10+</b> Hrs of Python/Machine Learning Lab sessions of Multivariate Statistics in class of B-Tech DD (Quant Finance), MS, PhD students</li>
@@ -217,7 +189,6 @@
                 <div class="mb-8">
                     <h3 class="text-center text-2xl font-semibold">Graduate Engineer Trainee (GET) at Varroc Engineering</h3>
                     <p class="text-center text-align text-gray-500">August 2021 - July 2022</p>
-                    <!-- <p class="text-gray-700 mt-2">Worked on the Azure team to develop cloud-based solutions. Gained hands-on experience with Azure services and contributed to several key projects.</p> -->
                     <br>
                     <ul class="text-align: justify; list-disc list-inside mt-2">
                         <li>Implemented data-driven process optimization using Six Sigma (DMAIC) methodology that reduced changeover time by <b>77%</b>, saving <b>33.09 hrs/mo</b> and generating <b>Rs 4.86 lakhs</b> in annual savings.</li>
@@ -229,20 +200,15 @@
             </div>
         </section>  
 
-        <!-- Projects Section -->
         <section id="projects" class="py-20 bg-gray-100 -mx-6 px-6">
             <h2 class="text-4xl font-bold text-center mb-12">My Projects</h2>
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Project 1 -->
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-2xl font-semibold mb-2">BLINKTO - Predicting Demand of a Food Delivery App [Forecasting]</h3>
-                    <!-- <p class="text-gray-600 mb-4">A full-stack e-commerce website built with the MERN stack (MongoDB, Express, React, Node.js), featuring product listings, a shopping cart, and user authentication.</p> -->
                     <br>
                     <ul class="list-disc list-inside mt-2">
                         <li>Conducted EDA, Data Viz., PACF, ACF, ADF test to infer about stationarity, and converting non-stationary time series using first order differencing.</li>
-                        
                         <li>Predicted Demand forecast using state-of-the-art ARMA, ARIMA and LSTM model with extensive Hyperparameter tuning that improved model accuracy by 18%, optimizing for epochs, batch size, & lags.</li>
-                        
                         <li>Demonstrated Proof-of-concept using Streamlit allowing users/stakeholders to get insights in a glance.</li>
                     </ul>
                     <br>
@@ -252,31 +218,23 @@
                         <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">ARIMA</span>
                         <span class="bg-orange-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Streamlit</span>
                     </div>
-                    <!-- REPLACE with your GitHub project link -->
                     <a href="https://github.com/karnavivek/Food-Demand-Forecasting" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors">
                         <i data-lucide="github" class="h-5 w-5 mr-2"></i> View on GitHub
                     </a>
                 </div>
-                <!-- Project 2 -->
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-2xl font-semibold mb-2">IDLEE - Project based Case Study on Optimizing VRP with Time Windows [HDM Course Project]</h3>
                     <br>
                     <ul class="list-disc list-inside mt-2">
-                        <li>Developed MILP model for VRPTW using Gurobi for Random Generation and Fixed Positions of
-Franchises & Customers.</li>
-                        
-                        <li>Designed Heuristics to find sub-optimal feasible solution to reduce computational load when using MILP
-approach.</li>
-                        
+                        <li>Developed MILP model for VRPTW using Gurobi for Random Generation and Fixed Positions of Franchises & Customers.</li>
+                        <li>Designed Heuristics to find sub-optimal feasible solution to reduce computational load when using MILP approach.</li>
                         <li><em>Milestone</em> - Secured Highest Grade among all the projects submitted</li>
                     </ul>
                     <br>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="bg-blue-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Python</span>
                         <span class="bg-red-200 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Gurobi</span>
-                        <!-- <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">JavaScript</span> -->
                     </div>
-                    <!-- REPLACE with your GitHub project link -->
                     <a href="https://github.com/karnavivek/Heuristics_VRPTW" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors">
                         <i data-lucide="github" class="h-5 w-5 mr-2"></i> View on GitHub
                     </a>
@@ -284,34 +242,27 @@ approach.</li>
             </div>
         </section>
 
-        <!-- Resume Section -->
         <section id="resume" class="py-20 text-center">
             <h2 class="text-4xl font-bold mb-4">My Resume</h2>
             <p class="text-gray-600 mb-8 max-w-2xl mx-auto">Feel free to download my resume for a more detailed look at my skills and experience. I am always open to discussing new opportunities.</p>
-            <!-- IMPORTANT: Replace 'resume.pdf' with the actual path to your resume file -->
             <a href="Vivek_Karna_Resume.pdf" download="Vivek_Karna_Resume.pdf" class="inline-flex items-center px-8 py-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition-transform transform hover:scale-105">
                 <i data-lucide="download" class="h-6 w-6 mr-3"></i> Download Resume
             </a>
         </section>
 
-        <!-- Research Section -->
         <section id="research" class="py-20 bg-gray-100 -mx-6 px-6">
             <h2 class="text-4xl font-bold text-center mb-12">Research & Publications</h2>
             <div class="max-w-4xl mx-auto">
-                <!-- Publication 1 -->
                 <div class="mb-8">
                     <h3 class="text-xl font-semibold">"SCLTool: Stochastic Constraint Learning Framework for Prescriptive Models"</h3>
                     <p class="text-sm text-gray-500">MS Thesis - Vivek Karna, Rahul R Marathe</p>
                     <p class="text-gray-700 mt-2">Ongoing research to develop a tool for the integrating predictive and prescriptive models to tackle uncertainty in data, optimization & ML models.</p>
-                    <!-- REPLACE with link to your paper -->
                     <a href="https://drive.google.com/file/d/1NU4BVLVmrk_y5SQGmITkBb19148F5dCX/view" class="text-blue-500 hover:underline">Read Abstract</a>
                 </div>
-                <!-- Publication 2 -->
                 <div class="mb-12">
                     <h3 class="text-xl font-semibold">"2nd Prize - AIRSS 2025 in Machine Learning & Optimization Domain"</h3>
                     <p class="text-sm text-gray-500">Vivek Karna. Presented at AIRSS 2025.</p>
                     <p class="text-gray-700 mt-2">Presented Research at the conference, showcasing state-of-the-art tool for uncertainty-aware optimization using machine learning.</p>
-                    <!-- REPLACE with link to your paper/slides -->
                     <a href="#" class="text-blue-500 hover:underline">View Presentation</a>
                 </div>
                 
@@ -324,11 +275,9 @@ approach.</li>
             </div>
         </section>
 
-         <!-- Blog Section -->
-        <section id="blog" class="py-20">
+         <section id="blog" class="py-20">
             <h2 class="text-4xl font-bold text-center mb-12">My Blogs <em>(Under-Construction :D)</em></h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Blog Post 1 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
                     <img src="assets/img/blog_1_pic.jpeg" alt="Blog Post" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -337,7 +286,6 @@ approach.</li>
                         <button onclick="openModal('blog-1')" class="text-blue-500 font-semibold hover:underline">Read More</button>
                     </div>
                 </div>
-                <!-- Blog Post 2 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
                     <img src="https://placehold.co/600x400/93c5fd/1e293b?text=Blog+Image" alt="Blog Post" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -346,7 +294,6 @@ approach.</li>
                         <button onclick="openModal('blog-2')" class="text-blue-500 font-semibold hover:underline">Read More</button>
                     </div>
                 </div>
-                <!-- Blog Post 3 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
                     <img src="https://placehold.co/600x400/6ee7b7/1e293b?text=Blog+Image" alt="Blog Post" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -358,7 +305,40 @@ approach.</li>
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <section id="youtube" class="py-20 bg-gray-100 -mx-6 px-6">
+            <h2 class="text-4xl font-bold text-center mb-12">Vivek's YouTube Channel</h2>
+            <div class="max-w-6xl mx-auto text-center mb-12">
+                <p class="text-lg text-gray-700">Here are some of the videos I've created, focusing on helping students get a bigger picture through my experiences, Don't forget to like and subscribe!</p>
+            </div>
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="relative" style="padding-top: 56.25%;"> <iframe class="absolute top-0 left-0 w-full h-full" src="https://youtu.be/ii-U7wd-s_g?si=BBkmg6zT-AyDVFxp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">How to Write a Good Statement of Purpose (SOP) by Vivek Karna</h3>
+                        <p class="text-gray-600 mb-4 text-sm">This video essay will help you if you are stuck writing SOP!! It is for people who are opting for higher education.</p>
+                        <a href="https://youtu.be/ii-U7wd-s_g?si=BBkmg6zT-AyDVFxp" target="_blank" class="text-blue-500 font-semibold hover:underline inline-flex items-center">
+                            Watch on YouTube <i data-lucide="arrow-up-right" class="h-4 w-4 ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                     <div class="relative" style="padding-top: 56.25%;"> <iframe class="absolute top-0 left-0 w-full h-full" src="https://youtu.be/SzpLGpQVp48?si=sgRrsQcpuNnnmFPg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">GATE RANK 136 to IIT MADRAS to IOCL Officer | WHATTT!! PODCAST w/ Vivek Karna EP2</h3>
+                        <p class="text-gray-600 mb-4 text-sm">In this 2nd Episode of WHATTT!! Podcast, I bring you my friend Sanket Gupta! He has secured GATE ME RANK 136, got into IIT Madras, and got selected for IOCL!!</p>
+                         <a href="https://youtu.be/SzpLGpQVp48?si=sgRrsQcpuNnnmFPg" target="_blank" class="text-blue-500 font-semibold hover:underline inline-flex items-center">
+                            Watch on YouTube <i data-lucide="arrow-up-right" class="h-4 w-4 ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                </div>
+        </section>
+
         <section id="contact" class="py-20 text-center">
             <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
             <p class="text-blue-600 mb-8 max-w-xl mx-auto">I'm currently open to new opportunities and collaborations. My inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
@@ -366,7 +346,6 @@ approach.</li>
                 Say Hello via Mail
             </a>
             <div class="flex justify-center space-x-6">
-                <!-- REPLACE with your social media links -->
                 <a href="https://github.com/karnavivek" class="text-gray-500 hover:text-blue-500 transition-colors"><i data-lucide="github" class="h-8 w-8"></i></a>
                 <a href="https://www.linkedin.com/in/vivek-karna/" class="text-gray-500 hover:text-blue-500 transition-colors"><i data-lucide="linkedin" class="h-8 w-8"></i></a>
                 <a href="https://x.com/karnaishere" class="text-gray-500 hover:text-blue-500 transition-colors"><i data-lucide="twitter" class="h-8 w-8"></i></a>
@@ -375,13 +354,10 @@ approach.</li>
 
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-800 text-white py-6 text-center">
         <p>&copy; 2025 Vivek Karna. All rights reserved.</p>
     </footer>
 
-    <!-- Blog Post Modals -->
-    <!-- Modal for Blog 1 -->
     <div id="modal-blog-1" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 p-4">
         <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div class="p-6">
@@ -416,7 +392,6 @@ approach.</li>
             </div>
         </div>
     </div>
-    <!-- Add more modals for other blog posts similarly -->
     <div id="modal-blog-2" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 p-4">...</div>
     <div id="modal-blog-3" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 p-4">...</div>
 
