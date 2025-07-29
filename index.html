@@ -44,16 +44,16 @@
             content: '';
             position: absolute;
             filter: blur(4px), brightness(1);
-            -webkit-filter: blur(4.5px);
+            -webkit-filter: blur(4px);
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
             /* You can replace this with any image URL you like */
-            background-image: url('assets/img/vivek_desk.jpeg');
+            background-image: url('assets/img/bg_gif.gif');
             background-size: cover;
             background-position: center;
-            opacity: 0.3; /* 30% transparency */
+            opacity: 0.2; /* 30% transparency */
             z-index: -1;
             /* Fades the image out at the bottom */
             mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
@@ -126,7 +126,7 @@
                                 <span class="bg-indigo-100 text-indigo-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">PyTorch</span>
                                 <span class="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Statsmodels</span>
                             </div>
-                            
+                            <br>
                             <p><strong>ML/DS:</strong></p>
                             <div class="flex flex-wrap gap-2">
                                 <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Regression</span>
@@ -137,6 +137,7 @@
                                 <span class="bg-indigo-100 text-indigo-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">LSTM</span>
                                 <span class="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Transformers</span>
                             </div>
+                            <br>
                             <p><strong>Data Visualizations:</strong></p>
                             <div class="flex flex-wrap gap-2">
                                 <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Matplotlib</span>
@@ -144,6 +145,7 @@
                                 <span class="bg-sky-100 text-sky-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Streamlit</span>
                                 <span class="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Tableau</span>
                             </div>
+                            <br>
                             <p><strong>Tools & Technologies:</strong></p>
                             <div class="flex flex-wrap gap-2">
                                 <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">GIT</span>
@@ -151,6 +153,7 @@
                                 <span class="bg-sky-100 text-sky-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">LaTeX</span>
                                 <span class="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Excel</span>
                             </div>
+                            <br>
                             <p><strong>Optimization:</strong></p>
                             <div class="flex flex-wrap gap-2">
                                 <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Linear Programming</span>
@@ -158,6 +161,7 @@
                                 <span class="bg-sky-100 text-sky-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Heuristics</span>
                                 <span class="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Gurobi</span>
                             </div>
+                            <br>
                             <p><strong>Business Skills:</strong></p>
                             <div class="flex flex-wrap gap-2">
                                 <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">Six Sigma</span>
@@ -203,6 +207,7 @@
         <section id="projects" class="py-20 bg-gray-100 -mx-6 px-6">
             <h2 class="text-4xl font-bold text-center mb-12">My Projects</h2>
             <div class="grid md:grid-cols-2 gap-8">
+                <!-- project 1 -->
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-2xl font-semibold mb-2">BLINKTO - Predicting Demand of a Food Delivery App [Forecasting]</h3>
                     <br>
@@ -222,6 +227,39 @@
                         <i data-lucide="github" class="h-5 w-5 mr-2"></i> View on GitHub
                     </a>
                 </div>
+                <!-- project 2 -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold mb-2">OneClickML</h3>
+                    <br>
+                    <ul class="list-disc list-inside mt-2">
+                        <li>A Python Library which can train your specific dataset using Multiple Machine Learning models at a time, This Library outputs suggestion on which model to choose & with which parameters!</li>
+                        <li>This Library can Run Models like:<br>
+Regression:
+<em>[Linear Regression,
+Decision Tree Regression,
+MLP Regressor,
+GBM Regressor,
+RF Regressor,
+SVM Regressor]</em>
+<br>Classification:
+<em>[Logistic Regression,
+Decision Tree Classifier,
+MLP Classifier,
+GBM Classifier,
+RF Classifier,
+SVM Classifier]</em></li>
+                    </ul>
+                    <br>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Python</span>
+                        <span class="bg-red-200 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Scikit-learn</span>
+                        <span class="bg-yellow-200 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full">GridSearchCV</span>
+                    </div>
+                    <a href="https://github.com/karnavivek/OneClickML" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors">
+                        <i data-lucide="github" class="h-5 w-5 mr-2"></i> View on GitHub
+                    </a>
+                </div>
+                <!-- project 3 -->
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-2xl font-semibold mb-2">IDLEE - Project based Case Study on Optimizing VRP with Time Windows [HDM Course Project]</h3>
                     <br>
@@ -229,6 +267,24 @@
                         <li>Developed MILP model for VRPTW using Gurobi for Random Generation and Fixed Positions of Franchises & Customers.</li>
                         <li>Designed Heuristics to find sub-optimal feasible solution to reduce computational load when using MILP approach.</li>
                         <li><em>Milestone</em> - Secured Highest Grade among all the projects submitted</li>
+                    </ul>
+                    <br>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Python</span>
+                        <span class="bg-red-200 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Gurobi</span>
+                    </div>
+                    <a href="https://github.com/karnavivek/Heuristics_VRPTW" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors">
+                        <i data-lucide="github" class="h-5 w-5 mr-2"></i> View on GitHub
+                    </a>
+                </div>
+                <!-- project 4 -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-semibold mb-2">To be updated</h3>
+                    <br>
+                    <ul class="list-disc list-inside mt-2">
+                        <!-- <li>Developed MILP model for VRPTW using Gurobi for Random Generation and Fixed Positions of Franchises & Customers.</li>
+                        <li>Designed Heuristics to find sub-optimal feasible solution to reduce computational load when using MILP approach.</li>
+                        <li><em>Milestone</em> - Secured Highest Grade among all the projects submitted</li> -->
                     </ul>
                     <br>
                     <div class="flex flex-wrap gap-2 mb-4">
