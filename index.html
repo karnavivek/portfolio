@@ -11,10 +11,15 @@
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <script src="https://unpkg.com/lucide-react@0.292.0/dist/lucide-react.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <button id="theme-toggle" class="ml-4 opacity-70 hover:opacity-100 transition">
+    <i data-lucide="sun-moon" class="h-5 w-5"></i>
+    </button>
+
 
     <style>
+        
         body {
-            font-family: "Computer Modern Serif", serif;
+            font-family: "CMU Bright", "Computer Modern Sans", sans-serif;
         }
         /* Custom scrollbar for a more modern look */
         ::-webkit-scrollbar {
@@ -67,6 +72,47 @@
         }
     </style>
 </head>
+<script>
+  const toggle = document.getElementById("theme-toggle");
+  const htmlEl = document.documentElement;
+
+  // initialize based on saved preference or default dark
+  if (localStorage.theme === "light") {
+    htmlEl.classList.add("light");
+  }
+
+  toggle.addEventListener("click", () => {
+    if (htmlEl.classList.contains("light")) {
+      htmlEl.classList.remove("light");
+      localStorage.theme = "dark";
+    } else {
+      htmlEl.classList.add("light");
+      localStorage.theme = "light";
+    }
+  });
+</script>
+
+<style>
+  /* Light theme overrides */
+  html.light body {
+    background: #fafafa;
+    color: #1a1a1a;
+  }
+  html.light header {
+    background: rgba(255,255,255,0.6);
+    border-color: #ddd;
+  }
+  html.light footer {
+    background: #f3f3f3;
+    color: #444;
+  }
+  html.light .bg-\[\#111\] {
+    background: #fff;
+    border-color: #ddd;
+    color: #222;
+  }
+</style>
+
 <body class="bg-gray-50 text-gray-800">
 <div class="my-element">
     <header id="header" class="bg-white/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-sm">
@@ -104,7 +150,7 @@
         <section id="home" class="min-h-screen flex items-center py-16">
                 <div class="grid md:grid-cols-3 gap-12 items-center">
                     <div class="md:col-span-1 flex justify-center">
-                        <img src="assets/img/yt_pfp.png" alt="Profile Picture" class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-lg border-4 border-white">
+                        <img src="assets/img/Vivek_portfolio_dp.png" alt="Profile Picture" class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-lg border-4 border-white">
                     </div>
                     <div class="md:col-span-2">
                         <h1 class="text-3xl md:text-5xl font-bold text-black-900 mb-4">Hey, I'm Vivek Karna</h1>
@@ -301,6 +347,7 @@ SVM Classifier]</em></li>
                         <i data-lucide="github" class="h-5 w-5 mr-2"></i> View on GitHub
                     </a>
                 </div>
+                
             </div>
         </section>
 
@@ -676,3 +723,4 @@ Looking forward to continuing this journey of learning, growing, and contributin
 </div>
 </body>
 </html>
+
