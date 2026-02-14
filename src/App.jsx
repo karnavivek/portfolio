@@ -14,7 +14,7 @@ import {
 const PERSONAL_INFO = {
   name: "Vivek Karna",
   titles: ["Data Scientist", "Operations Researcher"],
-  tagline: "Solving complex problems using data-driven approaches & optimization.",
+  tagline: "Solving complex problems using data-driven approaches & optimization.\n WEBSITE IS WORK-IN-PROGRESS s",
   email: "karnavivek@gmail.com",
   location: "Chennai, India",
   social: {
