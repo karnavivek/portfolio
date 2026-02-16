@@ -14,7 +14,7 @@ import {
 const PERSONAL_INFO = {
   name: "Vivek Karna",
   titles: ["Data Scientist", "Operations Researcher"],
-  tagline: "Solving complex problems using data-driven approaches & optimization.\n WEBSITE IS WORK-IN-PROGRESS s",
+  tagline: "Solving complex problems using data-driven approaches & optimization.\n WEBSITE IS WORK-IN-PROGRESS",
   email: "karnavivek@gmail.com",
   location: "Chennai, India",
   social: {
@@ -28,28 +28,28 @@ const PERSONAL_INFO = {
 };
 
 const SKILLS = {
-  languages: ["Python", "SQL", "R", "C++"],
+  languages: ["Python", "SQL", "R"],
   libs: ["Pandas", "Numpy", "Scikit-learn", "PyTorch", "Gurobi", "Statsmodels", "GPyTorch"],
   ml: ["Regression", "Classification", "Forecasting", "Transformers", "LSTM"],
-  tools: ["Git", "Docker", "LaTeX", "Tableau", "Streamlit"],
+  tools: ["Git", "Github", "LaTeX", "Tableau", "Streamlit"],
   business: ["Six Sigma", "DMAIC", "Kanban", "Scrum"]
 };
 
 const EXPERIENCE = [
   {
-    role: "Data Scientist",
+    role: "Data Scientist - Full Time",
     company: "Applied Materials | Allegis Group",
     period: "Oct 2025 - Present",
     desc: [
-      "Collaborated with professors in data science/operations research courses.",
-      "Delivered 10+ Hrs of Python/ML Lab sessions for B-Tech & PhD students.",
-      "Developed comprehensive data science scripts covering clustering, regression, and PCA."
+      "...updating details soon...",
+      // "Delivered 10+ Hrs of Python/ML Lab sessions for B-Tech & PhD students.",
+      // "Developed comprehensive data science scripts covering clustering, regression, and PCA."
     ]
   },
   {
-    role: "Teaching Assistant",
-    company: "IIT Madras",
-    period: "June 2024 - Present",
+    role: "Teaching Assistant - Part Time",
+    company: "IIT Madras | NPTEL",
+    period: "June 2024 - June 2025",
     desc: [
       "Collaborated with professors in data science/operations research courses.",
       "Delivered 10+ Hrs of Python/ML Lab sessions for B-Tech & PhD students.",
@@ -57,7 +57,17 @@ const EXPERIENCE = [
     ]
   },
   {
-    role: "Graduate Engineer Trainee",
+    role: "Business Manager",
+    company: "PCRI",
+    period: "March 2023 - June 2023",
+    desc: [
+      "...updating details soon...",
+      // "Delivered 10+ Hrs of Python/ML Lab sessions for B-Tech & PhD students.",
+      // "Developed comprehensive data science scripts covering clustering, regression, and PCA."
+    ]
+  },
+  {
+    role: "Graduate Engineer Trainee (GET) - Full Time",
     company: "Varroc Engineering",
     period: "Aug 2021 - July 2022",
     desc: [
@@ -109,8 +119,8 @@ const PROJECTS = [
     title: "AskMyProfession",
     subtitle: "Fine-Tuning LLM",
     tech: ["Python", "Gurobi", "Heuristics"],
-    desc: "Developed MILP model for VRPTW using Gurobi. Designed Heuristics to find sub-optimal feasible solutions to reduce computational load.",
-    link: "https://github.com/karnavivek/Heuristics_VRPTW"
+    desc: "AskMyProfession allows users to access 'niche' Domain Experts (eg.: Operations Research Scientist (ORS)) which are fine-tuned for your niche work!",
+    link: "https://github.com/karnavivek/askmyprofession"
   }
 ];
 
@@ -134,7 +144,7 @@ const RESEARCH = [
     title: "Large Scale Optimization Workshop",
     type: "Workshop",
     status: "Attended at IIT Bombay 2025",
-    award: "2nd Prize - AIRSS 2025 in ML & Optimization Domain",
+    // award: "2nd Prize - AIRSS 2025 in ML & Optimization Domain",
     desc: "Showcased state-of-the-art tool for uncertainty-aware optimization.",
     link: "#"
   },
@@ -240,7 +250,7 @@ const HomePage = ({ setPage }) => (
           </div>
           <div className="flex items-center gap-2">
             <Cpu size={20} className="text-amber-600" />
-            <span>OR</span>
+            <span>Machine Learning</span>
           </div>
           <div className="flex items-center gap-2">
             <Code size={20} className="text-amber-600" />
