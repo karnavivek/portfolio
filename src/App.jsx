@@ -14,7 +14,7 @@ import {
 const PERSONAL_INFO = {
   name: "Vivek Karna",
   titles: ["Data Scientist", "Operations Researcher"],
-  tagline: "Solving complex problems using data-driven approaches & optimization.\n WEBSITE IS WORK-IN-PROGRESS",
+  tagline: "Indian, Curious, Engineer - that's me in order ;)",
   email: "karnavivek@gmail.com",
   location: "Chennai, India",
   social: {
@@ -24,15 +24,15 @@ const PERSONAL_INFO = {
   },
   resumeLink: "./VK_Resume_Aug.pdf",
   // Using GitHub avatar as a reliable source
-  profileImage: "https://github.com/karnavivek.png" 
+  profileImage: "Vivek_portfolio_dp.png" 
 };
 
 const SKILLS = {
   languages: ["Python", "SQL", "R"],
   libs: ["Pandas", "Numpy", "Scikit-learn", "PyTorch", "Gurobi", "Statsmodels", "GPyTorch"],
-  ml: ["Regression", "Classification", "Forecasting", "Transformers", "LSTM"],
+  ml: ["Regression", "Classification", "Clustering", "Forecasting", "Deep Learning", "LSTM", "NLP", "Transformers", "Sensitivity Analysis"],
   tools: ["Git", "Github", "LaTeX", "Tableau", "Streamlit"],
-  business: ["Six Sigma", "DMAIC", "Kanban", "Scrum"]
+  business: ["Six Sigma", "DMAIC", "Kanban", "Scrum","STAR"]
 };
 
 const EXPERIENCE = [
@@ -71,9 +71,11 @@ const EXPERIENCE = [
     company: "Varroc Engineering",
     period: "Aug 2021 - July 2022",
     desc: [
-      "Implemented Six Sigma (DMAIC) reducing changeover time by 77%.",
-      "Designed 120+ time/work studies to identify manufacturing bottlenecks.",
-      "Built predictive models for equipment failure, reducing unplanned downtime by 23%."
+      "Used DMAIC/Data analytics to optimize processes, cutting changeover time by 77%, saving 33.09hrs/month & Rs 4.86 lacs.",
+"Conducted 120+ time/work studies and created data visualizations to identify manufacturing bottlenecks.",
+"Built predictive models to forecast equipment failures, reducing unplanned downtime by 23%, boosting overall effectiveness.",
+"Winner of In-house KAIZEN Space Level Competition"
+
     ]
   }
 ];
@@ -118,7 +120,14 @@ const PROJECTS = [
   {
     title: "AskMyProfession",
     subtitle: "Fine-Tuning LLM",
-    tech: ["Python", "Gurobi", "Heuristics"],
+    tech: ["Python", "PyTorch", "RunPod", "Transformers"],
+    desc: "AskMyProfession allows users to access 'niche' Domain Experts (eg.: Operations Research Scientist (ORS)) which are fine-tuned for your niche work!",
+    link: "https://github.com/karnavivek/askmyprofession"
+  },
+  {
+    title: "AskMyProfession",
+    subtitle: "Fine-Tuning LLM",
+    tech: ["Python", "PyTorch", "RunPod", "Transformers"],
     desc: "AskMyProfession allows users to access 'niche' Domain Experts (eg.: Operations Research Scientist (ORS)) which are fine-tuned for your niche work!",
     link: "https://github.com/karnavivek/askmyprofession"
   }
@@ -173,7 +182,7 @@ const RESEARCH = [
 const NavLink = ({ active, onClick, children }) => (
   <button
     onClick={onClick}
-    className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-lg ${
+    className={`px-5 py-2 text-sm font-medium transition-all duration-200 rounded-lg ${  /* This is for the Top Title bar */
       active 
         ? "bg-amber-600/10 text-amber-700 font-bold" 
         : "text-stone-600 hover:text-stone-900 hover:bg-stone-200"
@@ -208,13 +217,13 @@ const Badge = ({ children }) => (
 /**
  * PAGES
  */
-
+/* HOME PAGE */
 const HomePage = ({ setPage }) => (
-  <div className="flex flex-col justify-center min-h-[80vh] animate-in fade-in slide-in-from-bottom-4 duration-700">
-    <div className="flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12">
-      
-      {/* Text Section */}
-      <div className="space-y-6 max-w-2xl text-center md:text-left">
+  <div className="flex flex-col justify-center min-h-[80vh] animate-in fade-in slide-in-from-bottom-4 duration-300">
+    <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-8 md:gap-12">
+   
+      {/* Text Section */} 
+      <div className="space-y-6 max-w-2xl text-center md:text-left"> 
         <div className="flex justify-center md:justify-start">
           <Badge>Available for Collaborations</Badge>
         </div>
@@ -261,7 +270,7 @@ const HomePage = ({ setPage }) => (
 
       {/* Profile Image Section - Added as requested */}
       <div className="relative">
-        <div className="absolute inset-0 bg-amber-400 rounded-full blur-2xl opacity-20 transform scale-110"></div>
+        <div className="absolute inset-1 bg-amber-400 rounded-full blur-2xl opacity-20 transform scale-110"></div>
         <img 
           src={PERSONAL_INFO.profileImage} 
           alt={PERSONAL_INFO.name}
@@ -272,15 +281,20 @@ const HomePage = ({ setPage }) => (
   </div>
 );
 
+/* ABOUT PAGE */
+
 const AboutPage = () => (
   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-    <SectionTitle title="About Me" subtitle="I have worked in various domains, and learned various ways to solve that 'one' problem, but the ways of a data scientist & an operations researcher often feels home. I like to solve industry problems with data driven insights, often merging both worlds of predictive and prescriptive models." />
+    <SectionTitle title="About Me"/> 
+    {/* subtitle="I have worked in various domains, and learned various ways to solve that 'one' problem, but the ways of a data scientist & an operations researcher often feels home. 
+    I like to solve industry problems with data driven insights, often merging both worlds of predictive and prescriptive models." /> */}
     
     <div className="grid md:grid-cols-2 gap-12">
       <div className="space-y-8">
         <div className="prose prose-stone">
-          <p className="text-stone-600 mt-4 leading-relaxed">
-            My expertise lies in building robust machine learning models and optimizing complex systems. From reducing manufacturing downtime at Varroc to developing stochastic frameworks for my thesis, I love solving hard problems.
+          <p className="text-stone-600 leading-relaxed">
+            I have worked in various domains, and learned various ways to solve that 'one' problem, but the ways of a data scientist & an operations researcher often feels home. 
+    I like to solve industry problems with data driven insights, often merging both worlds of predictive and prescriptive models.
           </p>
         </div>
 
@@ -332,6 +346,14 @@ const AboutPage = () => (
                 ))}
               </div>
             </div>
+            <div>
+              <p className="text-sm text-stone-500 mb-2 uppercase tracking-wider font-semibold">Business</p>
+              <div className="flex flex-wrap gap-2">
+                {SKILLS.business.map(skill => (
+                  <Badge key={skill}>{skill}</Badge>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -339,18 +361,19 @@ const AboutPage = () => (
   </div>
 );
 
-// New Work Page Component
+/* WORK PAGE */
+
 const WorkPage = () => (
   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-    <SectionTitle title="Work Experience" subtitle="My professional journey and industrial contributions." />
+    <SectionTitle title="Work Experience" subtitle="My professional journey and industrial contributions."/>
     
-    <div className="space-y-8 max-w-4xl">
+    <div className="space-y-3 max-w-4xl">
       {EXPERIENCE.map((exp, idx) => (
         <Card key={idx} className="relative overflow-hidden">
           <div className="absolute top-0 left-0 w-1 h-full bg-amber-500"></div>
           <div className="flex flex-col md:flex-row md:items-start gap-4 mb-4">
             <div className="p-3 bg-amber-50 rounded-lg text-amber-600">
-              <Briefcase size={24} />
+              <Briefcase size={24}/>
             </div>
             <div className="flex-grow">
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-2">
@@ -376,6 +399,8 @@ const WorkPage = () => (
     </div>
   </div>
 );
+
+/* Projects PAGE */
 
 const ProjectsPage = () => (
   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -414,6 +439,8 @@ const ProjectsPage = () => (
     </div>
   </div>
 );
+
+/* RESEARCH PAGE */
 
 const ResearchPage = () => (
   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -458,6 +485,8 @@ const ResearchPage = () => (
     </div>
   </div>
 );
+
+/* E-RESUME PAGE */
 
 const EResumePage = () => (
   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-4xl mx-auto">
@@ -554,6 +583,8 @@ const EResumePage = () => (
     </div>
   </div>
 );
+
+/* CONTACT PAGE */
 
 const ContactPage = () => (
   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-2xl mx-auto">
@@ -666,7 +697,7 @@ export default function App() {
               className="flex-shrink-0 cursor-pointer font-bold text-xl tracking-tighter"
               onClick={() => setActivePage('home')}
             >
-              <span className="text-amber-600">VK</span><span className="text-stone-800">.portfolio</span>
+              <span className="text-amber-600">Karna</span><span className="text-stone-800">.Portfolio</span>
             </div>
             
             {/* Desktop Menu */}
