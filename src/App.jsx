@@ -274,15 +274,11 @@ const HomePage = ({ setPage }) => (
 
 const AboutPage = () => (
   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-    <SectionTitle title="About Me" subtitle="My journey through data, optimization, and research." />
+    <SectionTitle title="About Me" subtitle="I have worked in various domains, and learned various ways to solve that 'one' problem, but the ways of a data scientist & an operations researcher often feels home. I like to solve industry problems with data driven insights, often merging both worlds of predictive and prescriptive models." />
     
     <div className="grid md:grid-cols-2 gap-12">
       <div className="space-y-8">
         <div className="prose prose-stone">
-          <p className="text-stone-700 text-lg leading-relaxed">
-            I'm a <span className="text-stone-600 mt-4 leading-relaxed">Data Scientist</span> and <span className="text-amber-600 font-semibold">Operations Researcher</span> currently pursuing my MS by Research at IIT Madras. 
-            I bridge the gap between predictive analytics and prescriptive decision-making.
-          </p>
           <p className="text-stone-600 mt-4 leading-relaxed">
             My expertise lies in building robust machine learning models and optimizing complex systems. From reducing manufacturing downtime at Varroc to developing stochastic frameworks for my thesis, I love solving hard problems.
           </p>
