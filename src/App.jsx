@@ -280,7 +280,7 @@ const AboutPage = () => (
       <div className="space-y-8">
         <div className="prose prose-stone">
           <p className="text-stone-700 text-lg leading-relaxed">
-            I'm a <span className="text-amber-600 font-semibold">Data Scientist</span> and <span className="text-amber-600 font-semibold">Operations Researcher</span> currently pursuing my MS by Research at IIT Madras. 
+            I'm a <span className="text-stone-600 mt-4 leading-relaxed">Data Scientist</span> and <span className="text-amber-600 font-semibold">Operations Researcher</span> currently pursuing my MS by Research at IIT Madras. 
             I bridge the gap between predictive analytics and prescriptive decision-making.
           </p>
           <p className="text-stone-600 mt-4 leading-relaxed">
