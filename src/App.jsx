@@ -29,10 +29,11 @@ const PERSONAL_INFO = {
 
 const SKILLS = {
   languages: ["Python", "SQL", "R"],
-  libs: ["Pandas", "Numpy", "Scikit-learn", "PyTorch", "Gurobi", "Statsmodels", "GPyTorch"],
+  libs: ["Pandas", "Numpy", "Scikit-learn", "PyTorch", "Statsmodels", "GPyTorch"],
   ml: ["Regression", "Classification", "Clustering", "Forecasting", "Deep Learning", "LSTM", "NLP", "Transformers", "Sensitivity Analysis"],
   tools: ["Git", "Github", "LaTeX", "Tableau", "Streamlit"],
-  business: ["Six Sigma", "DMAIC", "Kanban", "Scrum","STAR"]
+  business: ["Six Sigma", "DMAIC", "Kanban", "Scrum","STAR"],
+  optimization: ["Linear Programming", "Mixed Integer Programming", "Heuristics", "Gurobi", "Supply Chain Network Modelling"]
 };
 
 const EXPERIENCE = [
@@ -225,7 +226,7 @@ const HomePage = ({ setPage }) => (
       {/* Text Section */} 
       <div className="space-y-6 max-w-2xl text-center md:text-left"> 
         <div className="flex justify-center md:justify-start">
-          <Badge>Available for Collaborations</Badge>
+          <Badge>Available for Collaborations | Website - Work in Progress</Badge>
         </div>
         
         {/* Made font smaller as requested */}
@@ -293,7 +294,7 @@ const AboutPage = () => (
       <div className="space-y-8">
         <div className="prose prose-stone">
           <p className="text-stone-600 leading-relaxed">
-            I have worked in various domains, and learned various ways to solve that 'one' problem, but the ways of a data scientist & an operations researcher often feels home. 
+            I have worked in various domains over 3+ years, and learned various ways to solve that 'one' problem, but the ways of a data scientist & an operations researcher often feels home. 
     I like to solve industry problems with data driven insights, often merging both worlds of predictive and prescriptive models.
           </p>
         </div>
@@ -339,7 +340,7 @@ const AboutPage = () => (
               </div>
             </div>
             <div>
-              <p className="text-sm text-stone-500 mb-2 uppercase tracking-wider font-semibold">Optimization & Tools</p>
+              <p className="text-sm text-stone-500 mb-2 uppercase tracking-wider font-semibold">Tech & Tools</p>
               <div className="flex flex-wrap gap-2">
                 {SKILLS.tools.map(skill => (
                   <Badge key={skill}>{skill}</Badge>
@@ -350,6 +351,14 @@ const AboutPage = () => (
               <p className="text-sm text-stone-500 mb-2 uppercase tracking-wider font-semibold">Business</p>
               <div className="flex flex-wrap gap-2">
                 {SKILLS.business.map(skill => (
+                  <Badge key={skill}>{skill}</Badge>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="text-sm text-stone-500 mb-2 uppercase tracking-wider font-semibold">Optimization</p>
+              <div className="flex flex-wrap gap-2">
+                {SKILLS.optimization.map(skill => (
                   <Badge key={skill}>{skill}</Badge>
                 ))}
               </div>
