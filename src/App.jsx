@@ -24,7 +24,7 @@ const PERSONAL_INFO = {
   },
   resumeLink: "./VK_Resume_Aug.pdf",
   // Using GitHub avatar as a reliable source
-  profileImage: "Vivek_portfolio_dp.png" 
+  profileImage: "./Vivek_portfolio_dp.png" 
 };
 
 const SKILLS = {
@@ -136,35 +136,35 @@ const PROJECTS = [
 
 const RESEARCH = [
   {
-    title: "SCLTool: Stochastic Constraint Learning Framework",
+    title: "SCLTool: Stochastic Constraint Learning Framework for Prescriptive Models",
     type: "MS Thesis",
     status: "Ongoing",
     desc: "Developing a tool for integrating predictive and prescriptive models to tackle uncertainty in data, optimization & ML models.",
     link: "#"
   },
   {
-    title: "Uncertainty-Aware Optimization using ML",
+    title: "All India Research Scholar Summit",
     type: "Conference Paper",
-    status: "Presented at AIRSS 2025",
+    status: "Presented at IIT Madras 2025",
     award: "2nd Prize - AIRSS 2025 in ML & Optimization Domain",
     desc: "Showcased state-of-the-art tool for uncertainty-aware optimization.",
-    link: "#"
+    link: "https://www.linkedin.com/posts/vivek-karna_researchmilestone-optimization-machinelearning-activity-7313193636945350656-tvAo?utm_source=share&utm_medium=member_desktop&rcm=ACoAACbLSWgBr91C7c7xo6XNFiA8UFFagULlux4"
   },
   {
     title: "Large Scale Optimization Workshop",
     type: "Workshop",
     status: "Attended at IIT Bombay 2025",
     // award: "2nd Prize - AIRSS 2025 in ML & Optimization Domain",
-    desc: "Showcased state-of-the-art tool for uncertainty-aware optimization.",
-    link: "#"
+    desc: "Took a deep dive into the kind of hardcore, mathematical optimization that powers real-world solutions.",
+    link: "https://www.linkedin.com/posts/vivek-karna_iim-iit-management-activity-7343171011099488256-V2GA?utm_source=share&utm_medium=member_desktop&rcm=ACoAACbLSWgBr91C7c7xo6XNFiA8UFFagULlux4"
   },
   {
     title: "28th International Society of Operations Management",
     type: "Conference Paper",
     status: "Presented at IIM Nagpur 2025",
     // award: "2nd Prize - AIRSS 2025 in ML & Optimization Domain",
-    desc: "Presented 2 Conference Papers",
-    link: "#"
+    desc: "Presented 2 Conference Papers -> 'Constraint learning to model user experience in electric vehicle charging ecosystem' & 'SCLTool: Stochastic Constraint Learning Framework for Prescriptive Models'",
+    link: "https://www.linkedin.com/posts/vivek-karna_research-iitmadras-iimnagpur-activity-7410207132358180864-ZLsl?utm_source=share&utm_medium=member_desktop&rcm=ACoAACbLSWgBr91C7c7xo6XNFiA8UFFagULlux4"
   },
   {
     title: "ICSCM 2026 ",
