@@ -9,7 +9,7 @@ import {
 
 /**
  * DATA CONSTANTS
- */
+*/
 
 const PERSONAL_INFO = {
   name: "Vivek Karna",
@@ -24,14 +24,14 @@ const PERSONAL_INFO = {
   },
   resumeLink: "./VK_Resume_Aug.pdf",
   // Using GitHub avatar as a reliable source
-  profileImage: "./Vivek_portfolio_dp.png" 
+  profileImage: "https://drive.google.com/file/d/1V8_Bf3YPtlx5WUuO6ZrJazuuLtdMmF1-/view?usp=sharing" 
 };
 
 const SKILLS = {
   languages: ["Python", "SQL", "R"],
-  libs: ["Pandas", "Numpy", "Scikit-learn", "PyTorch", "Statsmodels", "GPyTorch"],
+  libs: ["Pandas", "Numpy", "Scikit-learn", "PyTorch", "Matplotlib","Streamlit", "Statsmodels", "GPyTorch", "LangChain", "HuggingFace"],
   ml: ["Regression", "Classification", "Clustering", "Forecasting", "Deep Learning", "LSTM", "NLP", "Transformers", "Sensitivity Analysis"],
-  tools: ["Git", "Github", "LaTeX", "Tableau", "Streamlit"],
+  tools: ["Git", "Github", "LaTeX", "Tableau", "VectorDB"],
   business: ["Six Sigma", "DMAIC", "Kanban", "Scrum","STAR"],
   optimization: ["Linear Programming", "Mixed Integer Programming", "Heuristics", "Gurobi", "Supply Chain Network Modelling"]
 };
