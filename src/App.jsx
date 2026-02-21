@@ -22,9 +22,9 @@ const PERSONAL_INFO = {
     github: "https://github.com/karnavivek",
     youtube: "https://www.youtube.com/@vivekkarna"
   },
-  resumeLink: "/VK_Resume_Aug.pdf",
+  resumeLink: "./VK_Resume_Aug.pdf",
   // Using GitHub avatar as a reliable source
-  profileImage: "/Vivek_portfolio_dp.png"
+  profileImage: "./Vivek_portfolio_dp.png"
 };
 
 const SKILLS = {
