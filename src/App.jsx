@@ -28,7 +28,7 @@ const PERSONAL_INFO = {
 };
 
 const SKILLS = {
-  languages: ["Python", "SQL", "R"],
+  languages: ["Python", "MySQL", "R"],
   libs: ["Pandas", "Numpy", "Scikit-learn", "PyTorch", "Matplotlib","Streamlit", "Statsmodels", "GPyTorch", "LangChain", "HuggingFace"],
   ml: ["Regression", "Classification", "Clustering", "Forecasting", "Deep Learning", "LSTM", "NLP", "Transformers", "Sensitivity Analysis"],
   tools: ["Git", "Github", "LaTeX", "Tableau", "VectorDB"],
