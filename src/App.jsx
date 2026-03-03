@@ -152,6 +152,14 @@ const RESEARCH = [
     desc: "Developing a tool for integrating predictive and prescriptive models to tackle uncertainty in data, optimization & ML models.",
     link: "#"
   },
+    {
+    title: "ICSCM 2026 ",
+    type: "Conference Paper",
+    status: "Presented at Hosei University, Tokyo, Japan",
+    award: "Best Oral Presentation Award among presenters throughout the world",
+    desc: "Showcased state-of-the-art tool for machine learning assisted uncertainty-aware optimization.",
+    link: "#"
+  },
   {
     title: "28th International Society of Operations Management",
     type: "Conference Paper",
@@ -175,14 +183,6 @@ const RESEARCH = [
     // award: "2nd Prize - AIRSS 2025 in ML & Optimization Domain",
     desc: "Took a deep dive into hardcore mathematical optimization that powers real-world solutions.",
     link: "https://www.linkedin.com/posts/vivek-karna_iim-iit-management-activity-7343171011099488256-V2GA?utm_source=share&utm_medium=member_desktop&rcm=ACoAACbLSWgBr91C7c7xo6XNFiA8UFFagULlux4"
-  },
-  {
-    title: "ICSCM 2026 ",
-    type: "Conference Paper",
-    status: "Presented at Hosei University, Japan",
-    // award: "2nd Prize - AIRSS 2025 in ML & Optimization Domain",
-    desc: "Showcased state-of-the-art tool for machine learning assisted uncertainty-aware optimization.",
-    link: "#"
   }
 ];
 
