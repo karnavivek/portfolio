@@ -4,7 +4,7 @@ import {
   Download, ExternalLink, ChevronRight, 
   BookOpen, Code, Cpu, Award, Terminal,
   Youtube, Briefcase, GraduationCap,
-  MapPin, Database, Wrench, Calendar
+  MapPin, Database, Wrench, Calendar, Maximize
 } from 'lucide-react';
 
 /**
@@ -42,9 +42,7 @@ const EXPERIENCE = [
     company: "Applied Materials | Allegis Group",
     period: "Oct 2025 - Present",
     desc: [
-      "...updating details soon...",
-      // "Delivered 10+ Hrs of Python/ML Lab sessions for B-Tech & PhD students.",
-      // "Developed comprehensive data science scripts covering clustering, regression, and PCA."
+      "...updating details soon..."
     ]
   },
   {
@@ -62,9 +60,7 @@ const EXPERIENCE = [
     company: "PCRI",
     period: "March 2023 - June 2023",
     desc: [
-      "...updating details soon...",
-      // "Delivered 10+ Hrs of Python/ML Lab sessions for B-Tech & PhD students.",
-      // "Developed comprehensive data science scripts covering clustering, regression, and PCA."
+      "...updating details soon..."
     ]
   },
   {
@@ -73,22 +69,11 @@ const EXPERIENCE = [
     period: "Aug 2021 - July 2022",
     desc: [
       "Used DMAIC/Data analytics to optimize processes, cutting changeover time by 77%, saving 33.09hrs/month & Rs 4.86 lacs.",
-"Conducted 120+ time/work studies and created data visualizations to identify manufacturing bottlenecks.",
-"Built predictive models to forecast equipment failures, reducing unplanned downtime by 23%, boosting overall effectiveness.",
-"Winner of In-house KAIZEN Space Level Competition"
-
+      "Conducted 120+ time/work studies and created data visualizations to identify manufacturing bottlenecks.",
+      "Built predictive models to forecast equipment failures, reducing unplanned downtime by 23%, boosting overall effectiveness.",
+      "Winner of In-house KAIZEN Space Level Competition"
     ]
-  },
-  // {
-  //   role: "Business Manager",
-  //   company: "PCRI",
-  //   period: "March 2023 - June 2023",
-  //   desc: [
-  //     "...updating details soon...",
-  //     // "Delivered 10+ Hrs of Python/ML Lab sessions for B-Tech & PhD students.",
-  //     // "Developed comprehensive data science scripts covering clustering, regression, and PCA."
-  //   ]
-  // }
+  }
 ];
 
 const EDUCATION = [
@@ -150,15 +135,17 @@ const RESEARCH = [
     type: "MS Thesis",
     status: "Ongoing",
     desc: "Developing a tool for integrating predictive and prescriptive models to tackle uncertainty in data, optimization & ML models.",
-    link: "#"
+    link: "#",
+    image: "/Model_Image_SCLTool.png"
   },
-    {
+  {
     title: "ICSCM 2026 ",
     type: "Conference Paper",
     status: "Presented at Hosei University, Tokyo, Japan",
     award: "Best Oral Presentation Award among presenters throughout the world",
     desc: "Showcased state-of-the-art tool for machine learning assisted uncertainty-aware optimization.",
-    link: "#"
+    link: "#",
+    image: "/icscm_award.jpeg"
   },
   {
     title: "28th International Society of Operations Management",
@@ -166,7 +153,8 @@ const RESEARCH = [
     status: "Presented at IIM Nagpur 2025",
     // award: "2nd Prize - AIRSS 2025 in ML & Optimization Domain",
     desc: "Presented 2 Conference Papers -> 'Constraint learning to model user experience in electric vehicle charging ecosystem' & 'SCLTool: Stochastic Constraint Learning Framework for Prescriptive Models'",
-    link: "https://www.linkedin.com/posts/vivek-karna_research-iitmadras-iimnagpur-activity-7410207132358180864-ZLsl?utm_source=share&utm_medium=member_desktop&rcm=ACoAACbLSWgBr91C7c7xo6XNFiA8UFFagULlux4"
+    link: "https://www.linkedin.com/posts/vivek-karna_research-iitmadras-iimnagpur-activity-7410207132358180864-ZLsl?utm_source=share&utm_medium=member_desktop&rcm=ACoAACbLSWgBr91C7c7xo6XNFiA8UFFagULlux4",
+    image: "/som_1_cert.jpeg"
   },
   {
     title: "All India Research Scholar Summit",
@@ -174,7 +162,8 @@ const RESEARCH = [
     status: "Presented at IIT Madras 2025",
     award: "2nd Prize - AIRSS 2025 in ML & Optimization Domain",
     desc: "Showcased state-of-the-art tool for machine learning assisted uncertainty-aware optimization.",
-    link: "https://www.linkedin.com/posts/vivek-karna_researchmilestone-optimization-machinelearning-activity-7313193636945350656-tvAo?utm_source=share&utm_medium=member_desktop&rcm=ACoAACbLSWgBr91C7c7xo6XNFiA8UFFagULlux4"
+    link: "https://www.linkedin.com/posts/vivek-karna_researchmilestone-optimization-machinelearning-activity-7313193636945350656-tvAo?utm_source=share&utm_medium=member_desktop&rcm=ACoAACbLSWgBr91C7c7xo6XNFiA8UFFagULlux4",
+    image: "/airss_award.jpeg"
   },
   {
     title: "Large Scale Optimization Workshop",
@@ -182,7 +171,8 @@ const RESEARCH = [
     status: "Attended at IIT Bombay 2025",
     // award: "2nd Prize - AIRSS 2025 in ML & Optimization Domain",
     desc: "Took a deep dive into hardcore mathematical optimization that powers real-world solutions.",
-    link: "https://www.linkedin.com/posts/vivek-karna_iim-iit-management-activity-7343171011099488256-V2GA?utm_source=share&utm_medium=member_desktop&rcm=ACoAACbLSWgBr91C7c7xo6XNFiA8UFFagULlux4"
+    link: "https://www.linkedin.com/posts/vivek-karna_iim-iit-management-activity-7343171011099488256-V2GA?utm_source=share&utm_medium=member_desktop&rcm=ACoAACbLSWgBr91C7c7xo6XNFiA8UFFagULlux4",
+    image: "/lso_workshop.jpeg"
   }
 ];
 
@@ -380,229 +370,70 @@ const AboutPage = () => (
 
 /* WORK PAGE */
 
-// const WorkPage = () => {
-//   // We map your global EXPERIENCE array to styling metadata locally so we don't change your source data constants
-//   const bentoStyles = [
-//     { icon: Database, color: "bg-blue-50 text-blue-600", gridClass: "md:col-span-2 lg:col-span-2 lg:row-span-2" }, // Full Time DS
-//     { icon: GraduationCap, color: "bg-amber-50 text-amber-600", gridClass: "md:col-span-1 lg:col-span-1 lg:row-span-2" }, // TA
-//     { icon: Briefcase, color: "bg-emerald-50 text-emerald-600", gridClass: "md:col-span-1 lg:col-span-1 lg:row-span-1" }, // Business Manager
-//     { icon: Wrench, color: "bg-purple-50 text-purple-600", gridClass: "md:col-span-1 lg:col-span-2 lg:row-span-1" }, // GET
-//     { icon: Briefcase, color: "bg-emerald-50 text-emerald-600", gridClass: "md:col-span-1 lg:col-span-1 lg:row-span-1" } 
-//   ];
+const WorkPage = () => {
+  // We map your global EXPERIENCE array to styling metadata locally so we don't change your source data constants
+  const bentoStyles = [
+    { icon: Database, color: "bg-blue-50 text-blue-600", gridClass: "md:col-span-2 lg:col-span-2 lg:row-span-2" }, // Full Time DS
+    { icon: GraduationCap, color: "bg-amber-50 text-amber-600", gridClass: "md:col-span-1 lg:col-span-1 lg:row-span-2" }, // TA
+    { icon: Briefcase, color: "bg-emerald-50 text-emerald-600", gridClass: "md:col-span-1 lg:col-span-1 lg:row-span-1" }, // Business Manager
+    { icon: Wrench, color: "bg-purple-50 text-purple-600", gridClass: "md:col-span-1 lg:col-span-2 lg:row-span-1" } // GET
+  ];
 
-//   return (
-//     <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-//       <SectionTitle title="Work Experience" subtitle="My professional journey and industrial contributions ;)"/>
+  return (
+    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <SectionTitle title="Work Experience" subtitle="My professional journey and industrial contributions."/>
       
-//       <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-[minmax(180px,auto)]">
-//         {EXPERIENCE.map((exp, idx) => {
-//           const style = bentoStyles[idx] || bentoStyles[0];
-//           const IconComponent = style.icon;
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(180px,auto)]">
+        {EXPERIENCE.map((exp, idx) => {
+          const style = bentoStyles[idx] || bentoStyles[0];
+          const IconComponent = style.icon;
           
-//           return (
-//             <div 
-//               key={idx} 
-//               className={`group relative bg-white rounded-[3rem] p-6 md:p-8 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] border border-stone-100/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between ${style.gridClass}`}
-//             >
-//               {/* Decorative subtle background element */}
-//               <div className="absolute -right-8 -top-8 w-32 h-32 bg-stone-200 rounded-full blur-3xl opacity-50 group-hover:bg-amber-50 transition-colors duration-500"></div>
+          return (
+            <div 
+              key={idx} 
+              className={`group relative bg-white rounded-[2rem] p-6 md:p-8 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] border border-stone-100/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between ${style.gridClass}`}
+            >
+              {/* Decorative subtle background element */}
+              <div className="absolute -right-8 -top-8 w-32 h-32 bg-stone-50 rounded-full blur-3xl opacity-50 group-hover:bg-amber-50 transition-colors duration-500"></div>
 
-//               <div>
-//                 <div className="flex justify-between items-start mb-6 relative z-10">
-//                   <div className={`p-4 rounded-2xl ${style.color} shadow-sm`}>
-//                     <IconComponent size={24} strokeWidth={1.9} />
-//                   </div>
-//                   <div className="flex items-center gap-1.5 bg-stone-50 border border-stone-100 text-stone-500 text-xs font-semibold px-3 py-1.5 rounded-full">
-//                     <Calendar size={12} />
-//                     {exp.period}
-//                   </div>
-//                 </div>
+              <div>
+                <div className="flex justify-between items-start mb-6 relative z-10">
+                  <div className={`p-4 rounded-2xl ${style.color} shadow-sm`}>
+                    <IconComponent size={28} strokeWidth={1.5} />
+                  </div>
+                  <div className="flex items-center gap-1.5 bg-stone-50 border border-stone-100 text-stone-500 text-xs font-semibold px-3 py-1.5 rounded-full">
+                    <Calendar size={12} />
+                    {exp.period}
+                  </div>
+                </div>
 
-//                 <div className="relative z-10">
-//                   <h3 className="text-xl font-bold text-stone-800 tracking-tight mb-1">
-//                     {exp.role}
-//                   </h3>
-//                   <p className="text-md font-medium text-amber-600 mb-6">
-//                     {exp.company}
-//                   </p>
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-bold text-stone-800 tracking-tight mb-1">
+                    {exp.role}
+                  </h3>
+                  <p className="text-md font-medium text-amber-600 mb-6">
+                    {exp.company}
+                  </p>
 
-//                   <ul className="space-y-3">
-//                     {exp.desc.map((item, i) => (
-//                       <li key={i} className="flex items-start gap-3 text-stone-800 text-sm leading-relaxed">
-//                         <ChevronRight size={16} className="text-amber-400 flex-shrink-0 mt-0.5" />
-//                         <span>{item}</span>
-//                       </li>
-//                     ))}
-//                   </ul>
-//                 </div>
-//               </div>
+                  <ul className="space-y-3">
+                    {exp.desc.map((item, i) => (
+                      <li key={i} className="flex items-start gap-3 text-stone-600 text-sm leading-relaxed">
+                        <ChevronRight size={16} className="text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
               
-//             </div>
-//           );
-//         })}
-//       </div>
-//     </div>
-//   );
-// };
-/* WORK PAGE - Replace only this component in your App.jsx */
-
-const WorkPage = () => (
-  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-    <SectionTitle title="Work Experience" subtitle="My professional journey and industrial contributions." />
-
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(3, 1fr)",
-        gridTemplateRows: "auto",
-        gap: "16px",
-      }}
-    >
-      {/* Card 1: Applied Materials — wide (2 cols) */}
-      <div
-        style={{ gridColumn: "span 2" }}
-        className="group relative bg-white rounded-3xl p-6 flex flex-col justify-between
-                   border border-amber-100 shadow-sm hover:shadow-lg hover:border-amber-300
-                   transition-all duration-300 hover:-translate-y-0.5 overflow-hidden"
-      >
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 to-amber-200 rounded-t-3xl" />
-        <div>
-          <div className="flex items-center justify-between mb-4">
-            <div className="p-2.5 bg-amber-50 rounded-2xl text-amber-500 group-hover:bg-amber-100 transition-colors">
-              <Briefcase size={20} />
             </div>
-            <span className="text-xs font-semibold tracking-wide text-amber-600 bg-amber-50 border border-amber-100 px-3 py-1 rounded-full">
-              Full Time
-            </span>
-          </div>
-          <h3 className="text-lg font-bold text-stone-900 leading-tight mb-1">Data Scientist</h3>
-          <p className="text-sm font-semibold text-amber-600 mb-3">Applied Materials | Allegis Group</p>
-          <div className="flex items-center gap-1.5 text-xs text-stone-400 mb-4">
-            <span>📅</span><span>Oct 2025 – Present</span>
-          </div>
-          <p className="text-sm text-stone-300 italic">Updating details soon…</p>
-        </div>
-        <div className="flex flex-wrap gap-1.5 mt-5">
-          {["ML", "Data Science", "Analytics"].map(t => (
-            <span key={t} className="text-xs bg-stone-100 text-stone-500 px-2.5 py-1 rounded-full">{t}</span>
-          ))}
-        </div>
-      </div>
-
-      {/* Card 2: IIT Madras — tall (2 rows, 1 col) */}
-      <div
-        style={{ gridRow: "span 1" }}
-        className="group relative bg-white rounded-3xl p-6 flex flex-col justify-between
-                   border border-amber-100 shadow-sm hover:shadow-lg hover:border-amber-300
-                   transition-all duration-300 hover:-translate-y-0.5 overflow-hidden"
-      >
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 to-amber-200 rounded-t-3xl" />
-        <div>
-          <div className="flex items-center justify-between mb-4">
-            <div className="p-2.5 bg-amber-50 rounded-2xl text-amber-500 group-hover:bg-amber-100 transition-colors">
-              <Briefcase size={20} />
-            </div>
-            <span className="text-xs font-semibold tracking-wide text-amber-600 bg-amber-50 border border-amber-100 px-3 py-1 rounded-full">
-              Part Time
-            </span>
-          </div>
-          <h3 className="text-lg font-bold text-stone-900 leading-tight mb-1">Teaching Assistant</h3>
-          <p className="text-sm font-semibold text-amber-600 mb-3">IIT Madras | NPTEL</p>
-          <div className="flex items-center gap-1.5 text-xs text-stone-400 mb-4">
-            <span>📅</span><span>June 2024 – June 2025</span>
-          </div>
-          <ul className="space-y-3">
-            {[
-              "Collaborated with IITM professors and delivered 10+ Hrs of Python/ML Lab sessions of Multivariate Statistics in class of B-Tech Dual Degree (Quant Finance), MS, PhD students.",
-              "Developed & Demonstrated comprehensive data science scripts & exercises on topics like clustering, regression, PCA, decision tree, etc that improved students’ performance gradually by 20%.",
-              // "Developed data science scripts covering clustering, regression, and PCA.",
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-2 text-sm text-stone-500 leading-relaxed">
-                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-amber-300 flex-shrink-0" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="flex flex-wrap gap-1.5 mt-5">
-          {["Python", "ML", "Teaching"].map(t => (
-            <span key={t} className="text-xs bg-stone-100 text-stone-500 px-2.5 py-1 rounded-full">{t}</span>
-          ))}
-        </div>
-      </div>
-
-      {/* Card 3: PCRI — normal (1 col) */}
-      <div
-        className="group relative bg-white rounded-3xl p-6 flex flex-col justify-between
-                   border border-amber-100 shadow-sm hover:shadow-lg hover:border-amber-300
-                   transition-all duration-300 hover:-translate-y-0.5 overflow-hidden"
-      >
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 to-amber-200 rounded-t-3xl" />
-        <div>
-          <div className="flex items-center justify-between mb-4">
-            <div className="p-2.5 bg-amber-50 rounded-2xl text-amber-500 group-hover:bg-amber-100 transition-colors">
-              <Briefcase size={20} />
-            </div>
-          </div>
-          <h3 className="text-lg font-bold text-stone-900 leading-tight mb-1">Business Manager</h3>
-          <p className="text-sm font-semibold text-amber-600 mb-3">PCRI</p>
-          <div className="flex items-center gap-1.5 text-xs text-stone-400 mb-4">
-            <span>📅</span><span>Aug 2022 – July 2023</span>
-          </div>
-          <p className="text-sm text-stone-300 italic">Updating details soon…</p>
-        </div>
-        <div className="flex flex-wrap gap-1.5 mt-5">
-          {["Management", "Business"].map(t => (
-            <span key={t} className="text-xs bg-stone-100 text-stone-500 px-2.5 py-1 rounded-full">{t}</span>
-          ))}
-        </div>
-      </div>
-
-      {/* Card 4: Varroc — wide (2 cols) */}
-      <div
-        style={{ gridColumn: "span 2" }}
-        className="group relative bg-white rounded-3xl p-6 flex flex-col justify-between
-                   border border-amber-100 shadow-sm hover:shadow-lg hover:border-amber-300
-                   transition-all duration-300 hover:-translate-y-0.5 overflow-hidden"
-      >
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 to-amber-200 rounded-t-3xl" />
-        <div>
-          <div className="flex items-center justify-between mb-4">
-            <div className="p-2.5 bg-amber-50 rounded-2xl text-amber-500 group-hover:bg-amber-100 transition-colors">
-              <Briefcase size={20} />
-            </div>
-            <span className="text-xs font-semibold tracking-wide text-amber-600 bg-amber-50 border border-amber-100 px-3 py-1 rounded-full">
-              Full Time
-            </span>
-          </div>
-          <h3 className="text-lg font-bold text-stone-900 leading-tight mb-1">Graduate Engineer Trainee (GET)</h3>
-          <p className="text-sm font-semibold text-amber-600 mb-3">Varroc Engineering</p>
-          <div className="flex items-center gap-1.5 text-xs text-stone-400 mb-4">
-            <span>📅</span><span>Aug 2021 – July 2022</span>
-          </div>
-          <ul className="space-y-2 grid grid-cols-2 gap-x-4">
-            {[
-              "Used DMAIC/Data analytics to optimize processes, cutting changeover time by 77%, saving 33.09hrs/month & Rs 4.86 lacs.",
-              "Conducted 120+ time/work studies and created data visualizations to identify manufacturing bottlenecks.",
-              "Built predictive models to forecast equipment failures, reducing unplanned downtime by 23%.",
-              "🏆 Winner of In-house KAIZEN Space Level Competition",
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-2 text-sm text-stone-500 leading-relaxed">
-                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-amber-300 flex-shrink-0" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="flex flex-wrap gap-1.5 mt-5">
-          {["DMAIC", "Analytics", "Lean", "Six Sigma"].map(t => (
-            <span key={t} className="text-xs bg-stone-100 text-stone-500 px-2.5 py-1 rounded-full">{t}</span>
-          ))}
-        </div>
+          );
+        })}
       </div>
     </div>
-  </div>
-);
+  );
+};
+
 
 /* Projects PAGE */
 
@@ -627,9 +458,6 @@ const ProjectsPage = () => (
           </h3>
           <p className="text-sm text-amber-600 mb-4 font-mono font-medium">{project.subtitle}</p>
           
-          {/* <p className="text-stone-600 text-sm mb-6 flex-grow leading-relaxed">
-            {project.desc}
-          </p> */}
           <div className="mb-6 flex-grow">
             {String(project.desc).split(';').filter(s => s.trim().length > 0).map((item, i) => (
               <div key={i} className="flex items-start gap-2 text-sm text-stone-500 leading-relaxed mb-2">
@@ -638,7 +466,6 @@ const ProjectsPage = () => (
               </div>
             ))}
           </div>
-
 
           <div className="flex flex-wrap gap-2 mt-auto">
             {project.tech.map(t => (
@@ -655,49 +482,97 @@ const ProjectsPage = () => (
 
 /* RESEARCH PAGE */
 
-const ResearchPage = () => (
-  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-    <SectionTitle title="Research" subtitle="Academic contributions and publications." />
-    
-    <div className="space-y-6">
-      {RESEARCH.map((item, idx) => (
-        <Card key={idx} className="border-l-4 border-l-amber-500">
-          <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-xs font-bold bg-amber-100 text-amber-700 px-2 py-1 rounded uppercase tracking-wide">
-                  {item.type}
-                </span>
-                <span className="text-xs text-stone-500">{item.status}</span>
-              </div>
-              <h3 className="text-xl font-bold text-stone-900 mb-3">{item.title}</h3>
-              <p className="text-stone-600 max-w-3xl mb-4">{item.desc}</p>
-              
-              {item.award && (
-                <div className="flex items-center gap-2 text-amber-700 text-sm bg-amber-100 px-3 py-2 rounded-lg inline-flex">
-                  <Award size={16} />
-                  <span>{item.award}</span>
-                </div>
-              )}
-            </div>
-            <a 
-              href={item.link}
-              className="flex items-center gap-2 text-sm font-medium text-amber-600 hover:text-amber-700 whitespace-nowrap"
-            >
-              Read More <ChevronRight size={16} />
-            </a>
-          </div>
-        </Card>
-      ))}
+const ResearchPage = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  return (
+    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <SectionTitle title="Research" subtitle="Academic contributions and publications." />
       
-      <div className="mt-12 bg-amber-50/50 rounded-xl p-8 border border-dashed border-amber-200 text-center">
-        <BookOpen size={40} className="mx-auto text-stone-400 mb-4" />
-        <h3 className="text-lg font-bold text-stone-800 mb-2">More Research Coming Soon</h3>
-        <p className="text-stone-500">Currently working on stochastic optimization frameworks.</p>
+      <div className="space-y-6">
+        {RESEARCH.map((item, idx) => (
+          <Card key={idx} className="border-l-4 border-l-amber-500">
+            <div className="flex flex-col md:flex-row justify-between gap-6">
+              <div className="flex-grow">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-xs font-bold bg-amber-100 text-amber-700 px-2 py-1 rounded uppercase tracking-wide">
+                    {item.type}
+                  </span>
+                  <span className="text-xs text-stone-500">{item.status}</span>
+                </div>
+                <h3 className="text-xl font-bold text-stone-900 mb-3">{item.title}</h3>
+                <p className="text-stone-600 max-w-3xl mb-4">{item.desc}</p>
+                
+                {item.award && (
+                  <div className="flex items-center gap-2 text-amber-700 text-sm bg-amber-100 px-3 py-2 rounded-lg inline-flex">
+                    <Award size={16} />
+                    <span>{item.award}</span>
+                  </div>
+                )}
+              </div>
+              
+              <div className="flex flex-col items-start md:items-end gap-3 flex-shrink-0 md:w-64">
+                <a 
+                  href={item.link}
+                  className="flex items-center gap-2 text-sm font-medium text-amber-600 hover:text-amber-700 whitespace-nowrap md:self-end"
+                >
+                  Read More <ChevronRight size={16} />
+                </a>
+                
+                {item.image && (
+                  <div 
+                    className="relative group cursor-pointer w-full h-36 rounded-xl overflow-hidden border border-stone-200 shadow-sm mt-1"
+                    onClick={() => setSelectedImage(item.image)}
+                  >
+                    <img 
+                      src={item.image} 
+                      alt={item.title} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
+                      <div className="bg-white/90 text-stone-900 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-sm">
+                        <Maximize size={16} />
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </Card>
+        ))}
+        
+        <div className="mt-12 bg-amber-50/50 rounded-xl p-8 border border-dashed border-amber-200 text-center">
+          <BookOpen size={40} className="mx-auto text-stone-400 mb-4" />
+          <h3 className="text-lg font-bold text-stone-800 mb-2">More Research Coming Soon</h3>
+          <p className="text-stone-500">Currently working on stochastic optimization frameworks.</p>
+        </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-stone-900/90 backdrop-blur-sm p-4 animate-in fade-in duration-200"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative max-w-5xl max-h-full w-full flex justify-center items-center">
+            <button 
+              className="absolute -top-12 right-0 md:-right-12 text-white/70 hover:text-white transition-colors"
+              onClick={() => setSelectedImage(null)}
+            >
+              <X size={32} />
+            </button>
+            <img 
+              src={selectedImage} 
+              alt="Enlarged view" 
+              className="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain cursor-default"
+              onClick={(e) => e.stopPropagation()} 
+            />
+          </div>
+        </div>
+      )}
     </div>
-  </div>
-);
+  );
+};
 
 /* E-RESUME PAGE */
 
