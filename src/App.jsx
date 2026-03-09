@@ -136,7 +136,7 @@ const RESEARCH = [
     status: "Ongoing",
     desc: "Developing a tool for integrating predictive and prescriptive models to tackle uncertainty in data, optimization & ML models.",
     link: "#",
-    image: "/Model_Image_SCLTool.png"
+    image: "./Model_Image_SCLTool.png"
   },
   {
     title: "ICSCM 2026 ",
@@ -145,7 +145,7 @@ const RESEARCH = [
     award: "Best Oral Presentation Award among presenters throughout the world",
     desc: "Showcased state-of-the-art tool for machine learning assisted uncertainty-aware optimization.",
     link: "#",
-    image: "/icscm_award.jpeg"
+    image: "./icscm_award.jpeg"
   },
   {
     title: "28th International Society of Operations Management",
@@ -154,7 +154,7 @@ const RESEARCH = [
     // award: "2nd Prize - AIRSS 2025 in ML & Optimization Domain",
     desc: "Presented 2 Conference Papers -> 'Constraint learning to model user experience in electric vehicle charging ecosystem' & 'SCLTool: Stochastic Constraint Learning Framework for Prescriptive Models'",
     link: "https://www.linkedin.com/posts/vivek-karna_research-iitmadras-iimnagpur-activity-7410207132358180864-ZLsl?utm_source=share&utm_medium=member_desktop&rcm=ACoAACbLSWgBr91C7c7xo6XNFiA8UFFagULlux4",
-    image: "/som_1_cert.jpeg"
+    image: "./som_1_cert.jpeg"
   },
   {
     title: "All India Research Scholar Summit",
@@ -163,7 +163,7 @@ const RESEARCH = [
     award: "2nd Prize - AIRSS 2025 in ML & Optimization Domain",
     desc: "Showcased state-of-the-art tool for machine learning assisted uncertainty-aware optimization.",
     link: "https://www.linkedin.com/posts/vivek-karna_researchmilestone-optimization-machinelearning-activity-7313193636945350656-tvAo?utm_source=share&utm_medium=member_desktop&rcm=ACoAACbLSWgBr91C7c7xo6XNFiA8UFFagULlux4",
-    image: "/airss_award.jpeg"
+    image: "./airss_award.jpeg"
   },
   {
     title: "Large Scale Optimization Workshop",
@@ -172,7 +172,7 @@ const RESEARCH = [
     // award: "2nd Prize - AIRSS 2025 in ML & Optimization Domain",
     desc: "Took a deep dive into hardcore mathematical optimization that powers real-world solutions.",
     link: "https://www.linkedin.com/posts/vivek-karna_iim-iit-management-activity-7343171011099488256-V2GA?utm_source=share&utm_medium=member_desktop&rcm=ACoAACbLSWgBr91C7c7xo6XNFiA8UFFagULlux4",
-    image: "/lso_workshop.jpeg"
+    image: "./lso_workshop.jpeg"
   }
 ];
 
