@@ -80,14 +80,14 @@ const EDUCATION = [
   {
     degree: "M.S (Research) in Operations Research",
     school: "IIT Madras",
-    year: "2023 - Present",
-    desc: "Focus on Stochastic Constraint Learning & Prescriptive Analytics."
+    year: "2023 - 2026",
+    desc: "Integrated machine learning models with optimization models under uncertainty"
   },
   {
     degree: "B.Tech in Production & Industrial Engineering",
     school: "VIT Vellore",
     year: "2017 - 2021",
-    desc: "Graduated with honors. Active member of technical societies."
+    desc: "Understood what it means to be an engineer, Active member of technical societies."
   }
 ];
 

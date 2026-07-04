@@ -11,7 +11,7 @@ I love to look into combinatorial problems where we must find a way to solve the
 - Delivered __10+ Hrs__ of Python/Machine Learning Lab sessions of Multivariate Statistics in class of B-Tech DD (Quant Finance), MS, PhD students.
 - Developed comprehensive data science scripts & exercises on topics like clustering, regression, PCA, decision tree, etc that improved students performance gradually by 20%.
 
-#### __Graduate Engineer Trainee (Varroc Engineering Pvt. Ltd.)__ 
+#### __Graduate Engineer (Varroc Engineering Pvt. Ltd.)__ 
 - Implemented data-driven process optimization using Six Sigma (DMAIC) methodology that reduced changeover time by __77%__, saving __33.09 hrs/m__ and generating __Rs 4.86 lakhs__ in annual savings.
 - Designed and executed __120+__ time and work studies, creating interactive data visualizations that identified critical bottlenecks in manufacturing processes.
 - Built predictive models to forecast equipment failures, reducing unplanned downtime by __23%__ and improving overall equipment effectiveness.
