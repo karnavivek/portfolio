@@ -60,7 +60,7 @@ const EXPERIENCE = [
     company: "PCRI",
     period: "March 2023 - June 2023",
     desc: [
-      "...updating details soon..."
+      "Led a team of 4 in developing data-driven frameworks connecting audit performance, sustainability metrics, & client outcomes, strengthening consultancy value proposition and client engagement."
     ]
   },
   {
