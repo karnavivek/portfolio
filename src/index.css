@@ -1,20 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light dark;
 }
 
 * {
   box-sizing: border-box;
 }
 
-body {
+html,
+body,
+#root {
   margin: 0;
+  min-height: 100%;
+  background-color: #fffbeb;
+  color: #1c1917;
+}
+
+html[data-theme="dark"],
+html[data-theme="dark"] body,
+html[data-theme="dark"] #root {
+  color-scheme: dark;
+  background-color: #000;
+  color: #fff;
+}
+
+html[data-theme="light"],
+html[data-theme="light"] body,
+html[data-theme="light"] #root {
+  color-scheme: light;
+  background-color: #fffbeb;
+  color: #1c1917;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+body {
   font-family: 'Sora', 'Space Grotesk', system-ui, sans-serif;
+}
+
+#root {
+  min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -24,4 +55,701 @@ h1, h2, h3, h4, h5, h6 {
 img {
   max-width: 100%;
   display: block;
+}
+/* Toggleable portfolio themes */
+.portfolio-shell {
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
+  min-height: 100vh;
+  overflow-y: auto;
+  /* transform: scale(0.92); */
+  transform-origin: top center;
+  /* width:108.7%; */
+}
+/* .portfolio-shell{
+    transform: scale(0.92);
+    transform-origin: top center;
+    width:108.7%;
+} */
+.portfolio-shell .app-main {
+  height: calc(100vh - 3.25rem);
+  min-height: 0 !important;
+  overflow-y: auto;
+  padding-top: 5rem !important;
+  padding-bottom: 0.75rem !important;
+}
+
+.portfolio-shell > footer {
+  height: 3.25rem;
+  overflow: hidden;
+  padding-top: 0.45rem !important;
+  padding-bottom: 0.45rem !important;
+}
+
+.portfolio-shell > footer .mt-4 {
+  margin-top: 0.25rem !important;
+}
+
+.portfolio-shell > footer p {
+  font-size: 0.72rem;
+  line-height: 1;
+}
+
+.page-panel {
+  height: 100%;
+  min-height: 0 !important;
+  overflow: visible;
+}
+
+.section-title {
+  margin-bottom: 1rem !important;
+}
+
+.section-title h2 {
+  margin-bottom: 0.35rem !important;
+  font-size: clamp(1.35rem, 2vw, 1.85rem) !important;
+  line-height: 1.1;
+}
+
+.section-title p {
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+.portfolio-card {
+  padding: 1rem !important;
+  border-radius: 0.9rem !important;
+}
+
+.home-page {
+  min-height: 0 !important;
+}
+
+.home-page .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 1rem !important;
+}
+
+.home-page h1 {
+  font-size: clamp(2.25rem, 4.3vw, 4.75rem) !important;
+}
+
+.home-page .pt-8 {
+  padding-top: 0.75rem !important;
+}
+
+.home-page img[alt="Vivek Karna"] {
+  width: clamp(11rem, 19vw, 15rem) !important;
+  height: clamp(11rem, 19vw, 15rem) !important;
+}
+
+.about-grid,
+.work-grid,
+.projects-grid,
+.research-grid {
+    min-height: auto;
+    height: auto;
+}
+
+.about-grid {
+  gap: 1.25rem !important;
+}
+
+.about-page .space-y-8 > :not([hidden]) ~ :not([hidden]),
+.about-page .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 0.75rem !important;
+}
+
+.about-page p,
+.about-page li {
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.about-page h3 {
+  margin-bottom: 0.75rem !important;
+  font-size: 1.05rem !important;
+}
+
+.about-page h4 {
+  font-size: 0.96rem !important;
+}
+
+.about-page .flex-wrap {
+  gap: 0.35rem !important;
+}
+
+.about-page .rounded-full,
+.projects-page .rounded-full {
+  padding: 0.22rem 0.55rem !important;
+  font-size: 0.68rem !important;
+}
+
+.work-grid {
+  gap: 0.85rem !important;
+  grid-auto-rows: minmax(0, 1fr) !important;
+}
+
+.work-grid > div {
+  padding: 1rem !important;
+  border-radius: 1.1rem !important;
+}
+
+.work-grid h3 {
+  font-size: clamp(1rem, 1.6vw, 1.35rem) !important;
+  line-height: 1.15;
+}
+
+.work-grid p,
+.work-grid li {
+  font-size: 0.78rem !important;
+  line-height: 1.35 !important;
+}
+
+.work-grid .mb-6 {
+  margin-bottom: 0.75rem !important;
+}
+
+.work-grid .space-y-3 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 0.45rem !important;
+}
+
+.projects-grid {
+  gap: 0.85rem !important;
+  grid-auto-rows: minmax(0, 1fr);
+}
+
+.projects-grid .portfolio-card {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.projects-grid h3 {
+  font-size: 1rem !important;
+  line-height: 1.15;
+}
+
+.projects-grid p,
+.projects-grid .text-sm {
+  font-size: 0.72rem !important;
+  line-height: 1.3 !important;
+}
+
+.projects-grid .mb-4 {
+  margin-bottom: 0.6rem !important;
+}
+
+.projects-grid .mb-6 {
+  margin-bottom: 0.7rem !important;
+}
+
+.projects-grid .p-3 {
+  padding: 0.55rem !important;
+}
+
+.projects-grid .flex-grow {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.projects-grid .gap-2 {
+  gap: 0.35rem !important;
+}
+
+.projects-grid .mt-auto span {
+  font-size: 0.65rem !important;
+  padding: 0.16rem 0.38rem !important;
+}
+
+.research-grid {
+  gap: 0.85rem !important;
+  grid-auto-rows: minmax(0, 1fr);
+}
+.group:hover img{
+    transform:scale(1.08);
+}
+
+.group{
+    transition:all .45s ease;
+}
+
+.group:hover{
+    transform:translateY(-10px);
+}
+
+.research-grid .portfolio-card,
+.research-coming-soon {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.research-grid .portfolio-card > div {
+  height: 100%;
+  gap: 0.65rem !important;
+}
+
+.research-grid h3 {
+  font-size: 0.98rem !important;
+  line-height: 1.16;
+  margin-bottom: 0.45rem !important;
+}
+
+.research-grid p,
+.research-grid .text-xs,
+.research-grid .text-sm {
+  font-size: 0.74rem !important;
+  line-height: 1.3 !important;
+}
+
+.research-grid .mb-2 {
+  margin-bottom: 0.35rem !important;
+}
+
+.research-grid .mb-3,
+.research-grid .mb-4 {
+  margin-bottom: 0.5rem !important;
+}
+
+.research-grid .md\:w-64 {
+  width: 100% !important;
+}
+
+.research-grid .h-36 {
+  height: clamp(5.75rem, 13vh, 7.75rem) !important;
+}
+
+.research-grid .gap-3 {
+  gap: 0.45rem !important;
+}
+
+.research-coming-soon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem !important;
+}
+
+.research-coming-soon svg {
+  margin-bottom: 0.5rem !important;
+}
+
+.research-coming-soon h3 {
+  font-size: 1rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.research-page .fixed img[alt="Enlarged view"] {
+  max-width: calc(100vw - 2rem) !important;
+  max-height: calc(100vh - 5rem) !important;
+}
+
+.research-page .fixed.inset-0 {
+  overflow: hidden !important;
+}
+
+.resume-page {
+  max-width: 76rem !important;
+}
+
+.resume-page > .flex {
+  margin-bottom: 0.75rem !important;
+}
+
+.resume-page h2 {
+  font-size: 1.6rem !important;
+}
+
+.resume-page > .flex p {
+  font-size: 0.82rem !important;
+}
+
+.resume-card {
+  height: calc(100% - 4.25rem);
+  min-height: 0;
+}
+
+.resume-card > div {
+  padding: 1rem !important;
+}
+
+.resume-card .space-y-6 > :not([hidden]) ~ :not([hidden]),
+.resume-card .space-y-2 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 0.5rem !important;
+}
+
+.resume-card .mb-8 {
+  margin-bottom: 0.75rem !important;
+}
+
+.resume-card .mb-6 {
+  margin-bottom: 0.6rem !important;
+}
+
+.resume-card h3 {
+  font-size: 1.2rem !important;
+}
+
+.resume-card h4 {
+  font-size: 0.78rem !important;
+  margin-bottom: 0.45rem !important;
+}
+
+.resume-card h5 {
+  font-size: 0.92rem !important;
+  line-height: 1.15;
+}
+
+.resume-card p,
+.resume-card li,
+.resume-card span {
+  font-size: 0.72rem !important;
+  line-height: 1.32 !important;
+}
+
+.resume-card .space-y-6 {
+  gap: 0 !important;
+}
+
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-page .text-center {
+  margin-bottom: 1rem !important;
+}
+
+.contact-page .section-title {
+  margin-bottom: 0.5rem !important;
+}
+
+.contact-page .portfolio-card {
+  padding: 1.25rem !important;
+}
+
+@media (min-width: 1180px) {
+  .projects-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+
+  .research-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-height: 760px) {
+  .portfolio-shell .app-main {
+    padding-top: 4.5rem !important;
+  }
+
+  .section-title {
+    margin-bottom: 0.7rem !important;
+  }
+
+  .portfolio-card {
+    padding: 0.82rem !important;
+  }
+
+  .home-page img[alt="Vivek Karna"] {
+    width: 10.25rem !important;
+    height: 10.25rem !important;
+  }
+
+  .research-grid .h-36 {
+    height: 5.5rem !important;
+  }
+
+  .resume-card p,
+  .resume-card li,
+  .resume-card span,
+  .projects-grid p,
+  .projects-grid .text-sm,
+  .research-grid p,
+  .research-grid .text-xs,
+  .research-grid .text-sm {
+    font-size: 0.68rem !important;
+    line-height: 1.24 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .portfolio-shell {
+    height: auto;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .portfolio-shell .app-main {
+    height: auto;
+    min-height: calc(100vh - 3.25rem) !important;
+    overflow: visible;
+    padding-top: 5rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  .portfolio-shell > footer {
+    height: auto;
+  }
+
+  .page-panel {
+    height: auto;
+    overflow: visible;
+  }
+
+  .about-grid,
+  .work-grid,
+  .projects-grid,
+  .research-grid,
+  .resume-card {
+    height: auto;
+  }
+}
+
+.dark-portfolio {
+  background: #020403 !important;
+  color: #e5edf6 !important;
+}
+
+.light-portfolio {
+  background: #fffbeb !important;
+  color: #1c1917 !important;
+}
+
+.portfolio-shell::before,
+.portfolio-shell::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dark-portfolio::before {
+  background:
+    radial-gradient(1000px circle at 12% -8%, rgba(34, 211, 238, 0.22), transparent 48%),
+    radial-gradient(900px circle at 88% 4%, rgba(245, 158, 11, 0.16), transparent 46%),
+    radial-gradient(1100px circle at 50% 108%, rgba(16, 185, 129, 0.12), transparent 52%),
+    linear-gradient(135deg, #000 0%, #020617 42%, #030712 100%);
+  animation: atmosphere-shift 18s ease-in-out infinite alternate;
+}
+
+.dark-portfolio::after {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.065) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.055) 1px, transparent 1px),
+    repeating-linear-gradient(105deg, transparent 0 13%, rgba(34, 211, 238, 0.065) 13.4%, transparent 14.5%, transparent 31%);
+  background-size: 72px 72px, 72px 72px, 260px 260px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.56) 62%, transparent 100%);
+  animation: grid-drift 24s linear infinite, data-sweep 13s ease-in-out infinite alternate;
+}
+
+.light-portfolio::before {
+  background:
+    radial-gradient(900px circle at 10% -10%, rgba(245, 158, 11, 0.2), transparent 48%),
+    radial-gradient(850px circle at 92% 0%, rgba(34, 211, 238, 0.14), transparent 42%),
+    radial-gradient(900px circle at 52% 112%, rgba(16, 185, 129, 0.1), transparent 50%),
+    linear-gradient(135deg, #fff7ed 0%, #fffbeb 48%, #f8fafc 100%);
+  animation: atmosphere-shift 20s ease-in-out infinite alternate;
+}
+
+.light-portfolio::after {
+  background-image:
+    linear-gradient(rgba(120, 113, 108, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 113, 108, 0.07) 1px, transparent 1px),
+    repeating-linear-gradient(105deg, transparent 0 15%, rgba(14, 165, 233, 0.075) 15.4%, transparent 16.5%, transparent 34%);
+  background-size: 76px 76px, 76px 76px, 280px 280px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.34) 58%, transparent 100%);
+  animation: grid-drift 30s linear infinite;
+}
+
+.portfolio-shell > main,
+.portfolio-shell > footer {
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio-shell > nav {
+  z-index: 50;
+}
+
+.dark-portfolio nav {
+  background: rgba(2, 6, 23, 0.76) !important;
+  border-color: rgba(148, 163, 184, 0.16) !important;
+  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.34);
+}
+
+.dark-portfolio footer {
+  background: rgba(2, 6, 23, 0.68) !important;
+  border-color: rgba(148, 163, 184, 0.16) !important;
+}
+
+.theme-toggle {
+  backdrop-filter: blur(16px);
+}
+
+.light-portfolio .theme-toggle:hover {
+  border-color: rgba(245, 158, 11, 0.55) !important;
+  color: #b45309 !important;
+  box-shadow: 0 12px 30px rgba(245, 158, 11, 0.16) !important;
+}
+
+.dark-portfolio .animate-in {
+  animation: content-rise 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.dark-portfolio [class*="bg-amber-50"],
+.dark-portfolio [class*="bg-white"],
+.dark-portfolio [class*="bg-stone-50"],
+.dark-portfolio [class*="bg-stone-100"],
+.dark-portfolio [class*="bg-stone-200"],
+.dark-portfolio.bg-amber-50 {
+  background-color: rgba(2, 6, 23, 0.66) !important;
+}
+
+.dark-portfolio [class*="bg-white"],
+.dark-portfolio [class*="bg-stone-50"] {
+  background-image: linear-gradient(145deg, rgba(15, 23, 42, 0.88), rgba(2, 6, 23, 0.74)) !important;
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.055) !important;
+  backdrop-filter: blur(18px);
+}
+
+.dark-portfolio [class*="bg-amber-100"],
+.dark-portfolio [class*="bg-amber-600/10"] {
+  background-color: rgba(34, 211, 238, 0.105) !important;
+}
+
+.dark-portfolio [class*="bg-amber-500"],
+.dark-portfolio [class*="hover:bg-amber-600"]:hover {
+  background-image: linear-gradient(135deg, #22d3ee 0%, #38bdf8 45%, #f59e0b 100%) !important;
+  background-color: transparent !important;
+  color: #020617 !important;
+  box-shadow: 0 18px 42px rgba(34, 211, 238, 0.18) !important;
+}
+
+.dark-portfolio [class*="text-stone-900"],
+.dark-portfolio [class*="text-stone-800"] {
+  color: #f8fafc !important;
+}
+
+.dark-portfolio [class*="text-stone-700"],
+.dark-portfolio [class*="text-stone-600"] {
+  color: #cbd5e1 !important;
+}
+
+.dark-portfolio [class*="text-stone-500"],
+.dark-portfolio [class*="text-stone-400"] {
+  color: #94a3b8 !important;
+}
+
+.dark-portfolio [class*="text-amber-600"] {
+  color: #22d3ee !important;
+}
+
+.dark-portfolio [class*="text-amber-700"],
+.dark-portfolio [class*="text-amber-800"] {
+  color: #fbbf24 !important;
+}
+
+.dark-portfolio [class*="border-amber"],
+.dark-portfolio [class*="border-stone"],
+.dark-portfolio [class*="border-white"] {
+  border-color: rgba(148, 163, 184, 0.18) !important;
+}
+
+.dark-portfolio [class*="border-l-amber"] {
+  border-left-color: rgba(34, 211, 238, 0.72) !important;
+}
+
+.dark-portfolio [class*="shadow-amber"] {
+  --tw-shadow-color: rgba(34, 211, 238, 0.28) !important;
+}
+
+.dark-portfolio button,
+.dark-portfolio a,
+.dark-portfolio input,
+.dark-portfolio textarea {
+  outline-color: rgba(34, 211, 238, 0.44);
+}
+
+.dark-portfolio input,
+.dark-portfolio textarea {
+  caret-color: #22d3ee;
+}
+
+.dark-portfolio input::placeholder,
+.dark-portfolio textarea::placeholder {
+  color: rgba(148, 163, 184, 0.76);
+}
+
+.dark-portfolio button:not([class*="bg-amber-500"]):hover,
+.dark-portfolio a:not([class*="bg-amber-500"]):hover {
+  color: #67e8f9 !important;
+}
+
+.dark-portfolio .theme-toggle {
+  background: rgba(15, 23, 42, 0.78) !important;
+  border-color: rgba(34, 211, 238, 0.24) !important;
+  color: #fbbf24 !important;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark-portfolio .theme-toggle:hover {
+  color: #67e8f9 !important;
+  border-color: rgba(103, 232, 249, 0.5) !important;
+}
+
+.dark-portfolio .bg-gradient-to-r {
+  background-image: linear-gradient(90deg, #f8fafc 0%, #67e8f9 38%, #fbbf24 74%, #f8fafc 100%) !important;
+  background-size: 220% auto;
+  animation: title-flow 7s ease-in-out infinite alternate;
+}
+
+.dark-portfolio img[alt="Vivek Karna"] {
+  border-color: rgba(226, 232, 240, 0.2) !important;
+  box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.26), 0 28px 85px rgba(0, 0, 0, 0.45), 0 0 60px rgba(34, 211, 238, 0.16) !important;
+}
+
+.dark-portfolio .group:hover {
+  transform: translateY(-3px);
+}
+
+.dark-portfolio ::selection {
+  background: #22d3ee;
+  color: #020617;
+}
+
+@keyframes atmosphere-shift {
+  0% { filter: hue-rotate(0deg) saturate(1); transform: scale(1); }
+  100% { filter: hue-rotate(8deg) saturate(1.14); transform: scale(1.025); }
+}
+
+@keyframes grid-drift {
+  from { background-position: 0 0, 0 0, 0 0; }
+  to { background-position: 72px 72px, -72px 72px, 260px -260px; }
+}
+
+@keyframes data-sweep {
+  from { opacity: 0.46; }
+  to { opacity: 0.86; }
+}
+
+@keyframes title-flow {
+  from { background-position: 0% center; }
+  to { background-position: 100% center; }
+}
+
+@keyframes content-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-shell::before,
+  .portfolio-shell::after,
+  .portfolio-shell .animate-in,
+  .portfolio-shell .bg-gradient-to-r {
+    animation: none !important;
+  }
 }
