@@ -39,10 +39,10 @@ const SKILLS = {
 const EXPERIENCE = [
   {
     role: "Data Scientist - Full Time",
-    company: "Applied Materials | Allegis Group",
+    company: "Applied Materials | TekSystems",
     period: "Oct 2025 - Present",
     desc: [
-      "...updating details soon..."
+      "More details about this can be given upon contact :)"
     ]
   },
   {
@@ -51,20 +51,23 @@ const EXPERIENCE = [
     period: "June 2024 - June 2025",
     desc: [
       "Collaborated with professors in data science/operations research courses.",
-      "Delivered 10+ Hrs of Python/ML Lab sessions for B-Tech & PhD students.",
+      "Delivered 10+ Hrs of Python/ML Lab sessions for B-Tech Quant & PhD students.",
       "Developed comprehensive data science scripts covering clustering, regression, and PCA."
     ]
   },
   {
-    role: "Business Manager",
+    role: "Business Manager (Analytics)",
     company: "PCRI",
     period: "March 2023 - June 2023",
     desc: [
-      "Led a team of 4 in developing data-driven frameworks connecting audit performance, sustainability metrics, & client outcomes, strengthening consultancy value proposition and client engagement."
+      "Led a team of 4 in developing data-driven frameworks connecting audit performance, sustainability metrics, & client outcomes, strengthening consultancy value proposition and client engagement.",
+      "Analyzed historical demand data to identify underutilized test categories, driving bundling recommendations that increased cross-selling by 34% in 3 months.",
+"Built analytical models linking material performance metrics to shelf-life and logistics risks across testing datasets, enabling more informed client decision-making. "
+    
     ]
   },
   {
-    role: "Graduate Engineer Trainee (GET) - Full Time",
+    role: "Graduate Engineer (GET) - Full Time",
     company: "Varroc Engineering",
     period: "Aug 2021 - July 2022",
     desc: [
@@ -78,20 +81,27 @@ const EXPERIENCE = [
 
 const EDUCATION = [
   {
-    degree: "M.S (Research) in Operations Research",
+    degree: "MS (Research) in Operations Research",
     school: "IIT Madras",
     year: "2023 - 2026",
-    desc: "Integrated machine learning models with optimization models under uncertainty"
+    desc: "Understood what it means to add value to humanity through engineering"
   },
   {
-    degree: "B.Tech in Production & Industrial Engineering",
+    degree: "BTech in Production & Industrial Engineering",
     school: "VIT Vellore",
     year: "2017 - 2021",
-    desc: "Understood what it means to be an engineer, Active member of technical societies."
+    desc: "Understood what it means to be an engineer."
   }
 ];
 
 const PROJECTS = [
+    {
+    title: "SCLTool",
+    subtitle: "SOTA ML-Optimization Integration Python Package",
+    tech: ["Python", "PyTorch", "Scikit-learn", "Gurobi"],
+    desc: "Designed a python package to embed machine learning models (LR, DT, GBM, NN, BLR etc.) as constraints into optimization models under uncertainty using Bayesian Linear Regression & Stochastic Models; Awarded 2nd Prize at All India Research Scholar Summit 2025 in Optimization & Machine Learning domain.; Awarded Best Presentation Award at ICSCM 2026, Tokyo, Japan.",
+    link: "https://github.com/karnavivek/SCLTool"
+  },
   {
     title: "BLINKTO",
     subtitle: "Food Demand Forecasting",
@@ -172,7 +182,7 @@ const RESEARCH = [
     status: "Ongoing",
     desc: "Developing a tool for integrating predictive and prescriptive models to tackle uncertainty in data, optimization & ML models.",
     link: "#",
-    image: "/assets/img/SCLTool_2.jpeg"
+    image: "./assets/img/SCLTool_2.jpeg"
   }
 ];
 
@@ -244,7 +254,7 @@ const HomePage = ({ setPage }) => (
         
         {/* Made font smaller as requested */}
         <h1 className="text-4xl md:text-5xl font-bold text-stone-900 tracking-tight leading-tight">
-          Hey, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-orange-500">{PERSONAL_INFO.name}</span>
+          Namaste, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-orange-500">{PERSONAL_INFO.name}</span>
         </h1>
         
         <p className="text-lg md:text-xl text-stone-600 leading-relaxed">
@@ -305,9 +315,16 @@ const AboutPage = () => (
       <div className="space-y-8">
         <div className="prose prose-stone">
           <p className="text-stone-600 leading-relaxed">
-            I have worked in various domains over 3+ years, and learned various ways to solve that 'one' problem, but the ways of a data scientist & an operations researcher often feels home. 
-    I like to solve industry problems with data driven insights, often merging both worlds of predictive and prescriptive models.
+          I have 5+ years of integrated industry and research experience, and together they have fundamentally shaped the way I solve problems. 
+          <p>
+          Research at IIT Madras taught me to ask "why", to challenge assumptions, embrace uncertainty, and search for principled solutions. 
           </p>
+          Industry taught me to ask "how", how to deliver results under constraints, move quickly, and build solutions that create real business impact. 
+          This balance between curiosity and execution has become the foundation of my work. <p>By combining Data Science, Machine Learning, and Optimization, 
+          I have tackled problems in semiconductor manufacturing, industrial analytics, consultancy, supply chain optimization, and enterprise AI. 
+          Whether developing Bayesian optimization frameworks, building production-grade machine learning systems, or designing intelligent decision-support tools, 
+          I enjoy transforming complex data into solutions that are both scientifically rigorous and practically valuable. </p>
+          I believe the best technology doesn't just make accurate predictions, it empowers better decisions.</p>
         </div>
 
         <div>
@@ -506,7 +523,7 @@ const ResearchPage = () => {
   {RESEARCH.map((item, idx) => (
     <div
       key={idx}
-      className="group bg-white dark:bg-slate-900/60 backdrop-blur-xl rounded-3xl overflow-hidden border border-stone-200 dark:border-slate-700 shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-2 transition-all duration-500 flex flex-col"
+      className="group bg-amber hover:bg-amber-900/60 backdrop-blur-xl rounded-3xl overflow-hidden border border-stone-200 hover:border-amber-700 shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-2 transition-all duration-500 flex flex-col"
     >
 
       {/* IMAGE */}
@@ -545,7 +562,7 @@ const ResearchPage = () => {
 
           </span>
 
-          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-stone-100 dark:bg-slate-800 text-stone-600 dark:text-slate-300">
+          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-stone-100 hover:bg-white-800 text-stone-600 hover:text-slate-300">
 
             {item.status}
 
@@ -553,13 +570,13 @@ const ResearchPage = () => {
 
         </div>
 
-        <h3 className="text-2xl font-bold text-stone-900 dark:text-white mb-3">
+        <h3 className="text-xl font-bold text-stone-900 mb-2">
 
           {item.title}
 
         </h3>
 
-        <p className="text-stone-600 dark:text-slate-300 leading-relaxed text-sm flex-grow">
+        <p className="mb-6 flex-grow">
 
           {item.desc}
 
@@ -567,7 +584,7 @@ const ResearchPage = () => {
 
         {item.award && (
 
-          <div className="mt-6 inline-flex items-center gap-2 bg-yellow-400/10 border border-yellow-500/20 text-yellow-400 rounded-xl px-4 py-3">
+          <div className="mt-6 inline-flex items-center gap-2 bg-green-400/10 border border-green-500/20 text-green-400 rounded-xl px-4 py-3">
 
             <Award size={18} />
 
@@ -714,61 +731,31 @@ const ContactPage = () => (
   <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-2xl mx-auto">
     <div className="text-center mb-12">
       <SectionTitle title="Get In Touch" />
-      <p className="text-stone-500 -mt-8">
-        Currently open to new opportunities and collaborations. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+      <div style={{display:'flex', flexDirection: 'column', gap: '30px'}}>
+
+      
+      <p className="text-stone-1000 mt-8">
+        Open to new opportunities and collaborations. Just drop a hi...
       </p>
-    </div>
-    
-    <Card className="p-8 md:p-12">
-      <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-stone-600">Name</label>
-            <input 
-              type="text" 
-              className="w-full bg-stone-50 border border-stone-200 rounded-lg px-4 py-3 text-stone-900 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
-              placeholder="Your Name"
-            />
-          </div>
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-stone-600">Email</label>
-            <input 
-              type="email" 
-              className="w-full bg-stone-50 border border-stone-200 rounded-lg px-4 py-3 text-stone-900 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
-              placeholder="hello@example.com"
-            />
-          </div>
-        </div>
-        
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-stone-600">Message</label>
-          <textarea 
-            rows={5}
-            className="w-full bg-stone-50 border border-stone-200 rounded-lg px-4 py-3 text-stone-900 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all resize-none"
-            placeholder="Let's build something together..."
-          />
-        </div>
-
-        <button className="w-full bg-amber-500 text-white font-bold py-4 rounded-lg hover:bg-amber-600 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20">
-          <Mail size={20} /> Send Message
-        </button>
-      </form>
-
-      <div className="mt-12 flex justify-center gap-8">
+      <p className="text-stone-500 mt-8">
+        karnavivek@gmail.com | +91 9182361825
+      </p>
+      <div className="mt-12 flex justify-center gap-14">
         <a href={PERSONAL_INFO.social.linkedin} className="text-stone-400 hover:text-amber-600 transition-colors">
           <Linkedin size={24} />
         </a>
         <a href={PERSONAL_INFO.social.github} className="text-stone-400 hover:text-amber-600 transition-colors">
           <Github size={24} />
         </a>
-        <a href={PERSONAL_INFO.social.youtube} className="text-stone-400 hover:text-red-500 transition-colors">
+        <a href={PERSONAL_INFO.social.youtube} className="text-stone-400 hover:text-amber-500 transition-colors">
           <Youtube size={24} />
         </a>
         <a href={`mailto:${PERSONAL_INFO.email}`} className="text-stone-400 hover:text-amber-600 transition-colors">
           <Mail size={24} />
         </a>
+        </div>
       </div>
-    </Card>
+    </div>
   </div>
 );
 
