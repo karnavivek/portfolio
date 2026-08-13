@@ -126,16 +126,16 @@ const PROJECTS = [
   {
     title: "OneClickML",
     subtitle: "AutoML Library",
-    tech: ["Python", "Scikit-learn", "GridSearchCV"],
+    tech: ["Python", "Scikit-learn", "GridSearchCV", "Optuna"],
     desc: "Architected and developed OneClickML, a tool to streamline the machine learning workflow by automatically training and evaluating multiple regression and classification models in series;Reduced model selection time from hours to minutes by creating a framework that instantly benchmarks algorithms like Linear Regression, SVMs, MLP, Decision Trees and Gradient Boosting against each other on a given dataset;Delivered a key best model recommendation feature that programmatically identifies the algorithm with the lowest Mean Squared Error and other metrics, empowering users to deploy the most accurate model with minimal manual intervention.",
     link: "https://github.com/karnavivek/OneClickML"
   },
   {
-    title: "Updating....",
-    subtitle: "RAG Project",
-    tech: ["Python", "PyTorch", "RunPod", "Transformers"],
-    desc: "Updating RAG Project Soon",
-    link: "https://github.com/karnavivek/askmyprofession"
+    title: "masteRAG",
+    subtitle: "GenAI Production Grade Advanced RAG Architecture",
+    tech: ["Python", "RAG", "Qdrant", "LangGraph", "Docker", "Docling", "Tavily"],
+    desc: "Built an RAG platform by integrating Hybrid Search, HyDE, CRAG, Self-RAG, Re-ranking for knowledge retrieval;Investigated retrieval robustness on a 95% noise / 5% signal knowledge base, & demonstrated the effectiveness of advanced RAG by improving retrieval quality by up to 39% and increasing faithfulness, recall and answer relevancy by 12-18% compared to baseline RAG. ",
+    link: "soon..."
   }
 ];
 
