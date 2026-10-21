@@ -1,905 +1,677 @@
-﻿import React, { useState, useEffect } from 'react';
-import { 
-  Menu, X, Linkedin, Github, Mail, 
-  Download, ExternalLink, ChevronRight, 
-  BookOpen, Code, Cpu, Award, Terminal,
-  Youtube, Briefcase, GraduationCap,
-  MapPin, Database, Wrench, Calendar, Maximize, Moon, Sun
+﻿import React, { useState, useEffect, useRef, useCallback } from 'react';
+import {
+  Menu, X, Linkedin, Github, Mail, Youtube, Download, ArrowUpRight, ArrowRight,
+  Award, Sun, Moon, Sparkles, Play, Maximize2, MapPin, BookOpen, Plane, Copy
 } from 'lucide-react';
+import {
+  PERSONAL_INFO, NOW, ABOUT, SKILLS, EDUCATION, EXPERIENCE, PROJECTS, RESEARCH
+} from './data.js';
+import { BLOGS, TRIPS, VIDEOS } from './personal.js';
 
-/**
- * DATA CONSTANTS
-*/
+const SECTIONS = [
+  { id: 'about', label: 'About' },
+  { id: 'work', label: 'Work' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'research', label: 'Research' },
+  { id: 'connect', label: 'Connect' }
+];
 
-const PERSONAL_INFO = {
-  name: "Vivek Karna",
-  titles: ["Data Scientist", "Operations Researcher"],
-  tagline: "Indian, Curious, Engineer - that's me in order ;)",
-  email: "karnavivek@gmail.com",
-  location: "Chennai, India",
-  social: {
-    linkedin: "https://www.linkedin.com/in/vivek-karna",
-    github: "https://github.com/karnavivek",
-    youtube: "https://www.youtube.com/@karnavivek/videos"
-  },
-  resumeLink: "./VK_Resume_Aug.pdf",
-  // Using GitHub avatar as a reliable source
-  profileImage: "./Vivek_portfolio_dp.png"
+const safeStorage = {
+  get: (k) => { try { return window.localStorage.getItem(k); } catch { return null; } },
+  set: (k, v) => { try { window.localStorage.setItem(k, v); } catch { /* ignore */ } }
 };
 
-const SKILLS = {
-  languages: ["Python", "MySQL", "R"],
-  libs: ["Pandas", "Numpy", "Scikit-learn", "PyTorch", "Matplotlib","Streamlit", "Statsmodels", "GPyTorch", "LangChain", "HuggingFace"],
-  ml: ["Regression", "Classification", "Clustering", "Forecasting", "Deep Learning", "LSTM", "NLP", "Transformers", "Sensitivity Analysis"],
-  tools: ["Git", "Github", "LaTeX", "Tableau", "VectorDB"],
-  business: ["Six Sigma", "DMAIC", "Kanban", "Scrum","STAR"],
-  optimization: ["Linear Programming", "Mixed Integer Programming", "Heuristics", "Gurobi", "Supply Chain Network Modelling"]
-};
+/* ---------- hooks ---------- */
 
-const EXPERIENCE = [
-  {
-    role: "Data Scientist - Full Time",
-    company: "Applied Materials | TekSystems",
-    period: "Oct 2025 - Present",
-    desc: [
-      "More details about this can be given upon contact :)"
-    ]
-  },
-  {
-    role: "Teaching Assistant - Part Time",
-    company: "IIT Madras | NPTEL",
-    period: "June 2024 - June 2025",
-    desc: [
-      "Collaborated with professors in data science/operations research courses.",
-      "Delivered 10+ Hrs of Python/ML Lab sessions for B-Tech Quant & PhD students.",
-      "Developed comprehensive data science scripts covering clustering, regression, and PCA."
-    ]
-  },
-  {
-    role: "Business Manager (Analytics)",
-    company: "PCRI",
-    period: "March 2023 - June 2023",
-    desc: [
-      "Led a team of 4 in developing data-driven frameworks connecting audit performance, sustainability metrics, & client outcomes, strengthening consultancy value proposition and client engagement.",
-      "Analyzed historical demand data to identify underutilized test categories, driving bundling recommendations that increased cross-selling by 34% in 3 months.",
-"Built analytical models linking material performance metrics to shelf-life and logistics risks across testing datasets, enabling more informed client decision-making. "
-    
-    ]
-  },
-  {
-    role: "Graduate Engineer (GET) - Full Time",
-    company: "Varroc Engineering",
-    period: "Aug 2021 - July 2022",
-    desc: [
-      "Used DMAIC/Data analytics to optimize processes, cutting changeover time by 77%, saving 33.09hrs/month & Rs 4.86 lacs.",
-      "Conducted 120+ time/work studies and created data visualizations to identify manufacturing bottlenecks.",
-      "Built predictive models to forecast equipment failures, reducing unplanned downtime by 23%, boosting overall effectiveness.",
-      "Winner of In-house KAIZEN Space Level Competition"
-    ]
-  }
-];
+function useTheme() {
+  const [theme, setTheme] = useState(() => {
+    const saved = safeStorage.get('portfolio-theme');
+    if (saved === 'light' || saved === 'dark') return saved;
+    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  });
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    safeStorage.set('portfolio-theme', theme);
+  }, [theme]);
+  return [theme, () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))];
+}
 
-const EDUCATION = [
-  {
-    degree: "MS (Research) in Operations Research",
-    school: "IIT Madras",
-    year: "2023 - 2026",
-    desc: "Understood what it means to add value to humanity through engineering"
-  },
-  {
-    degree: "BTech in Production & Industrial Engineering",
-    school: "VIT Vellore",
-    year: "2017 - 2021",
-    desc: "Understood what it means to be an engineer."
-  }
-];
+function useTypewriter(words) {
+  const [text, setText] = useState('');
+  useEffect(() => {
+    let w = 0, c = 0, deleting = false, timer;
+    const tick = () => {
+      const word = words[w];
+      c += deleting ? -1 : 1;
+      setText(word.slice(0, c));
+      let delay = deleting ? 40 : 90;
+      if (!deleting && c === word.length) { deleting = true; delay = 1600; }
+      else if (deleting && c === 0) { deleting = false; w = (w + 1) % words.length; delay = 350; }
+      timer = setTimeout(tick, delay);
+    };
+    tick();
+    return () => clearTimeout(timer);
+  }, [words]);
+  return text;
+}
 
-const PROJECTS = [
-    {
-    title: "SCLTool",
-    subtitle: "SOTA ML-Optimization Integration Python Package",
-    tech: ["Python", "PyTorch", "Scikit-learn", "Gurobi"],
-    desc: "Designed a python package to embed machine learning models (LR, DT, GBM, NN, BLR etc.) as constraints into optimization models under uncertainty using Bayesian Linear Regression & Stochastic Models; Awarded 2nd Prize at All India Research Scholar Summit 2025 in Optimization & Machine Learning domain.; Awarded Best Presentation Award at ICSCM 2026, Tokyo, Japan.",
-    link: "https://github.com/karnavivek/SCLTool"
-  },
-  {
-    title: "BLINKTO",
-    subtitle: "Food Demand Forecasting",
-    tech: ["Python", "LSTM", "ARIMA", "Streamlit"],
-    desc: ["Conducted feature engineering (lags, rolling stats), and exploratory analysis (ACF, PACF, ADF) to diagnose and correct non-stationarity (e.g. first-order differencing) to prepare the series for modelling;Predicted Demand forecast using state-of-the-art ARMA, ARIMA and LSTM model with extensive hyperparameter tuning (lags, learning rates, epochs, batch size) achieving a performance uplift of ~18% over baseline methods;Designed forecasting logic in a reusable class (TSForecaster) & visual insights to stakeholders via streamlit"],
-    link: "https://github.com/karnavivek/Food-Demand-Forecasting"
-  },
-  {
-    title: "AskMyProfession",
-    subtitle: "Fine-Tuning LLM on Runpod (Cloud GPU)",
-    tech: ["Python", "PyTorch", "RunPod", "Transformers"],
-    desc: "Fine-Tuned Meta's Llama-3.2-1B model trained on Q&A template of Operations Research's Niche Topics, which was generated by training bigger model Qwen2.5:14B on custom data;Implemented a QLoRA fine-tuning strategy using bitsandbytes library to load all base model weights in 4-bit & PEFT Library for LoRA Adapters to reduce computational time by nearly 80% on RunPod;Hosted Custom Domain Specific LLM on huggingface repository with 30+ downloads so far.",
-    link: "https://github.com/karnavivek/askmyprofession"
-  },
-  {
-    title: "IDLEE",
-    subtitle: "Vehicle Routing Problem Optimization",
-    tech: ["Python", "Gurobi", "Heuristics"],
-    desc: "Formulated & solved a MILP for the VRPTW using Gurobi handling both random and fixed franchise/customer placements, incorporated capacity, time window constraints, route feasibility & benchmarking solution runtimes and cost trade-offs across MILP and heuristic models;Designed Heuristics to find sub-optimal feasible solution to reduce computational load when using MILP approach for larger instances;Milestone - Documented best practices, & secured top grade in project evaluation (highest among peer submissions)",
-    link: "https://github.com/karnavivek/Heuristics_VRPTW"
-  },
-  {
-    title: "OneClickML",
-    subtitle: "AutoML Library",
-    tech: ["Python", "Scikit-learn", "GridSearchCV", "Optuna"],
-    desc: "Architected and developed OneClickML, a tool to streamline the machine learning workflow by automatically training and evaluating multiple regression and classification models in series;Reduced model selection time from hours to minutes by creating a framework that instantly benchmarks algorithms like Linear Regression, SVMs, MLP, Decision Trees and Gradient Boosting against each other on a given dataset;Delivered a key best model recommendation feature that programmatically identifies the algorithm with the lowest Mean Squared Error and other metrics, empowering users to deploy the most accurate model with minimal manual intervention.",
-    link: "https://github.com/karnavivek/OneClickML"
-  },
-  {
-    title: "masteRAG",
-    subtitle: "GenAI Production Grade Advanced RAG Architecture",
-    tech: ["Python", "RAG", "Qdrant", "LangGraph", "Docker", "Docling", "Tavily"],
-    desc: "Built an RAG platform by integrating Hybrid Search, HyDE, CRAG, Self-RAG, Re-ranking for knowledge retrieval;Investigated retrieval robustness on a 95% noise / 5% signal knowledge base, & demonstrated the effectiveness of advanced RAG by improving retrieval quality by up to 39% and increasing faithfulness, recall and answer relevancy by 12-18% compared to baseline RAG. ",
-    link: "soon..."
-  }
-];
+function useClock(timeZone) {
+  const fmt = () => new Date().toLocaleTimeString('en-IN', { timeZone, hour: '2-digit', minute: '2-digit', hour12: true });
+  const [time, setTime] = useState(fmt);
+  useEffect(() => {
+    const id = setInterval(() => setTime(fmt()), 30000);
+    return () => clearInterval(id);
+  }, []);
+  return time;
+}
 
-const RESEARCH = [
-  {
-    title: "ICSCM 2026 ",
-    type: "Conference Paper",
-    status: "Presented at Hosei University, Tokyo, Japan",
-    award: "Best Oral Presentation Award",
-    desc: "Showcased state-of-the-art tool for machine learning assisted uncertainty-aware optimization.",
-    link: "https://www.linkedin.com/posts/vivek-karna_research-iit-iitmadras-ugcPost-7435658380519718912-OrtN/?utm_source=share&utm_medium=member_desktop&rcm=ACoAACbLSWgBr91C7c7xo6XNFiA8UFFagULlux4",
-    image: "./icscm_award.jpeg"
-  },
-  {
-    title: "28th International Society of Operations Management",
-    type: "Conference Paper",
-    status: "Presented at IIM Nagpur 2025",
-    // award: "2nd Prize - AIRSS 2025 in ML & Optimization Domain",
-    desc: "Presented 2 Conference Papers -> 'Constraint learning to model user experience in electric vehicle charging ecosystem' & 'SCLTool: Stochastic Constraint Learning Framework for Prescriptive Models'",
-    link: "https://www.linkedin.com/posts/vivek-karna_research-iitmadras-iimnagpur-activity-7410207132358180864-ZLsl?utm_source=share&utm_medium=member_desktop&rcm=ACoAACbLSWgBr91C7c7xo6XNFiA8UFFagULlux4",
-    image: "./som_1_cert.jpeg"
-  },
-  {
-    title: "All India Research Scholar Summit",
-    type: "Conference Paper",
-    status: "Presented at IIT Madras 2025",
-    award: "2nd Prize - ML & Optimization Domain",
-    desc: "Showcased state-of-the-art tool for machine learning assisted uncertainty-aware optimization.",
-    link: "https://www.linkedin.com/posts/vivek-karna_researchmilestone-optimization-machinelearning-activity-7313193636945350656-tvAo?utm_source=share&utm_medium=member_desktop&rcm=ACoAACbLSWgBr91C7c7xo6XNFiA8UFFagULlux4",
-    image: "./airss_award.jpeg"
-  },
-  {
-    title: "Large Scale Optimization Workshop",
-    type: "Workshop",
-    status: "Attended at IIT Bombay 2025",
-    // award: "2nd Prize - AIRSS 2025 in ML & Optimization Domain",
-    desc: "Took a deep dive into hardcore mathematical optimization that powers real-world solutions.",
-    link: "https://www.linkedin.com/posts/vivek-karna_iim-iit-management-activity-7343171011099488256-V2GA?utm_source=share&utm_medium=member_desktop&rcm=ACoAACbLSWgBr91C7c7xo6XNFiA8UFFagULlux4",
-    image: "./lso_workshop.jpeg"
-  },
-    {
-    title: "SCLTool: Stochastic Constraint Learning Framework for Prescriptive Models",
-    type: "MS Thesis",
-    status: "Ongoing",
-    desc: "Developing a tool for integrating predictive and prescriptive models to tackle uncertainty in data, optimization & ML models.",
-    link: "#",
-    image: "./assets/img/SCLTool_2.jpeg"
-  }
-];
+function useReveal(deps = []) {
+  useEffect(() => {
+    const els = document.querySelectorAll('.reveal:not(.in)');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, deps);
+}
 
-/**
- * COMPONENTS
- */
+/* ---------- ambient background ---------- */
 
-const NavLink = ({ active, onClick, children }) => (
-  <button
-    onClick={onClick}
-    className={`px-5 py-2 text-sm font-medium transition-all duration-200 rounded-lg ${  /* This is for the Top Title bar */
-      active 
-        ? "bg-amber-600/10 text-amber-700 font-bold" 
-        : "text-stone-600 hover:text-stone-900 hover:bg-stone-200"
-    }`}
-  >
-    {children}
+function NetworkBG() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const canvas = ref.current;
+    const ctx = canvas.getContext('2d');
+    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    let w, h, dpr, nodes = [], raf, frame = 0, color = '194,65,12';
+    const mouse = { x: -999, y: -999 };
+
+    const readColor = () => {
+      const hex = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim().replace('#', '');
+      if (hex.length === 6) color = [0, 2, 4].map((i) => parseInt(hex.slice(i, i + 2), 16)).join(',');
+    };
+    const resize = () => {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = window.innerWidth; h = window.innerHeight;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const count = Math.min(70, Math.floor((w * h) / 20000));
+      nodes = Array.from({ length: count }, () => ({
+        x: Math.random() * w, y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25
+      }));
+    };
+    const draw = () => {
+      if (frame++ % 90 === 0) readColor();
+      ctx.clearRect(0, 0, w, h);
+      for (const n of nodes) {
+        if (!reduce) {
+          n.x += n.vx; n.y += n.vy;
+          if (n.x < 0 || n.x > w) n.vx *= -1;
+          if (n.y < 0 || n.y > h) n.vy *= -1;
+        }
+      }
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i];
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j];
+          const d = Math.hypot(a.x - b.x, a.y - b.y);
+          if (d < 140) {
+            ctx.strokeStyle = `rgba(${color},${(1 - d / 140) * 0.22})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          }
+        }
+        const md = Math.hypot(a.x - mouse.x, a.y - mouse.y);
+        if (md < 180) {
+          ctx.strokeStyle = `rgba(${color},${(1 - md / 180) * 0.5})`;
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+        }
+        ctx.fillStyle = `rgba(${color},0.55)`;
+        ctx.beginPath(); ctx.arc(a.x, a.y, 1.8, 0, Math.PI * 2); ctx.fill();
+      }
+      if (!reduce) raf = requestAnimationFrame(draw);
+    };
+    const onMove = (e) => { mouse.x = e.clientX; mouse.y = e.clientY; };
+    const onLeave = () => { mouse.x = mouse.y = -999; };
+
+    readColor(); resize(); draw();
+    window.addEventListener('resize', resize);
+    window.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseleave', onLeave);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('resize', resize);
+      window.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseleave', onLeave);
+    };
+  }, []);
+  return (
+    <>
+      <div className="aurora" aria-hidden="true"><i /><i /><i /></div>
+      <canvas ref={ref} className="net-bg" aria-hidden="true" />
+    </>
+  );
+}
+
+function useClickRipple() {
+  useEffect(() => {
+    const onClick = (e) => {
+      const el = e.target.closest('.btn, .nav-link, .pill-link, .tab, .icon-btn, .email-big');
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const size = Math.max(r.width, r.height) * 2;
+      const dot = document.createElement('span');
+      dot.className = 'ripple';
+      dot.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - r.left - size / 2}px;top:${e.clientY - r.top - size / 2}px`;
+      el.appendChild(dot);
+      setTimeout(() => dot.remove(), 650);
+    };
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
+  }, []);
+}
+
+/* ---------- small pieces ---------- */
+
+const Tag = ({ children }) => <span className="tag">{children}</span>;
+
+const Heading = ({ eyebrow, title }) => (
+  <div className="reveal">
+    <div className="eyebrow mono">{eyebrow}</div>
+    <h2 className="title">{title}</h2>
+  </div>
+);
+
+const ThemeToggle = ({ theme, onToggle }) => (
+  <button className="icon-btn" onClick={onToggle} aria-label="Toggle theme" title="Toggle theme">
+    {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
   </button>
 );
 
-const SectionTitle = ({ title, subtitle }) => (
-  <div className="mb-12">
-    <h2 className="text-3xl font-bold text-stone-900 mb-4 flex items-center gap-3">
-      <span className="w-8 h-1 bg-amber-500 rounded-full"></span>
-      {title}
-    </h2>
-    {subtitle && <p className="text-stone-600 max-w-2xl">{subtitle}</p>}
-  </div>
-);
+/* ---------- navigation ---------- */
 
-const Card = ({ children, className = "" }) => (
-  <div className={`bg-white border border-amber-100 shadow-sm rounded-xl p-6 hover:shadow-md hover:border-amber-300 transition-all duration-300 ${className}`}>
-    {children}
-  </div>
-);
+function Nav({ view, active, goSection, goPersonal, theme, toggleTheme }) {
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-const Badge = ({ children }) => (
-  <span className="px-3 py-1 text-xs font-medium text-amber-800 bg-amber-100 rounded-full border border-amber-200">
-    {children}
-  </span>
-);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-const ThemeToggle = ({ isDarkMode, onToggle }) => (
-  <button
-    type="button"
-    onClick={onToggle}
-    aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-    aria-pressed={isDarkMode}
-    title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-    className="theme-toggle inline-flex h-10 w-10 items-center justify-center rounded-full border border-stone-300 bg-white text-stone-700 shadow-sm transition-all duration-300 hover:bg-stone-50 hover:text-stone-900"
-  >
-    {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
-  </button>
-);
+  const go = (fn) => () => { setOpen(false); fn(); };
 
-/**
- * PAGES
- */
-/* HOME PAGE */
-const HomePage = ({ setPage }) => (
-  <div className="flex flex-col justify-center min-h-[80vh] animate-in fade-in slide-in-from-bottom-4 duration-300">
-    <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-8 md:gap-12">
-   
-      {/* Text Section */} 
-      <div className="space-y-6 max-w-2xl text-center md:text-left"> 
-        <div className="flex justify-center md:justify-start">
-          <Badge>Available for Collaborations | Website - Work in Progress</Badge>
-        </div>
-        
-        {/* Made font smaller as requested */}
-        <h1 className="text-4xl md:text-5xl font-bold text-stone-900 tracking-tight leading-tight">
-          Namaste, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-orange-500">{PERSONAL_INFO.name}</span>
-        </h1>
-        
-        <p className="text-lg md:text-xl text-stone-600 leading-relaxed">
-          {PERSONAL_INFO.tagline}
-        </p>
-        
-        <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-4">
-          <button 
-            onClick={() => setPage('work')}
-            className="px-6 py-3 bg-amber-500 text-white font-bold rounded-lg hover:bg-amber-600 transition-colors flex items-center gap-2 shadow-lg shadow-amber-500/20"
-          >
-            View Work <ChevronRight size={18} />
+  return (
+    <header className={`nav ${scrolled ? 'scrolled' : ''}`}>
+      <div className="wrap nav-inner">
+        <button className="brand" onClick={go(() => goSection('top'))} style={{ background: 'none', border: 0 }}>
+          <span>vk<b>.</b></span>
+          <small className="mono">/ {view === 'personal' ? 'personal' : 'portfolio'}</small>
+        </button>
+
+        <nav className="nav-links">
+          {SECTIONS.map((s) => (
+            <button key={s.id} className={`nav-link ${view === 'home' && active === s.id ? 'active' : ''}`} onClick={() => goSection(s.id)}>
+              {s.label}
+            </button>
+          ))}
+          <button className={`pill-link ${view === 'personal' ? 'active' : ''}`} onClick={goPersonal}>
+            <Sparkles size={14} /> Personal
           </button>
-          <button 
-            onClick={() => setPage('contact')}
-            className="px-6 py-3 bg-white text-stone-700 font-medium rounded-lg hover:bg-stone-50 transition-colors border border-stone-300 shadow-sm"
-          >
-            Contact Me
-          </button>
-        </div>
+          <ThemeToggle theme={theme} onToggle={toggleTheme} />
+        </nav>
 
-        <div className="pt-8 flex justify-center md:justify-start gap-6 text-stone-500">
-          <div className="flex items-center gap-2">
-            <Terminal size={20} className="text-amber-600" />
-            <span>Data Science</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Cpu size={20} className="text-amber-600" />
-            <span>Machine Learning</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Code size={20} className="text-amber-600" />
-            <span>Optimization</span>
-          </div>
+        <div className="menu-btn" style={{ alignItems: 'center' }}>
+          <ThemeToggle theme={theme} onToggle={toggleTheme} />
+          <button className="icon-btn" onClick={() => setOpen(!open)} aria-label="Menu">
+            {open ? <X size={16} /> : <Menu size={16} />}
+          </button>
         </div>
       </div>
 
-      {/* Profile Image Section - Added as requested */}
-      <div className="relative">
-        <div className="absolute inset-1 bg-amber-400 rounded-full blur-2xl opacity-20 transform scale-110"></div>
-        <img 
-          src={PERSONAL_INFO.profileImage} 
-          alt={PERSONAL_INFO.name}
-          className="relative w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-4 border-white shadow-xl"
-        />
-      </div>
-    </div>
-  </div>
-);
-
-/* ABOUT PAGE */
-
-const AboutPage = () => (
-  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-    <SectionTitle title="About Me"/> 
-    
-    <div className="grid md:grid-cols-2 gap-12">
-      <div className="space-y-8">
-        <div className="prose prose-stone">
-          <p className="text-stone-600 leading-relaxed">
-          I have 5+ years of integrated industry and research experience, and together they have fundamentally shaped the way I solve problems. 
-          <p>
-          Research at IIT Madras taught me to ask "why", to challenge assumptions, embrace uncertainty, and search for principled solutions. 
-          </p>
-          Industry taught me to ask "how", how to deliver results under constraints, move quickly, and build solutions that create real business impact. 
-          This balance between curiosity and execution has become the foundation of my work. <p>By combining Data Science, Machine Learning, and Optimization, 
-          I have tackled problems in semiconductor manufacturing, industrial analytics, consultancy, supply chain optimization, and enterprise AI. 
-          Whether developing Bayesian optimization frameworks, building production-grade machine learning systems, or designing intelligent decision-support tools, 
-          I enjoy transforming complex data into solutions that are both scientifically rigorous and practically valuable. </p>
-          I believe the best technology doesn't just make accurate predictions, it empowers better decisions.</p>
+      {open && (
+        <div className="mobile-menu">
+          {SECTIONS.map((s) => (
+            <button key={s.id} onClick={go(() => goSection(s.id))}>{s.label}</button>
+          ))}
+          <button onClick={go(goPersonal)} style={{ color: 'var(--accent)' }}>✦ Personal</button>
         </div>
+      )}
+    </header>
+  );
+}
 
+/* ---------- home sections ---------- */
+
+function Hero({ goSection, copyEmail }) {
+  const role = useTypewriter(PERSONAL_INFO.roles);
+  const time = useClock(PERSONAL_INFO.timeZone);
+
+  return (
+    <section id="top" className="hero">
+      <div className="wrap hero-grid">
         <div>
-          <h3 className="text-xl font-bold text-stone-900 mb-6 flex items-center gap-2">
-            <GraduationCap className="text-amber-600" /> Education
-          </h3>
-          <div className="space-y-10">
-            {EDUCATION.map((edu, idx) => (
-              <div key={idx} className="relative pl-6 border-l-2 border-stone-300">
-                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-stone-100 border-2 border-amber-500"></div>
-                <h4 className="text-lg font-bold text-stone-900">{edu.school}</h4>
-                <p className="text-amber-700 text-sm mb-1">{edu.degree}</p>
-                <p className="text-stone-500 text-xs mb-2">{edu.year}</p>
-                <p className="text-stone-600 text-sm">{edu.desc}</p>
+          <div className="status mono reveal">
+            <span className="dot" /> Open to collaborations · {PERSONAL_INFO.location.split(',')[0]} {time}
+          </div>
+          <h1 className="reveal">Namaste, I'm <em>{PERSONAL_INFO.name}</em>.</h1>
+          <div className="role-line reveal">I'm a <span>{role}</span></div>
+          <p className="intro reveal">{PERSONAL_INFO.intro}</p>
+          <div className="btns reveal">
+            <button className="btn primary" onClick={() => goSection('work')}>View work <ArrowRight size={16} /></button>
+            <a className="btn" href={PERSONAL_INFO.resumeLink} download><Download size={16} /> Resume</a>
+            <button className="btn" onClick={() => goSection('connect')}><Mail size={16} /> Connect</button>
+          </div>
+          <div className="hint reveal">Press <kbd>C</kbd> to copy my email · scroll to explore ↓</div>
+        </div>
+
+        <div className="portrait reveal">
+          <img src={PERSONAL_INFO.profileImage} alt={PERSONAL_INFO.name} />
+          <div className="now-card">
+            <span className="mono">Now</span>
+            Data Scientist @ Applied Materials
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function About() {
+  return (
+    <section id="about" className="block">
+      <div className="wrap">
+        <Heading eyebrow="01 — About" title="Where research curiosity meets industry execution." />
+        <div className="about-grid">
+          <div className="about-text reveal">
+            {ABOUT.map((p, i) => <p key={i}>{p}</p>)}
+            <ul className="now-list">
+              {NOW.map((n) => (
+                <li key={n.label}><span>{n.label}</span><span>{n.value}</span></li>
+              ))}
+            </ul>
+          </div>
+          <div className="reveal">
+            <p className="sub mono">Education</p>
+            {EDUCATION.map((e) => (
+              <div className="edu" key={e.school}>
+                <h4>{e.school}</h4>
+                <p>{e.degree}</p>
+                <p className="mono" style={{ fontSize: '0.75rem' }}>{e.year}</p>
+                <p>{e.desc}</p>
               </div>
             ))}
           </div>
         </div>
-      </div>
 
-      <div className="space-y-8">
-        <div>
-          <h3 className="text-xl font-bold text-stone-900 mb-6 flex items-center gap-2">
-            <Code className="text-amber-600" /> Technical Arsenal
-          </h3>
-          <div className="space-y-10">
-            <div>
-              <p className="text-sm text-stone-500 mb-2 uppercase tracking-wider font-semibold">Languages & Libraries</p>
-              <div className="flex flex-wrap gap-2">
-                {[...SKILLS.languages, ...SKILLS.libs].map(skill => (
-                  <Badge key={skill}>{skill}</Badge>
-                ))}
+        <div className="skills">
+          {SKILLS.map((g) => (
+            <div className="skill-group reveal" key={g.group}>
+              <p className="sub mono">{g.group}</p>
+              <div className="tags">{g.items.map((s) => <Tag key={s}>{s}</Tag>)}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Work() {
+  return (
+    <section id="work" className="block">
+      <div className="wrap">
+        <Heading eyebrow="02 — Work Experience" title="Turning data into decisions with AI, ML and optimization." />
+        <div className="timeline">
+          {EXPERIENCE.map((e) => (
+            <div className="tl-item reveal" key={e.company + e.period}>
+              <div className="tl-when mono">{e.period}</div>
+              <div>
+                <h3>{e.role}<small>{e.type}</small></h3>
+                <div className="tl-co">{e.company}</div>
+                <ul>{e.desc.map((d, i) => <li key={i}>{d}</li>)}</ul>
               </div>
             </div>
-            <div>
-              <p className="text-sm text-stone-500 mb-2 uppercase tracking-wider font-semibold">Machine Learning</p>
-              <div className="flex flex-wrap gap-2">
-                {SKILLS.ml.map(skill => (
-                  <Badge key={skill}>{skill}</Badge>
-                ))}
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Projects() {
+  return (
+    <section id="projects" className="block">
+      <div className="wrap">
+        <Heading eyebrow="03 — Projects" title="Things I've built in AI, ML and optimization." />
+        <div className="grid projects">
+          {PROJECTS.map((p) => {
+            const Wrapper = p.link ? 'a' : 'div';
+            const props = p.link ? { href: p.link, target: '_blank', rel: 'noreferrer' } : {};
+            return (
+              <Wrapper className="card reveal" key={p.title} {...props}>
+                <div className="card-top">
+                  <h3>{p.title}</h3>
+                  {p.link ? <span className="arrow"><ArrowUpRight size={20} /></span> : <span className="soon mono">soon…</span>}
+                </div>
+                <div className="subtitle mono">{p.subtitle}</div>
+                {p.highlight && <div className="badge-award"><Award size={13} /> {p.highlight}</div>}
+                <ul>{p.desc.map((d, i) => <li key={i}>{d}</li>)}</ul>
+                <div className="tags">{p.tech.map((t) => <Tag key={t}>{t}</Tag>)}</div>
+              </Wrapper>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Research({ onZoom }) {
+  return (
+    <section id="research" className="block">
+      <div className="wrap">
+        <Heading eyebrow="04 — Research" title="Papers, talks and the occasional trophy." />
+        <div className="grid research">
+          {RESEARCH.map((r) => (
+            <article className="card r-card reveal" key={r.title}>
+              <button className="r-img" onClick={() => onZoom(r.image)} aria-label={`Enlarge ${r.title}`}>
+                <img src={r.image} alt={r.title} loading="lazy" />
+              </button>
+              <div className="r-body">
+                <div className="r-meta mono">{r.type} · {r.status}</div>
+                <h3>{r.title}</h3>
+                {r.award && <div className="badge-award"><Award size={13} /> {r.award}</div>}
+                <p>{r.desc}</p>
+                {r.link
+                  ? <a className="r-link" href={r.link} target="_blank" rel="noreferrer">Read more <ArrowUpRight size={14} /></a>
+                  : null}
               </div>
-            </div>
-            <div>
-              <p className="text-sm text-stone-500 mb-2 uppercase tracking-wider font-semibold">Tech & Tools</p>
-              <div className="flex flex-wrap gap-2">
-                {SKILLS.tools.map(skill => (
-                  <Badge key={skill}>{skill}</Badge>
-                ))}
-              </div>
-            </div>
-            <div>
-              <p className="text-sm text-stone-500 mb-2 uppercase tracking-wider font-semibold">Business</p>
-              <div className="flex flex-wrap gap-2">
-                {SKILLS.business.map(skill => (
-                  <Badge key={skill}>{skill}</Badge>
-                ))}
-              </div>
-            </div>
-            <div>
-              <p className="text-sm text-stone-500 mb-2 uppercase tracking-wider font-semibold">Optimization</p>
-              <div className="flex flex-wrap gap-2">
-                {SKILLS.optimization.map(skill => (
-                  <Badge key={skill}>{skill}</Badge>
-                ))}
-              </div>
-            </div>
-          </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Connect({ copyEmail }) {
+  const { social, email } = PERSONAL_INFO;
+  return (
+    <section id="connect" className="block connect">
+      <div className="wrap">
+        <div className="eyebrow mono reveal" style={{ justifyContent: 'center' }}>05 — Connect</div>
+        <h2 className="reveal">Let's talk. :)</h2>
+        <p className="reveal">Open to new opportunities, research collaborations, or just a friendly hi - my inbox is always open.</p>
+        <div className="reveal">
+          <button className="email-big" onClick={copyEmail} title="Click to copy">{email}</button>
+        </div>
+        <div className="socials reveal">
+          <a className="btn" href={`mailto:${email}`}><Mail size={16} /> Email</a>
+          <a className="btn" href={social.linkedin} target="_blank" rel="noreferrer"><Linkedin size={16} /> LinkedIn</a>
+          <a className="btn" href={social.github} target="_blank" rel="noreferrer"><Github size={16} /> GitHub</a>
+          <a className="btn" href={social.youtube} target="_blank" rel="noreferrer"><Youtube size={16} /> YouTube</a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- personal page ---------- */
+
+function BlogModal({ blog, onClose }) {
+  useEffect(() => {
+    const onKey = (e) => e.key === 'Escape' && onClose();
+    window.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
+  }, [onClose]);
+
+  return (
+    <div className="modal" onClick={onClose}>
+      <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose} aria-label="Close"><X size={16} /></button>
+        <img className="cover" src={blog.image} alt="" />
+        <div className="modal-body">
+          <h2>{blog.title}</h2>
+          <span className="meta mono">{blog.year} · Blog</span>
+          {blog.body.map((p, i) => <p key={i} dangerouslySetInnerHTML={{ __html: p }} />)}
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+}
 
-/* WORK PAGE */
+function Personal() {
+  const [tab, setTab] = useState('blogs');
+  const [blog, setBlog] = useState(null);
+  useReveal([tab]);
 
-const WorkPage = () => {
-  // We map your global EXPERIENCE array to styling metadata locally so we don't change your source data constants
-  const bentoStyles = [
-    { icon: Database, color: "bg-blue-50 text-blue-600", gridClass: "md:col-span-2 lg:col-span-2 lg:row-span-2" }, // Full Time DS
-    { icon: GraduationCap, color: "bg-amber-50 text-amber-600", gridClass: "md:col-span-1 lg:col-span-1 lg:row-span-2" }, // TA
-    { icon: Briefcase, color: "bg-emerald-50 text-emerald-600", gridClass: "md:col-span-1 lg:col-span-1 lg:row-span-1" }, // Business Manager
-    { icon: Wrench, color: "bg-purple-50 text-purple-600", gridClass: "md:col-span-1 lg:col-span-2 lg:row-span-1" } // GET
+  const tabs = [
+    { id: 'blogs', label: 'Blogs', icon: BookOpen },
+    { id: 'trips', label: 'Trips', icon: Plane },
+    { id: 'youtube', label: 'YouTube', icon: Youtube }
   ];
 
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <SectionTitle title="Work Experience" subtitle="My professional journey and industrial contributions."/>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(180px,auto)]">
-        {EXPERIENCE.map((exp, idx) => {
-          const style = bentoStyles[idx] || bentoStyles[0];
-          const IconComponent = style.icon;
-          
-          return (
-            <div 
-              key={idx} 
-              className={`group relative bg-white rounded-[2rem] p-6 md:p-8 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] border border-stone-100/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between ${style.gridClass}`}
-            >
-              {/* Decorative subtle background element */}
-              <div className="absolute -right-8 -top-8 w-32 h-32 bg-stone-50 rounded-full blur-3xl opacity-50 group-hover:bg-amber-50 transition-colors duration-500"></div>
+    <main key="personal" className="personal view">
+      <div className="wrap">
+        <div className="eyebrow mono">Off the clock</div>
+        <h1>The personal side.</h1>
+        <p className="lead">Stories, travels and videos - the stuff that doesn't fit on a resume, but says more about me than one.</p>
 
-              <div>
-                <div className="flex justify-between items-start mb-6 relative z-10">
-                  <div className={`p-4 rounded-2xl ${style.color} shadow-sm`}>
-                    <IconComponent size={28} strokeWidth={1.5} />
-                  </div>
-                  <div className="flex items-center gap-1.5 bg-stone-50 border border-stone-100 text-stone-500 text-xs font-semibold px-3 py-1.5 rounded-full">
-                    <Calendar size={12} />
-                    {exp.period}
-                  </div>
-                </div>
-
-                <div className="relative z-10">
-                  <h3 className="text-2xl font-bold text-stone-800 tracking-tight mb-1">
-                    {exp.role}
-                  </h3>
-                  <p className="text-md font-medium text-amber-600 mb-6">
-                    {exp.company}
-                  </p>
-
-                  <ul className="space-y-3">
-                    {exp.desc.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3 text-stone-600 text-sm leading-relaxed">
-                        <ChevronRight size={16} className="text-amber-400 flex-shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
-
-
-/* Projects PAGE */
-
-const ProjectsPage = () => (
-  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-    <SectionTitle title="Projects" subtitle="A selection of my work in AI, ML, and Optimization." />
-    
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {PROJECTS.map((project, idx) => (
-        <Card key={idx} className="flex flex-col h-full group bg-white hover:bg-amber-50/50">
-          <div className="flex justify-between items-start mb-4">
-            <div className="p-3 bg-stone-100 rounded-lg group-hover:bg-amber-100 transition-colors">
-              <Terminal size={24} className="text-stone-600 group-hover:text-amber-600" />
-            </div>
-            <a href={project.link} target="_blank" rel="noreferrer" className="text-stone-400 hover:text-amber-600 transition-colors">
-              <ExternalLink size={20} />
-            </a>
-          </div>
-          
-          <h3 className="text-xl font-bold text-stone-900 mb-2">
-            {project.title}
-          </h3>
-          <p className="text-sm text-amber-600 mb-4 font-mono font-medium">{project.subtitle}</p>
-          
-          <div className="mb-6 flex-grow">
-            {String(project.desc).split(';').filter(s => s.trim().length > 0).map((item, i) => (
-              <div key={i} className="flex items-start gap-2 text-sm text-stone-500 leading-relaxed mb-2">
-                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-amber-300 flex-shrink-0" />
-                <span>{item.trim().endsWith(';') ? item.trim() : item.trim() + '.'}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-wrap gap-2 mt-auto">
-            {project.tech.map(t => (
-              <span key={t} className="text-xs text-stone-600 bg-stone-100 px-2 py-1 rounded border border-stone-200">
-                {t}
-              </span>
-            ))}
-          </div>
-        </Card>
-      ))}
-    </div>
-  </div>
-);
-
-/* RESEARCH PAGE */
-
-const ResearchPage = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
-
-  return (
-    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <SectionTitle title="Research" subtitle="Academic contributions and publications." />
-      
-      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-  {RESEARCH.map((item, idx) => (
-    <div
-      key={idx}
-      className="group bg-amber hover:bg-amber-900/60 backdrop-blur-xl rounded-3xl overflow-hidden border border-stone-200 hover:border-amber-700 shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-2 transition-all duration-500 flex flex-col"
-    >
-
-      {/* IMAGE */}
-
-      <div
-        className="relative h-60 overflow-hidden cursor-pointer"
-        onClick={() => setSelectedImage(item.image)}
-      >
-        <img
-          src={item.image}
-          alt={item.title}
-          className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
-        />
-
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-500 flex items-center justify-center">
-
-          <div className="opacity-0 group-hover:opacity-100 transition duration-500 bg-white/90 rounded-full p-3">
-
-            <Maximize size={18} />
-
-          </div>
-
+        <div className="tabs" role="tablist">
+          {tabs.map((t) => (
+            <button key={t.id} role="tab" aria-selected={tab === t.id} className={`tab ${tab === t.id ? 'active' : ''}`} onClick={() => setTab(t.id)}>
+              <t.icon size={14} /> {t.label}
+            </button>
+          ))}
         </div>
 
-      </div>
-
-      {/* CONTENT */}
-
-      <div className="flex flex-col flex-grow p-6">
-
-        <div className="mb-4 flex flex-wrap gap-2">
-
-          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/10 text-cyan-500 border border-cyan-500/20">
-
-            {item.type}
-
-          </span>
-
-          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-stone-100 hover:bg-white-800 text-stone-600 hover:text-slate-300">
-
-            {item.status}
-
-          </span>
-
-        </div>
-
-        <h3 className="text-xl font-bold text-stone-900 mb-2">
-
-          {item.title}
-
-        </h3>
-
-        <p className="mb-6 flex-grow">
-
-          {item.desc}
-
-        </p>
-
-        {item.award && (
-
-          <div className="mt-6 inline-flex items-center gap-2 bg-green-400/10 border border-green-500/20 text-green-400 rounded-xl px-4 py-3">
-
-            <Award size={18} />
-
-            <span className="text-sm font-medium">
-
-              {item.award}
-
-            </span>
-
+        {tab === 'blogs' && (
+          <div className="grid three swap">
+            {BLOGS.map((b) => (
+              <button className="media reveal" key={b.id} onClick={() => setBlog(b)}>
+                <div className="thumb"><img src={b.image} alt="" loading="lazy" /></div>
+                <div className="info">
+                  <span className="meta mono">{b.year} · Read</span>
+                  <h3>{b.title}</h3>
+                  <p>{b.summary}</p>
+                </div>
+              </button>
+            ))}
           </div>
-
         )}
 
-        <div className="mt-8">
-
-          <a
-            href={item.link}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 font-semibold text-cyan-500 hover:text-cyan-400 transition"
-          >
-
-            Read More
-
-            <ChevronRight
-              size={18}
-              className="group-hover:translate-x-1 transition"
-            />
-
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-  ))}
-</div>
-    </div>
-  );
-};
-
-/* E-RESUME PAGE */
-
-const EResumePage = () => (
-  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-4xl mx-auto">
-    <div className="flex justify-between items-center mb-12">
-      <div>
-        <h2 className="text-3xl font-bold text-stone-900">E-Resume</h2>
-        <p className="text-stone-500">Digital overview of my professional profile.</p>
-      </div>
-      <a
-        href={PERSONAL_INFO.resumeLink}
-        download
-        className="flex items-center gap-2 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-bold transition-colors shadow-md"
-      >
-        <Download size={18} />
-        <span className="hidden sm:inline">Download PDF</span>
-      </a>
-    </div>
-
-    <div className="bg-white text-stone-900 rounded-xl shadow-xl border border-stone-200 overflow-hidden min-h-[1000px] flex flex-col md:flex-row">
-      {/* Sidebar */}
-      <div className="bg-stone-50 p-8 md:w-1/3 border-r border-stone-200">
-        <div className="mb-8">
-          <h3 className="text-2xl font-bold text-stone-800 mb-1">{PERSONAL_INFO.name}</h3>
-          <p className="text-amber-700 font-medium">{PERSONAL_INFO.titles[0]}</p>
-        </div>
-
-        <div className="space-y-10">
-          <div>
-            <h4 className="font-bold text-stone-800 uppercase tracking-wider text-sm border-b border-stone-300 pb-1 mb-3">Contact</h4>
-            <ul className="text-sm text-stone-600 space-y-2">
-              <li className="flex items-center gap-2"><Mail size={14} /> {PERSONAL_INFO.email}</li>
-              <li className="flex items-center gap-2"><MapPin size={14} /> {PERSONAL_INFO.location}</li>
-              <li className="flex items-center gap-2"><Linkedin size={14} /> linkedin.com/in/vivek-karna</li>
-            </ul>
+        {tab === 'trips' && (
+          <div className="swap">
+            <div className="grid three">
+              {TRIPS.map((t) => (
+                <div className="media trip reveal" key={t.place}>
+                  <div className="thumb"><img src={t.image} alt={t.place} loading="lazy" /></div>
+                  <div className="info">
+                    <span className="meta mono"><MapPin size={11} style={{ display: 'inline', verticalAlign: '-1px' }} /> {t.when}</span>
+                    <h3>{t.place}</h3>
+                    <p>{t.note}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="trip-note reveal">More travel stories and photos are on the way. ✈️</p>
           </div>
+        )}
 
-          <div>
-            <h4 className="font-bold text-stone-800 uppercase tracking-wider text-sm border-b border-stone-300 pb-1 mb-3">Skills</h4>
-            <div className="flex flex-wrap gap-1">
-              {[...SKILLS.languages, ...SKILLS.ml].map(s => (
-                <span key={s} className="bg-white border border-stone-200 text-stone-700 px-2 py-1 rounded text-xs">{s}</span>
+        {tab === 'youtube' && (
+          <div className="swap">
+            <div className="yt-head reveal">
+              <img src="./img/yt_pfp.png" alt="" />
+              <div>
+                <h3>@karnavivek</h3>
+                <p>Video essays and podcasts to help students see the bigger picture.</p>
+              </div>
+              <a className="btn" style={{ marginLeft: 'auto' }} href={PERSONAL_INFO.social.youtube} target="_blank" rel="noreferrer">
+                Subscribe <ArrowUpRight size={14} />
+              </a>
+            </div>
+            <div className="grid two">
+              {VIDEOS.map((v) => (
+                <a className="media reveal" key={v.link} href={v.link} target="_blank" rel="noreferrer">
+                  <div className="thumb">
+                    <img src={v.image} alt="" loading="lazy" />
+                    <div className="play"><span><Play size={20} fill="currentColor" /></span></div>
+                  </div>
+                  <div className="info">
+                    <h3>{v.title}</h3>
+                    <p>{v.desc}</p>
+                  </div>
+                </a>
               ))}
             </div>
           </div>
-
-          <div>
-            <h4 className="font-bold text-stone-800 uppercase tracking-wider text-sm border-b border-stone-300 pb-1 mb-3">Education</h4>
-            {EDUCATION.map((edu, idx) => (
-              <div key={idx} className="mb-3">
-                <p className="font-bold text-sm">{edu.school}</p>
-                <p className="text-xs text-stone-600">{edu.degree}</p>
-                <p className="text-xs text-stone-500 italic">{edu.year}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        )}
       </div>
+      {blog && <BlogModal blog={blog} onClose={() => setBlog(null)} />}
+    </main>
+  );
+}
 
-      {/* Main Content */}
-      <div className="p-8 md:w-2/3">
-        <div className="mb-8">
-          <h4 className="font-bold text-stone-800 uppercase tracking-wider text-sm border-b-2 border-amber-500 pb-1 mb-4 flex items-center gap-2">
-            <Briefcase size={16} /> Work Experience
-          </h4>
-          <div className="space-y-10">
-            {EXPERIENCE.map((exp, idx) => (
-              <div key={idx}>
-                <div className="flex justify-between items-baseline mb-1">
-                  <h5 className="font-bold text-stone-800 text-lg">{exp.role}</h5>
-                  <span className="text-xs text-stone-500 font-medium">{exp.period}</span>
-                </div>
-                <p className="text-amber-700 font-medium text-sm mb-2">{exp.company}</p>
-                <ul className="list-disc list-outside ml-4 text-sm text-stone-600 space-y-1">
-                  {exp.desc.map((d, i) => (
-                    <li key={i}>{d}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <h4 className="font-bold text-stone-800 uppercase tracking-wider text-sm border-b-2 border-amber-500 pb-1 mb-4 flex items-center gap-2">
-            <Award size={16} /> Key Achievements
-          </h4>
-          <ul className="list-disc list-outside ml-4 text-sm text-stone-600 space-y-2">
-            <li><strong>AIRSS 2025 2nd Prize:</strong> Optimization & Machine Learning domain.</li>
-            <li><strong>SPACE Level Kaizen Award:</strong> For innovative data-driven process improvements at Varroc.</li>
-            <li><strong>GATE Qualified:</strong> Secured admission to IIT Madras through rigorous competitive exam.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
-/* CONTACT PAGE */
-
-const ContactPage = () => (
-  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-2xl mx-auto">
-    <div className="text-center mb-12">
-      <SectionTitle title="Get In Touch" />
-      <div style={{display:'flex', flexDirection: 'column', gap: '30px'}}>
-
-      
-      <p className="text-stone-1000 mt-8">
-        Open to new opportunities and collaborations. Just drop a hi...
-      </p>
-      <p className="text-stone-500 mt-8">
-        karnavivek@gmail.com | +91 9182361825
-      </p>
-      <div className="mt-12 flex justify-center gap-14">
-        <a href={PERSONAL_INFO.social.linkedin} className="text-stone-400 hover:text-amber-600 transition-colors">
-          <Linkedin size={24} />
-        </a>
-        <a href={PERSONAL_INFO.social.github} className="text-stone-400 hover:text-amber-600 transition-colors">
-          <Github size={24} />
-        </a>
-        <a href={PERSONAL_INFO.social.youtube} className="text-stone-400 hover:text-amber-500 transition-colors">
-          <Youtube size={24} />
-        </a>
-        <a href={`mailto:${PERSONAL_INFO.email}`} className="text-stone-400 hover:text-amber-600 transition-colors">
-          <Mail size={24} />
-        </a>
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
-/**
- * MAIN APP
- */
+/* ---------- app ---------- */
 
 export default function App() {
-  const [activePage, setActivePage] = useState('home');
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [themeMode, setThemeMode] = useState(() => {
-    if (typeof window === 'undefined') return 'dark';
-    return window.localStorage.getItem('portfolio-theme') || 'dark';
-  });
+  const [theme, toggleTheme] = useTheme();
+  const [view, setView] = useState(() => (window.location.hash === '#/personal' ? 'personal' : 'home'));
+  const [active, setActive] = useState('about');
+  const [zoom, setZoom] = useState(null);
+  const [toast, setToast] = useState(null);
+  const pending = useRef(null);
+  const progress = useRef(null);
 
-  const isDarkMode = themeMode === 'dark';
+  useReveal([view]);
+  useClickRipple();
 
+  const showToast = useCallback((msg) => {
+    setToast(msg);
+    setTimeout(() => setToast(null), 1800);
+  }, []);
+
+  const copyEmail = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(PERSONAL_INFO.email);
+      showToast('Email copied ✓');
+    } catch {
+      showToast(PERSONAL_INFO.email);
+    }
+  }, [showToast]);
+
+  // hash routing for the personal tab
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    const onHash = () => setView(window.location.hash === '#/personal' ? 'personal' : 'home');
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
 
-    window.localStorage.setItem('portfolio-theme', themeMode);
-    document.documentElement.dataset.theme = themeMode;
-  }, [themeMode]);
-
-  // Scroll to top on page change
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setMobileMenuOpen(false);
-  }, [activePage]);
-
-  const toggleTheme = () => {
-    setThemeMode((currentTheme) => currentTheme === 'dark' ? 'light' : 'dark');
+  const scrollToId = (id) => {
+    if (id === 'top') { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => {
+      el.classList.remove('landed');
+      void el.offsetWidth;
+      el.classList.add('landed');
+    }, 450);
   };
 
-  // Added "Work" to navItems
-  const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'work', label: 'Work' }, 
-    { id: 'projects', label: 'Projects' },
-    { id: 'research', label: 'Research' },
-    { id: 'resume', label: 'E-Resume' },
-    { id: 'contact', label: 'Contact' }
-  ];
-
-  const renderPage = () => {
-    switch(activePage) {
-      case 'home': return <HomePage setPage={setActivePage} />;
-      case 'about': return <AboutPage />;
-      case 'work': return <WorkPage />; // Added Work Page case
-      case 'projects': return <ProjectsPage />;
-      case 'research': return <ResearchPage />;
-      case 'resume': return <EResumePage />;
-      case 'contact': return <ContactPage />;
-      default: return <HomePage setPage={setActivePage} />;
+  const goSection = (id) => {
+    if (view === 'personal') {
+      pending.current = id;
+      window.location.hash = '';
+    } else {
+      scrollToId(id);
     }
   };
 
+  const goPersonal = () => {
+    window.scrollTo({ top: 0 });
+    window.location.hash = '/personal';
+  };
+
+  // after switching back to home, run the queued scroll; reset scroll when entering personal
+  useEffect(() => {
+    if (view === 'home' && pending.current) {
+      const id = pending.current;
+      pending.current = null;
+      setTimeout(() => scrollToId(id), 60);
+    }
+    if (view === 'personal') window.scrollTo({ top: 0 });
+  }, [view]);
+
+  // scrollspy + progress bar
+  useEffect(() => {
+    if (view !== 'home') return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => e.isIntersecting && setActive(e.target.id));
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    SECTIONS.forEach((s) => { const el = document.getElementById(s.id); el && io.observe(el); });
+    return () => io.disconnect();
+  }, [view]);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      if (progress.current) progress.current.style.width = h > 0 ? `${(window.scrollY / h) * 100}%` : '0';
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // keyboard: C copies email, Esc closes lightbox
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === 'Escape') setZoom(null);
+      const tag = e.target.tagName;
+      if (e.key.toLowerCase() === 'c' && !e.metaKey && !e.ctrlKey && !e.altKey && tag !== 'INPUT' && tag !== 'TEXTAREA') copyEmail();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [copyEmail]);
+
   return (
-    // Changed main background to Light Gold Cream (amber-50)
-    <div className={`${isDarkMode ? 'dark-portfolio' : 'light-portfolio'} portfolio-shell min-h-screen bg-amber-50 text-stone-900 font-sans selection:bg-amber-200 selection:text-amber-900`}>
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-amber-50/90 backdrop-blur-md border-b border-amber-200 z-50">
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div 
-              className="flex-shrink-0 cursor-pointer font-bold text-xl tracking-tighter"
-              onClick={() => setActivePage('home')}
-            >
-              <span className="text-amber-600">Karna</span><span className="text-stone-800">.Portfolio</span>
-            </div>
-            
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center gap-3">
-              <div className="ml-10 flex items-baseline space-x-2">
-                {navItems.map(item => (
-                  <NavLink 
-                    key={item.id} 
-                    active={activePage === item.id}
-                    onClick={() => setActivePage(item.id)}
-                  >
-                    {item.label}
-                  </NavLink>
-                ))}
-              </div>
-              <ThemeToggle isDarkMode={isDarkMode} onToggle={toggleTheme} />
-            </div>
+    <>
+      <NetworkBG />
+      <div className="progress" ref={progress} />
+      <Nav view={view} active={active} goSection={goSection} goPersonal={goPersonal} theme={theme} toggleTheme={toggleTheme} />
 
-            {/* Mobile menu button */}
-            <div className="md:hidden flex items-center gap-2">
-              <ThemeToggle isDarkMode={isDarkMode} onToggle={toggleTheme} />
-              <button 
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-stone-500 hover:text-stone-900 p-2"
-              >
-                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
-          </div>
-        </div>
+      {view === 'home' ? (
+        <main key="home" className="view">
+          <Hero goSection={goSection} copyEmail={copyEmail} />
+          <About />
+          <Work />
+          <Projects />
+          <Research onZoom={setZoom} />
+          <Connect copyEmail={copyEmail} />
+        </main>
+      ) : (
+        <Personal />
+      )}
 
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-amber-50 border-b border-amber-200">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {navItems.map(item => (
-                <button
-                  key={item.id}
-                  onClick={() => setActivePage(item.id)}
-                  className={`block w-full text-left px-3 py-4 rounded-md text-base font-medium ${
-                    activePage === item.id 
-                      ? "bg-amber-100 text-amber-700" 
-                      : "text-stone-600 hover:bg-stone-200 hover:text-stone-900"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-      </nav>
-        
-      {/* Main Content Area */}
-      <main className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 min-h-screen overflow-auto">
-        {renderPage()}  
-      </main>
-
-      {/* Footer */}
-      <footer className="border-t border-amber-200 bg-amber-50 py-4">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <p className="text-stone-500 text-sm">
-            © {new Date().getFullYear()} Vivek Karna. 
-          </p>
-          <div className="flex justify-center gap-10 mt-4">
-            <a href={PERSONAL_INFO.social.linkedin} className="text-stone-400 hover:text-amber-600 transition-colors">
-              <Linkedin size={18} />
-            </a>
-            <a href={PERSONAL_INFO.social.github} className="text-stone-400 hover:text-amber-600 transition-colors">
-              <Github size={18} />
-            </a>
-          </div>
+      <footer className="foot">
+        <div className="wrap">
+          <span>© {new Date().getFullYear()} Vivek Karna</span>
+          <span className="mono">Built with React · Chennai, India</span>
         </div>
       </footer>
-    </div>
+
+      {zoom && (
+        <div className="lightbox" onClick={() => setZoom(null)}>
+          <img src={zoom} alt="Enlarged view" />
+        </div>
+      )}
+      {toast && <div className="toast">{toast}</div>}
+    </>
   );
 }
