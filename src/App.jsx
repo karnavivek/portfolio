@@ -239,6 +239,32 @@ const ThemeToggle = ({ theme, onToggle }) => (
   </button>
 );
 
+/* ---------- portrait carousel ---------- */
+
+function PortraitCarousel() {
+  const slides = PERSONAL_INFO.gallery;
+  const [i, setI] = useState(0);
+  const next = () => setI((n) => (n + 1) % slides.length);
+  return (
+    <div className="frame">
+      <div className="frame-inner">
+        {slides.map((p, n) => (
+          <img key={p.src} src={p.src} alt={n === i ? `${PERSONAL_INFO.name} - ${p.caption}` : ''} aria-hidden={n !== i}
+            className={`slide ${n === i ? 'on' : ''}`} style={{ objectPosition: p.pos }} loading={n < 2 ? 'eager' : 'lazy'} />
+        ))}
+        <div className="frame-shade" />
+        <div className="frame-caption mono" key={`c${i}`}>{slides[i].caption}</div>
+        <div className="frame-bar"><i key={`b${i}`} onAnimationEnd={next} /></div>
+      </div>
+      <div className="frame-dots">
+        {slides.map((p, n) => (
+          <button key={p.src} className={n === i ? 'on' : ''} onClick={() => setI(n)} aria-label={`Show photo ${n + 1}: ${p.caption}`} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ---------- navigation ---------- */
 
 function Nav({ view, active, goSection, goPersonal, theme, toggleTheme, sound, toggleSound }) {
@@ -325,7 +351,7 @@ function Hero({ goSection, copyEmail }) {
         </div>
 
         <div className="portrait reveal">
-          <img src={PERSONAL_INFO.profileImage} alt={PERSONAL_INFO.name} />
+          <PortraitCarousel />
           <div className="now-card">
             <span className="mono">Now</span>
             Data Scientist @ Applied Materials

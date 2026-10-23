@@ -14,7 +14,14 @@ export const PERSONAL_INFO = {
     x: "https://x.com/karnaishere"
   },
   resumeLink: "./VK_Resume_Aug.pdf",
-  profileImage: "./Vivek_portfolio_dp.png"
+  profileImage: "./Vivek_portfolio_dp.png",
+  gallery: [
+    { src: "./Vivek_portfolio_dp.png", caption: "Namaste!", pos: "50% 30%" },
+    { src: "./img/portrait_1.jpg", caption: "Presenting @ Hosei University", pos: "50% 28%" },
+    { src: "./img/portrait_2.jpg", caption: "Tokyo", pos: "50% 62%" },
+    { src: "./img/portrait_3.jpg", caption: "Mt. Fuji", pos: "60% 55%" },
+    { src: "./img/portrait_4.jpg", caption: "Osaka", pos: "50% 55%" }
+  ]
 };
 
 export const NOW = [
@@ -83,10 +90,20 @@ export const EXPERIENCE = [
     ]
   },
   {
+    role: "Placement Coordinator",
+    type: "Part Time",
+    company: "IIT Madras | Placecom",
+    period: "Jun 2024 - Jun 2025",
+    desc: [
+      "Coordinated with 55+ companies for Final Placement drives for IITM students.",
+      "Onboarded 4 companies as a team and handled 200+ applicants through various rounds of the selection process."
+    ]
+  },
+  {
     role: "Business Manager (Analytics)",
     type: "Full Time",
     company: "PCRI",
-    period: "Mar 2023 - Jun 2023",
+    period: "Aug 2022 - Jul 2023",
     desc: [
       "Led a team of 4 in developing data-driven frameworks connecting audit performance, sustainability metrics, & client outcomes, strengthening consultancy value proposition and client engagement.",
       "Analyzed historical demand data to identify underutilized test categories, driving bundling recommendations that increased cross-selling by 34% in 3 months.",

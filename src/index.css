@@ -331,3 +331,27 @@ html { zoom: 0.9; }
 .r-body p.no-grow { flex: 0; margin-bottom: 0.75rem; }
 .r-caption { font-size: 0.8rem !important; flex: 1; }
 .r-caption strong { color: var(--fg); }
+
+/* ---------- portrait carousel ---------- */
+.portrait::after { display: none; }
+.portrait { width: min(100%, 360px); }
+.frame { position: relative; padding: 10px; border-radius: 2rem; background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); }
+.frame::before { content: ""; position: absolute; inset: 14px -14px -14px 14px; border: 1px solid var(--accent); border-radius: 2rem; opacity: 0.45; z-index: -1; }
+.frame-inner { position: relative; aspect-ratio: 4 / 5; border-radius: 1.5rem; overflow: hidden; background: var(--bg-soft); }
+.portrait .frame-inner img.slide { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; border: 0; border-radius: 0; box-shadow: none; object-fit: cover; opacity: 0; transform: scale(1.06); transition: opacity 0.9s ease, transform 8.5s ease-out; }
+.portrait .frame-inner img.slide.on { opacity: 1; transform: scale(1); }
+.frame-shade { position: absolute; inset: auto 0 0 0; height: 38%; background: linear-gradient(to top, rgba(0,0,0,0.55), transparent); pointer-events: none; }
+.frame-caption { position: absolute; left: 1.1rem; bottom: 1.25rem; color: #fff; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; animation: swapIn 0.6s ease; text-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+.frame-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: rgba(255,255,255,0.22); }
+.frame-bar i { display: block; height: 100%; width: 0; background: var(--accent); animation: fill 8s linear forwards; }
+.frame:hover .frame-bar i { animation-play-state: paused; }
+@keyframes fill { to { width: 100%; } }
+.frame-dots { display: flex; justify-content: center; gap: 0.45rem; padding: 0.7rem 0 0.25rem; }
+.frame-dots button { width: 7px; height: 7px; border-radius: 99px; border: 0; padding: 0; background: var(--line); transition: width 0.3s, background 0.3s; }
+.frame-dots button.on { width: 22px; background: var(--accent); }
+.now-card { bottom: -1.5rem; z-index: 3; }
+.frame-dots { position: absolute; right: 1.35rem; top: 50%; transform: translateY(-50%); flex-direction: column; padding: 0; gap: 0.5rem; }
+.frame-dots button { background: rgba(255,255,255,0.55); box-shadow: 0 0 0 1px rgba(0,0,0,0.12); }
+.frame-dots button.on { width: 7px; height: 22px; background: #fff; }
+.frame-caption { bottom: auto; top: 1.1rem; }
+.frame-shade { inset: 0 0 auto 0; height: 28%; background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent); }
