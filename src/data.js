@@ -178,11 +178,21 @@ const LI = "?utm_source=share&utm_medium=member_desktop&rcm=ACoAACbLSWgBr91C7c7x
 
 export const RESEARCH = [
   {
+    title: "Towards being an IIT Alumni",
+    type: "MS Thesis",
+    status: "IIT Madras, Convocation 2026",
+    desc: "Graduated from DoMS, IIT Madras in Operations Research - researched integrating machine learning into optimization under uncertainty for better real-world decisions.",
+    caption: "<em>In the picture, from left to right: <strong>Dr. B K Karna</strong> (Father), <strong>Dr. Rahul R. Marathe</strong> (Guide &amp; Professor @ DoMS, IIT Madras), <strong>Mrs. Kiran Karna</strong> (Mother), me, and <strong>Dr. Balaraman Ravindran</strong> (HOD @ DSAI, IIT Madras)</em>",
+    link: "https://www.linkedin.com/feed/update/urn:li:activity:7492935773470490624/",
+    image: "./img/alumni_group.jpg"
+  },
+  {
     title: "ICSCM 2026",
     type: "Conference Paper",
     status: "Hosei University, Tokyo, Japan",
     award: "Best Oral Presentation Award",
     desc: "Showcased a state-of-the-art tool for machine learning assisted, uncertainty-aware optimization.",
+    caption: "<em>Receiving the award from <strong>Prof. Ruixue Li</strong> (Professor @ Hosei University)</em>",
     link: "https://www.linkedin.com/posts/vivek-karna_research-iit-iitmadras-ugcPost-7435658380519718912-OrtN/" + LI,
     image: "./icscm_award.jpeg"
   },
@@ -200,6 +210,7 @@ export const RESEARCH = [
     status: "IIT Madras, 2025",
     award: "2nd Prize - ML & Optimization Domain",
     desc: "Showcased a state-of-the-art tool for machine learning assisted, uncertainty-aware optimization.",
+    caption: "<em>Receiving the award from <strong>Dr. V. Kamakoti</strong> (Director @ IIT Madras)</em>",
     link: "https://www.linkedin.com/posts/vivek-karna_researchmilestone-optimization-machinelearning-activity-7313193636945350656-tvAo" + LI,
     image: "./airss_award.jpeg"
   },

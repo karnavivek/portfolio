@@ -1,7 +1,7 @@
 ﻿import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   Menu, X, Linkedin, Github, Mail, Youtube, Download, ArrowUpRight, ArrowRight,
-  Award, Sun, Moon, Sparkles, Play, Maximize2, MapPin, BookOpen, Plane, Copy
+  Award, Sun, Moon, Sparkles, Play, Maximize2, MapPin, BookOpen, Plane, Copy, Volume2, VolumeX
 } from 'lucide-react';
 import {
   PERSONAL_INFO, NOW, ABOUT, SKILLS, EDUCATION, EXPERIENCE, PROJECTS, RESEARCH
@@ -93,7 +93,7 @@ function NetworkBG() {
     };
     const resize = () => {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = window.innerWidth; h = window.innerHeight;
+      w = canvas.clientWidth; h = canvas.clientHeight;
       canvas.width = w * dpr; canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const count = Math.min(70, Math.floor((w * h) / 20000));
@@ -133,7 +133,10 @@ function NetworkBG() {
       }
       if (!reduce) raf = requestAnimationFrame(draw);
     };
-    const onMove = (e) => { mouse.x = e.clientX; mouse.y = e.clientY; };
+    const onMove = (e) => {
+      const zf = canvas.getBoundingClientRect().width / canvas.clientWidth || 1;
+      mouse.x = e.clientX / zf; mouse.y = e.clientY / zf;
+    };
     const onLeave = () => { mouse.x = mouse.y = -999; };
 
     readColor(); resize(); draw();
@@ -173,6 +176,52 @@ function useClickRipple() {
   }, []);
 }
 
+/* ---------- click sound ---------- */
+
+function useClickSound() {
+  const [on, setOn] = useState(() => safeStorage.get('portfolio-sound') !== 'off');
+  const ctxRef = useRef(null);
+  const lastRef = useRef(0);
+  const onRef = useRef(on);
+  onRef.current = on;
+
+  useEffect(() => { safeStorage.set('portfolio-sound', on ? 'on' : 'off'); }, [on]);
+
+  useEffect(() => {
+    const click = () => {
+      if (!onRef.current) return;
+      try {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return;
+        const ctx = ctxRef.current || (ctxRef.current = new AC());
+        if (ctx.state === 'suspended') ctx.resume();
+        const t = ctx.currentTime;
+        if (t - lastRef.current < 0.09) return;
+        lastRef.current = t;
+        // soft, warm "thock": a mid-low tone with a gentle drop, rounded by a low-pass
+        const osc = ctx.createOscillator();
+        const filter = ctx.createBiquadFilter();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(340, t);
+        osc.frequency.exponentialRampToValueAtTime(150, t + 0.1);
+        filter.type = 'lowpass';
+        filter.frequency.value = 1500;
+        gain.gain.setValueAtTime(0.0001, t);
+        gain.gain.exponentialRampToValueAtTime(0.22, t + 0.012);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.16);
+        osc.connect(filter).connect(gain).connect(ctx.destination);
+        osc.start(t);
+        osc.stop(t + 0.17);
+      } catch { /* audio unavailable */ }
+    };
+    document.addEventListener('pointerdown', click);
+    return () => document.removeEventListener('pointerdown', click);
+  }, []);
+
+  return [on, () => setOn((v) => !v)];
+}
+
 /* ---------- small pieces ---------- */
 
 const Tag = ({ children }) => <span className="tag">{children}</span>;
@@ -192,7 +241,7 @@ const ThemeToggle = ({ theme, onToggle }) => (
 
 /* ---------- navigation ---------- */
 
-function Nav({ view, active, goSection, goPersonal, theme, toggleTheme }) {
+function Nav({ view, active, goSection, goPersonal, theme, toggleTheme, sound, toggleSound }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -222,10 +271,16 @@ function Nav({ view, active, goSection, goPersonal, theme, toggleTheme }) {
           <button className={`pill-link ${view === 'personal' ? 'active' : ''}`} onClick={goPersonal}>
             <Sparkles size={14} /> Personal
           </button>
+          <button className="icon-btn" onClick={toggleSound} aria-label={sound ? 'Mute click sound' : 'Unmute click sound'} title={sound ? 'Sound on' : 'Sound off'}>
+            {sound ? <Volume2 size={16} /> : <VolumeX size={16} />}
+          </button>
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
         </nav>
 
         <div className="menu-btn" style={{ alignItems: 'center' }}>
+          <button className="icon-btn" onClick={toggleSound} aria-label={sound ? 'Mute click sound' : 'Unmute click sound'} title={sound ? 'Sound on' : 'Sound off'}>
+            {sound ? <Volume2 size={16} /> : <VolumeX size={16} />}
+          </button>
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
           <button className="icon-btn" onClick={() => setOpen(!open)} aria-label="Menu">
             {open ? <X size={16} /> : <Menu size={16} />}
@@ -322,21 +377,39 @@ function About() {
 }
 
 function Work() {
+  const full = EXPERIENCE.filter((e) => e.type === 'Full Time');
+  const part = EXPERIENCE.filter((e) => e.type !== 'Full Time');
   return (
     <section id="work" className="block">
       <div className="wrap">
         <Heading eyebrow="02 — Work Experience" title="Turning data into decisions with AI, ML and optimization." />
-        <div className="timeline">
-          {EXPERIENCE.map((e) => (
-            <div className="tl-item reveal" key={e.company + e.period}>
-              <div className="tl-when mono">{e.period}</div>
-              <div>
-                <h3>{e.role}<small>{e.type}</small></h3>
+        <div className="work-grid">
+          <div>
+            <p className="sub mono reveal">Full-time experience</p>
+            <div className="timeline">
+              {full.map((e) => (
+                <div className="tl-item reveal" key={e.company + e.period}>
+                  <div className="tl-when mono">{e.period}</div>
+                  <div>
+                    <h3>{e.role}</h3>
+                    <div className="tl-co">{e.company}</div>
+                    <ul>{e.desc.map((d, i) => <li key={i}>{d}</li>)}</ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <aside className="parttime reveal">
+            <p className="sub mono">Part-time &amp; side roles</p>
+            {part.map((e) => (
+              <div className="pt-item" key={e.company + e.period}>
+                <div className="tl-when mono">{e.period}</div>
+                <h4>{e.role}</h4>
                 <div className="tl-co">{e.company}</div>
                 <ul>{e.desc.map((d, i) => <li key={i}>{d}</li>)}</ul>
               </div>
-            </div>
-          ))}
+            ))}
+          </aside>
         </div>
       </div>
     </section>
@@ -385,8 +458,10 @@ function Research({ onZoom }) {
               <div className="r-body">
                 <div className="r-meta mono">{r.type} · {r.status}</div>
                 <h3>{r.title}</h3>
+                {r.people && <div className="r-people">{r.people}</div>}
                 {r.award && <div className="badge-award"><Award size={13} /> {r.award}</div>}
-                <p>{r.desc}</p>
+                <p className={r.caption ? 'no-grow' : ''}>{r.desc}</p>
+                {r.caption && <p className="r-caption" dangerouslySetInnerHTML={{ __html: r.caption }} />}
                 {r.link
                   ? <a className="r-link" href={r.link} target="_blank" rel="noreferrer">Read more <ArrowUpRight size={14} /></a>
                   : null}
@@ -552,6 +627,7 @@ export default function App() {
 
   useReveal([view]);
   useClickRipple();
+  const [sound, toggleSound] = useClickSound();
 
   const showToast = useCallback((msg) => {
     setToast(msg);
@@ -644,7 +720,7 @@ export default function App() {
     <>
       <NetworkBG />
       <div className="progress" ref={progress} />
-      <Nav view={view} active={active} goSection={goSection} goPersonal={goPersonal} theme={theme} toggleTheme={toggleTheme} />
+      <Nav view={view} active={active} goSection={goSection} goPersonal={goPersonal} theme={theme} toggleTheme={toggleTheme} sound={sound} toggleSound={toggleSound} />
 
       {view === 'home' ? (
         <main key="home" className="view">

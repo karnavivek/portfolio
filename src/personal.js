@@ -1,5 +1,23 @@
 export const BLOGS = [
   {
+    id: "iit-alumni",
+    title: "Towards being an IIT Alumni",
+    year: "2026",
+    summary: "IIT Madras done ✅ - graduating from the Department of Management Studies, and the people who made it possible.",
+    image: "./img/alumni_group.jpg",
+    body: [
+      "<strong>Well, IIT Madras Done ✅</strong>",
+      "Recently I graduated from the Indian Institute of Technology, Madras, Department of Management Studies, in Operations Research - where my research was about integrating Machine Learning models in Optimization models under uncertainty for better real-world decision making.",
+      "A journey that I will never forget, & will always cherish!",
+      "<em>In the picture, from left to right: <strong>Dr. B K Karna</strong> (Father), <strong>Dr. Rahul R. Marathe</strong> (Guide &amp; Professor @ DoMS, IIT Madras), <strong>Mrs. Kiran Karna</strong> (Mother), me, and <strong>Dr. Balaraman Ravindran</strong> (HOD @ DSAI, IIT Madras)</em>",
+      "I deeply thank my respected guide <strong>Dr. Rahul Ratnakar Marathe</strong> for supporting and steering my research ship through a tough thesis - your words always gave me a sense of stability & helped me in jotting down ideas. Thank you again sir, you have a pivotal role in my career/life :)",
+      "I also thank respected <strong>Dr. Balaraman Ravindran</strong> for being so kind & joining us in this photo with my parents and guide, great coincidence :)",
+      "At last, dedicating this to my lovely parents - no words are enough to express what you guys mean to me &lt;3 forever in debt &lt;3",
+      "Feels strange to be an Alumni lol :P",
+      "Now on to more tougher things..."
+    ]
+  },
+  {
     id: "iit-madras",
     title: "My 2-Yr Journey to IIT Madras",
     year: "2023",
