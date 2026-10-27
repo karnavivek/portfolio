@@ -13,14 +13,12 @@ export const PERSONAL_INFO = {
     youtube: "https://www.youtube.com/@karnavivek/videos",
     x: "https://x.com/karnaishere"
   },
-  resumeLink: "./VK_Resume_Aug.pdf",
   profileImage: "./Vivek_portfolio_dp.png",
   gallery: [
-    { src: "./Vivek_portfolio_dp.png", caption: "Namaste!", pos: "50% 30%" },
+    { src: "./img/portrait_4.jpg", caption: "Osaka", pos: "50% 55%" },
     { src: "./img/portrait_1.jpg", caption: "Presenting @ Hosei University", pos: "50% 28%" },
     { src: "./img/portrait_2.jpg", caption: "Tokyo", pos: "50% 62%" },
-    { src: "./img/portrait_3.jpg", caption: "Mt. Fuji", pos: "60% 55%" },
-    { src: "./img/portrait_4.jpg", caption: "Osaka", pos: "50% 55%" }
+    { src: "./img/portrait_3.jpg", caption: "Mt. Fuji", pos: "60% 55%" }
   ]
 };
 

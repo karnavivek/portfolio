@@ -328,7 +328,7 @@ function Nav({ view, active, goSection, goPersonal, theme, toggleTheme, sound, t
 
 /* ---------- home sections ---------- */
 
-function Hero({ goSection, copyEmail }) {
+function Hero({ goSection, copyEmail, onResume }) {
   const role = useTypewriter(PERSONAL_INFO.roles);
   const time = useClock(PERSONAL_INFO.timeZone);
 
@@ -344,7 +344,7 @@ function Hero({ goSection, copyEmail }) {
           <p className="intro reveal">{PERSONAL_INFO.intro}</p>
           <div className="btns reveal">
             <button className="btn primary" onClick={() => goSection('work')}>View work <ArrowRight size={16} /></button>
-            <a className="btn" href={PERSONAL_INFO.resumeLink} download><Download size={16} /> Resume</a>
+            <button className="btn" onClick={onResume}><Download size={16} /> Resume</button>
             <button className="btn" onClick={() => goSection('connect')}><Mail size={16} /> Connect</button>
           </div>
           <div className="hint reveal">Press <kbd>C</kbd> to copy my email · scroll to explore ↓</div>
@@ -655,9 +655,9 @@ export default function App() {
   useClickRipple();
   const [sound, toggleSound] = useClickSound();
 
-  const showToast = useCallback((msg) => {
+  const showToast = useCallback((msg, ms = 1800) => {
     setToast(msg);
-    setTimeout(() => setToast(null), 1800);
+    setTimeout(() => setToast(null), ms);
   }, []);
 
   const copyEmail = useCallback(async () => {
@@ -750,7 +750,7 @@ export default function App() {
 
       {view === 'home' ? (
         <main key="home" className="view">
-          <Hero goSection={goSection} copyEmail={copyEmail} />
+          <Hero goSection={goSection} copyEmail={copyEmail} onResume={() => showToast('Please contact for resume :)', 3200)} />
           <About />
           <Work />
           <Projects />
